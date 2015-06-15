@@ -1,9 +1,8 @@
 <?php
-namespace Home\Controller;
+namespace Admin\Controller;
 use Think\Controller;
 class IndexController extends Controller {
     public function index(){
-        echo 'this is index';
-       // $this->display();
+        $this->display();
     }
 }

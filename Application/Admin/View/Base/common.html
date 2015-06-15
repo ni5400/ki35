@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>三五青年</title>
+    <link href="__CSS__/index.css" rel="stylesheet" type="text/css" />
+    <script language="JavaScript" src="__JS__/jquery.js"></script>
+    <block name="head"></block>
+</head>
+<body>
+<!--top-->
+
+<include file="Public/top" />
+
+
+<!--top.end-->
+<!--main.start-->
+<div id="frame-main">
+    <!--main.left.start-->
+    <include file="Public/left" />
+    <!--main.left.edn-->
+    <!--main.right.begin-->
+    <include file="Public/content" />
+    <!--main.right.end-->
+</div>
+<!--main.end-->
+<script type="text/javascript">
+    $(function(){
+        //导航切换
+        $(".menuson li").click(function(){
+            $(".menuson li.active").removeClass("active")
+            $(this).addClass("active");
+        });
+
+        $('.title').click(function(){
+            var $ul = $(this).next('ul');
+            $('dd').find('ul').slideUp();
+            if($ul.is(':visible')){
+                $(this).next('ul').slideUp();
+            }else{
+                $(this).next('ul').slideDown();
+            }
+        });
+    })
+</script>
+</body>
+</html>
