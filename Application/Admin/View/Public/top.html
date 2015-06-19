@@ -31,11 +31,11 @@
         <ul>
             <li><span><img src="__IMG__/help.png" title="帮助"  class="helpimg"/></span><a href="#">帮助</a></li>
             <li><a href="#">关于</a></li>
-            <li><a href="login.html" target="_parent">退出</a></li>
+            <li><a href="<{:U('Login/login_out')}>" target="_parent">退出</a></li>
         </ul>
 
         <div class="user">
-            <span>admin</span>
+            <span><{$Think.session.admin_auth.user_byname}></span>
             <i>消息</i>
             <b>5</b>
         </div>

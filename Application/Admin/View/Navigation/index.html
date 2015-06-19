@@ -1,0 +1,13 @@
+11111
+<{foreach name="nav" item="vo"}>
+<dd>
+    <div class="title">
+        <span><img src="__IMG__/leftico01.png" /></span><{$vo.title}>
+    </div>
+    <ul class="menuson">
+        <{foreach name="vo.child" item="voc"}>
+            <li><cite></cite><a href="index.html" target="rightFrame"><{$voc.title}></a><i></i></li>
+        <{/foreach}>
+    </ul>
+</dd>
+<{/foreach}>

@@ -6,11 +6,9 @@
  * Mail:ni5400@163.com
  * Web:http://www.ki35.com
  */
-namespace Admin\Controller;
-use Think\Controller;
-
-class IndexController extends CommonController {
-
+namespace Admin\Model;
+use Think\Model;
+class IndexModel extends Model {
     public function index(){
 
         $this->display();

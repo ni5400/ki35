@@ -17,7 +17,14 @@
 <!--main.start-->
 <div id="frame-main">
     <!--main.left.start-->
-    <{include file="Public/left" /}>
+    <div id="frame-left">
+        <div class="lefttop"><span></span>控制面板</div>
+
+        <dl class="leftmenu">
+            <{include file="Navigation/index" /}>
+        </dl>
+    </div>
+
     <!--main.left.edn-->
     <!--main.right.begin-->
     <{include file="Public/content" /}>
