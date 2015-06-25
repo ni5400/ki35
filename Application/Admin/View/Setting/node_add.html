@@ -1,0 +1,129 @@
+<{extend name="Base/common" /}>
+<!--样式-->
+<{block name="style"}><link href="__CSS__/form.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__JS__/jquery-validate.js"></script><{/block}>
+<!--首页左侧菜单-->
+<{block name="menu"}>
+    <{include file="Public/left-setting" /}>
+<{/block}>
+<!--主体-->
+<{block name="main"}>
+    <div class="form_title"><i class="icon-cogs"><span class="glyphicon glyphicon-th-list"></span></i>添加节点</div>
+    <div class="form_con">
+        <legend></legend>
+        <h4 class="text-center">新增节点</h4>
+        <legend></legend>
+        <div class="alert alert-info alert-dismissible" role="alert" style="font-size: 14px;">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>谨慎操作！</strong> 权限方案，请勿删除已有节点，否则可能造成系统错误 <br/>
+            <strong>模块</strong>对应的ThinkPHP分组即MODULE_NAME <br/>
+            <strong>控制器</strong>对应的ThinkPHP的 CONTROLLER_NAME <br/>
+            <strong>操作名</strong>对应的ThinkPHP的ACTION_NAME <br/>
+        </div>
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1">
+
+                <form id="node_add" method="post" class="form-horizontal" action="">
+                    <fieldset>
+
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">名　称</label>
+                            <div class="col-lg-6">
+                                <input class="form-control" type="text" name="name"  placeholder="请输入节点的url如Admin/index/index"/>
+                            </div>
+                            <div class="col-lg-4">(对应的规则为"模型/控制器/操作方法")</div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">显示名</label>
+                            <div class="col-lg-6">
+                                <input class="form-control" type="text" name="title" placeholder="请输入title"/>
+                            </div>
+                        </div>
+                        <div class="form-group " >
+                            <legend></legend>
+                            <label class="col-lg-2 control-label">节点归属</label>
+                            <div class="col-lg-3">
+                                <select name="pid" class="form-control">
+                                    <option value="" >--新增模型(分组)--</option>
+                                    <option value="1" >11111</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group" >
+                            <label class="col-lg-2 control-label">节点类型</label>
+                            <div class="col-lg-3">
+                                <select name="level" class="form-control">
+                                    <option value="" >选择节点类型</option>
+                                    <option value="1" >项目分组(GROUP_NAME)</option>
+                                    <option value="1" >模块（MODEL_NAME）</option>
+                                    <option value="1" >方法(ACTION_NAME)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group" >
+                            <label class="col-lg-2 control-label">描述</label>
+                            <div class="col-lg-6">
+                                <textarea class="form-control" rows="3" name="remark" placeholder="请输入100字内的描述"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <legend></legend>
+                            <label class="col-lg-2 control-label">额外规则</label>
+                            <div class="col-lg-6">
+                                <input class="form-control" type="text" name="condition"  placeholder="请输入附加规则"/>
+                            </div>
+                        </div>
+                        <div class="form-group" >
+                            <label class="col-lg-2 control-label">状态</label>
+                            <div class="col-lg-2">
+                                <select name="status" class="form-control">
+                                    <option value="1" >正常</option>
+                                    <option value="0" >停用</option>
+                                </select>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div class="form-group" id="lock">
+                        <legend></legend>
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-success">提 　交</button>
+                            <button type="reset" class="btn btn2">重 　置</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        // validate插件护展验证规则字符验证，只能包含英文、数字、下划线等字符。
+        jQuery.validator.addMethod("stringCheck", function(value, element) {
+            return this.optional(element) || /^[a-zA-Z0-9\-_\/]+$/.test(value);
+        }, "用户名不能有特殊字符");
+        //验证规则
+        $('#node_add').validate({
+            errorElement:'span',   //错语标签
+            errorClass:'error',    //错误css
+            success:function(span){
+                span.removeClass('error');
+                span.addClass('success');
+            },    //验证成功后移除error,添加success样式
+            rules:{
+                name:{required:true,rangelength:[5,100],stringCheck:true},
+                title:{required:true,rangelength:[5,200],stringCheck:true},
+                status:{required:true},
+                pid:{required:true},
+                level:{required:true}
+            },
+            messages:{
+                name:{required:'名称不能为空',rangelength:'名称长度5-100位'},
+                title:{required:'显示名不能为空',rangelength:'显示名长度2-20位'},
+                status:{required:'请选择状态'},
+                pid:{required:'请选择节点归属'},
+                level:{required:'请选择节点类型'}
+            }
+        });
+    });
+</script>
+
+<{/block}>

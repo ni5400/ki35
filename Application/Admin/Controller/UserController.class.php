@@ -10,7 +10,7 @@
 namespace Admin\Controller;
 use Think\Controller;
 
-class NavigationController extends Controller {
+class NavigationController extends CommonController {
     public function index(){
         $this->display();
     }

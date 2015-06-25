@@ -1,0 +1,101 @@
+<{extend name="Base/common" /}>
+<!--样式-->
+<{block name="style"}>
+<link href="__CSS__/form.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="__CSS__/bootstrapValidator.css"/>
+<script type="text/javascript" src="__JS__/bootstrapValidator.js"></script>
+<{/block}>
+<!--首页左侧菜单-->
+<{block name="menu"}>
+<{include file="Public/left-setting" /}>
+<{/block}>
+<!--主体-->
+<{block name="main"}>
+<div class="form_title"><i class="icon-cogs"><span class="glyphicon glyphicon-th-large"></span></i>新增管理员</div>
+<div class="form_con">
+    <div class="row">
+        <div class="col-lg-10 col-lg-offset-1">
+            <div class="page-header">
+            </div>
+            <h4 class="text-center">导航</h4>
+            <form id="shippingForm" method="post" class="form-horizontal" action="">
+                <fieldset>
+                    <legend></legend>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">用户名</label>
+                        <div class="col-lg-6">
+                            <input class="form-control" type="text" name="username"  placeholder="请输入用户名"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">别名</label>
+                        <div class="col-lg-6">
+                            <input class="form-control" type="text" name="byname" placeholder="请输入您的大名"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">密码</label>
+                        <div class="col-lg-6">
+                            <input class="form-control" type="password" name="password" placeholder="请输入密码"/>
+                        </div>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <label class="col-lg-2 control-label">管理组</label>
+                        <div class="col-lg-4">
+                            <select name="group" class="form-control">
+                                <select name="group" class="form-control">
+                                    <option value="">选择角色分组</option>
+                                    <option value="AU">Australia</option>
+                                    <option value="CA">Canada</option>
+                                </select>
+                            </select>
+                        </div>
+                    </div>
+                </fieldset>
+                <legend></legend>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-success">提 　交</button>
+                        <button type="reset" class="btn btn2">重 　置</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#shippingForm').bootstrapValidator({
+            message: 'This value is not valid',
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                username: {
+                    validators: {
+                        notEmpty: {message: '不能为空'}
+                    }
+                },
+                byname: {
+                    validators: {
+                        notEmpty: {message: '姓名不能为空'}
+                    }
+                },
+                group: {
+                    validators: {
+                        notEmpty: {message: '请选择角色'}
+                    }
+                },
+                password: {
+                    validators: {
+                        notEmpty: {message: '不能为空'}
+                    }
+                }
+            }
+        })
+    });
+</script>
+<{/block}>

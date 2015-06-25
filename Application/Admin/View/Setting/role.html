@@ -1,0 +1,122 @@
+<{extend name="Base/common" /}>
+<!--首页左侧菜单-->
+<{block name="style"}><link href="__CSS__/form.css" rel="stylesheet" type="text/css" /><{/block}>
+<{block name="menu"}>
+    <{include file="Public/left-setting" /}>
+<{/block}>
+
+<{block name="main"}>
+
+    <div class="form_title"><i class="icon-cogs"><span class="glyphicon glyphicon-th-list"></span></i>角色列表</div>
+   <div class="form_con">
+
+       <table class="table table-striped table-hover table-bordered" style="color: #888">
+           <thead>
+           <tr  style="font-weight: bold">
+               <th class="col-md-1">排序</th>
+               <th class="col-md-1">ID</th>
+               <th class="col-md-4">角色名</th>
+               <th class="col-md-1">状态</th>
+               <th class="col-md-3">相关操作</th>
+           </tr>
+           </thead>
+          <tbody>
+       <{volist name="list" id="vo"}>
+           <tr>
+               <td><input type="checkbox"  value="option1"></td>
+               <td><{$vo.id}></td>
+               <td><{$vo.title}></td>
+               <td class="btn_edit">
+                   <{if condition="$vo['status']==1"}>
+                   <button class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-ok"></i> 正常</button>
+                   <{else /}>
+                   <button class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i> 停用</button>
+                   <{/if}>
+               </td>
+               <td class="btn_edit">
+                   <a href="<{:U('Setting/role_edit',array('role_id'=>$vo['id']))}>" class="btn btn-sm btn-success" <{if condition="$vo['type']==1"}> disabled="disabled"<{/if}> ><i class="glyphicon glyphicon-pencil"></i>修改</a> 　
+                   <button data="<{$vo.id}>" class="btn btn-sm btn-danger btn-remove"  <{if condition="$vo['type']==1"}> disabled="disabled"<{/if}> ><i class="glyphicon glyphicon-trash"></i>删除</button>　
+                   <button class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-cog"></i> 配置权限</button>
+               </td>
+           </tr>
+       <{/volist}>
+           </tbody>
+       </table>
+       <!--分页开始-->
+       <{$page}>
+       <!--分页结束-->
+   </div>
+   <!--dialog-->
+<div class="modal fade" id="my-modal" style="top:50%; margin-top:-120px;">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">警告框</h4>
+            </div>
+            <div class="modal-body">
+                <p>确定要进行删除操作吗？删除后不可恢复</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" > 取消</button>
+                <button type="button" class="btn btn-primary true-remove">删除</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--dialog-->
+<!--dialog删除-->
+<div class="modal fade bs-example-modal-sm" id="error-dialog" tabindex="-1" style="top:50%; margin-top:-120px;">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" >操作提示</h4>
+            </div>
+            <div class="modal-body del-result">
+                ...
+            </div>
+        </div>
+    </div>
+</div>
+<!--dialog-->
+<script>
+    $('.btn-remove').click(function(){
+        var thisClick=$(this).parents('tr');
+        var getId=$(this).attr('data');
+        var Url="<{:U('AuthGroup/role_del')}>";
+        $('#my-modal').modal('show');
+        $('.true-remove').click(function(){
+            $.ajax({
+                url : Url,
+                type : 'POST',
+                data : { id:getId },
+                beforeSend : function () {
+                    $('#my-modal').modal('hide');
+                },
+                success: function(data, response, status){
+                    if(data){
+                        thisClick.remove();
+                        $('.del-result').html('删除成功');
+                        $('#error-dialog').modal('show');
+                        setTimeout(function(){
+                            $('.del-result').html('...');
+                            $('#error-dialog').modal('hide');
+                        },2000);
+                    }else{
+                        $('.del-result').html('删除失败,请重试');
+                        $('#error-dialog').modal('show');
+                        setTimeout(function(){
+                            $('.del-result').html('...');
+                            $('#error-dialog').modal('hide');
+                        },2000);
+                    }
+                }
+            });
+
+
+        })
+    })
+
+</script>
+<{/block}>

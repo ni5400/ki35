@@ -15,4 +15,8 @@ return array(
     'TMPL_L_DELIM'          =>  '<{',            // 模板引擎普通标签开始标记
     'TMPL_R_DELIM'          =>  '}>',            // 模板引擎普通标签结束标记
     'TMPL_TEMPLATE_SUFFIX'  => '.html',     // 默认模板文件后缀
+    //需要配置开启LAYOUT_ON 参数（默认不开启），并且设置布局入口文件名LAYOUT_NAME（默认为layout）。
+//    'LAYOUT_ON'=>true,
+//    'LAYOUT_NAME'=>'layout',
+
 );

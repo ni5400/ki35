@@ -1,0 +1,107 @@
+<{extend name="Base/common" /}>
+<!--样式-->
+<{block name="style"}>
+<link href="__CSS__/form.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__JS__/jquery-validate.js"></script>
+<{/block}>
+<!--首页左侧菜单-->
+<{block name="menu"}>
+    <{include file="Public/left-setting" /}>
+<{/block}>
+<!--主体-->
+<{block name="main"}>
+    <div class="form_title"><i class="icon-cogs"><span class="glyphicon glyphicon-th-large"></span></i>导航</div>
+    <div class="form_con">
+        <div class="alert alert-warning alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>提示！</strong> 一个管理员可以对应多个管理角色 <br/>
+        </div>
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1">
+                <legend></legend>
+                <h4 class="text-center">新增管理员</h4>
+                <form id="manager_add" method="post" class="form-horizontal" action="">
+                    <fieldset>
+                        <legend></legend>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">用户名</label>
+                            <div class="col-lg-6">
+                                <input class="form-control" type="text" name="username"  placeholder="请输入用户名"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">别名</label>
+                            <div class="col-lg-6">
+                                <input class="form-control" type="text" name="byname" placeholder="请输入您的大名"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">密码</label>
+                            <div class="col-lg-6">
+                                <input class="form-control" type="password" name="password" placeholder="请输入密码"/>
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback group" >
+                            <label class="col-lg-2 control-label">管理组</label>
+                            <div class="col-lg-3">
+                                <select name="group" class="form-control">
+                                    <option value="" >选择角色分组</option>
+                                    <{volist name="group" id="vo"}>
+                                    <option value="<{$vo.id}>" <{if condition="$vo['status']==0 || $vo['type']==1"}> disabled <{/if}> ><{$vo.title}></option>
+                                    <{/volist}>
+                                </select>
+                            </div>
+                            <div class="col-lg-1">
+                                <a class="btn btn-sm btn-primary addrole">
+                                <i class="glyphicon glyphicon-plus-sign"></i> 添加多个角色</a>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div class="form-group" id="lock">
+                        <legend></legend>
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-success">提 　交</button>
+                            <button type="reset" class="btn btn2">重 　置</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        //增加角色选择选 项
+        $('.addrole').click(function(){
+            var obj=$(this).parents('.form-group').clone();
+            obj.find('.addrole').remove();
+            $('#lock').before(obj);
+        });
+
+        // validate插件护展验证规则字符验证，只能包含英文、数字、下划线等字符。
+        jQuery.validator.addMethod("stringCheck", function(value, element) {
+            return this.optional(element) || /^[a-zA-Z0-9\-_]+$/.test(value);
+        }, "用户名不能有特殊字符");
+        //验证规则
+        $('#manager_add').validate({
+            errorElement:'span',   //错语标签
+            errorClass:'error',    //错误css
+            success:function(span){
+                span.removeClass('error');
+                span.addClass('success');
+            },    //验证成功后移除error,添加success样式
+            rules:{
+                username:{required:true,rangelength:[5,20],stringCheck:true},
+                byname:{required:true,rangelength:[5,20],stringCheck:true},
+                password:{required:true,rangelength:[5,20]},
+                group:{required:true}
+            },
+            messages:{
+                username:{required:'用户名不能为空',rangelength:'用户名长度5-20位'},
+                byname:{required:'姓名名不能为空',rangelength:'姓名长度5-20位'},
+                password:{ required:'密码不能为空', rangelength:'密码长度5-20位'},
+                group:{required:'验证码不能为空'}
+            }
+        });
+    });
+</script>
+<{/block}>

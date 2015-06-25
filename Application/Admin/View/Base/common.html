@@ -2,10 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" conten="width=device-width,initial-scale=1">
     <title>三五青年</title>
-    <link href="__CSS__/index.css" rel="stylesheet" type="text/css" />
-    <script language="JavaScript" src="__JS__/jquery.js"></script>
-    <block name="head"></block>
+    <link href="__CSS__/bootstrap.min.css" rel="stylesheet" />
+    <link href="__CSS__/base.css" rel="stylesheet" type="text/css" />
+    <script language="JavaScript" src="__JS__/jquery.min.js"></script>
+    <script language="JavaScript" src="__JS__/bootstrap.min.js"></script>
+    <{block name="style"}>
+    <{/block}>
 </head>
 <body>
 <!--top-->
@@ -31,8 +35,8 @@
             $(".menuson li.active").removeClass("active")
             $(this).addClass("active");
         });
-
-        $('.title').click(function(){
+        //左侧侧导
+        $('.dh-title').click(function(){
             var $ul = $(this).next('ul');
             $('dd').find('ul').slideUp();
             if($ul.is(':visible')){
@@ -41,6 +45,17 @@
                 $(this).next('ul').slideDown();
             }
         });
+        //点击按扭隐藏左侧菜单
+        $('.w-nav').click(function(){
+           if( $('#frame-left').is(":hidden")){
+               $('#frame-left').show();
+               $('#frame-right').css('padding-left','187px');
+            }else{
+                $('#frame-left').hide();
+               $('#frame-right').css('padding-left','0');
+            }
+        });
+        $("[data-toggle='tooltip']").tooltip(); //隐藏菜单按扭提示
     })
 </script>
 </body>

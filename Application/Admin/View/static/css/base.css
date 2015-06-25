@@ -1,0 +1,106 @@
+*{font-size:9pt;border:0;margin:0;padding:0;}
+body{font-family:'微软雅黑'; margin:0 auto;}
+ul{display:block;margin:0;padding:0;list-style:none;}
+li{display:block;margin:0;padding:0;list-style: none;}
+img{border:0;}
+dl,dt,dd,span{margin:0;padding:0;display:block;}
+a,a:focus{text-decoration:none;color:#000;outline:none;blr:expression(this.onFocus=this.blur());}
+a:hover{color:#00a4ac;text-decoration:none;}
+table{border-collapse:collapse;border-spacing: 0;}
+cite{font-style:normal;}
+h2{font-weight:normal;}
+.clear{ clear:both;}
+.max-width{width: 100%}
+body{background-image: url(../images/indexTopBg.gif);}
+.blue-color{ background: #3397e2;}
+.green-color{background: #83c710
+}
+.red-color{background: #d8120c;}
+.bottom10{ margin-bottom: 10px;}
+.content-color{background-image: linear-gradient(to bottom, rgba(136, 203, 50, 0.99), rgba(41, 77, 11, 0.89));}
+/*index 框架*/
+#frame-top{ width:100%; height:88px;
+    background-image: linear-gradient(to bottom, rgba(23, 124, 166, 1), rgba(36, 123, 166, 0.94));
+    position: fixed; z-index: 1;}
+#frame-main{ width:100%; height:auto;  }
+#frame-main #frame-left{ width:187px; height:100%;position: fixed; padding-top: 88px ; background: #f1F1F1 }
+#frame-main #frame-right{height:auto; padding-top: 88px; padding-left: 187px; width: auto;}
+
+/*top.html*/
+.header{height:88px;}
+.topleft{height:88px;float:left; width:auto;}
+.topright{height:88px;float:right;}
+.home-nav{float:left;}
+.home-nav h1,.home-nav h2,.home-nav h3{ margin-top: 0px;}
+.home-nav li{float:left;width:87px;height:88px; text-align:center;}
+.home-nav li a{display:block;width:87px;height:88px;-moz-transition: none; transition: background-color 0.3s linear; -moz-transition: background-color 0.3s linear; -webkit-transition: background-color 0.3s linear; -o-transition: background-color 0.3s linear; }
+.home-nav li a.selected{background:url(../images/navbg.png) no-repeat;}
+.home-nav li a:hover{display:block;background:#000;color:#fff;background: none repeat scroll 0% 0% rgb(79, 79, 79);}
+.home-nav li img{margin-top:10px;}
+.home-nav li a{display:block;}
+.home-nav a h2{font-size:14px;color:#F3F6F7;}
+.home-nav a:hover h2{color:#fff;}
+.topright ul{padding-top:15px; float:right; padding-right:12px;}
+.topright ul li{float:left; padding-left:9px; padding-right:9px; background:url(../images/line.gif) no-repeat right;}
+.topright ul li:last-child{background:none;}
+.topright ul li a{font-size:13px; color:#e9f2f7;}
+.topright ul li a:hover{color:#fff;}
+.topright ul li span{margin-top:2px;float:left;padding-right:3px;}
+.topright .user{height:30px;background:url(../images/ub1.png) repeat-x;clear:both;margin-top:10px;float:right; margin-right:12px;border-radius:30px; behavior:url(js/pie.htc); white-space:nowrap;position:relative;}
+.topright .user span{display:inline-block;padding-right:10px; background:url(../images/user.png) no-repeat 15px 10px; line-height:30px; font-size:14px;color:#b8ceda; padding-left:20px; padding-left:35px;}
+.topright .user b{display:inline-block;width:20px;height:18px; background:url(../images/msg.png);text-align:center; font-weight:normal; color:#fff;font-size:14px;margin-right:13px; margin-top:7px; line-height:18px;}
+.topright .user i{display:inline-block;margin-right:5px;font-style:normal;line-height:30px; font-size:14px;color:#b8ceda;}
+
+/*left.html*/
+#frame-left [class*="icon-"] {
+    font-size: 18px;
+    line-height: 36px;
+    width: 18px;
+    height: 18px;
+    float: left;
+    text-shadow: none;
+}
+.lefttop{
+    background-image: linear-gradient(to bottom, rgba(72, 186, 228, 0.99), rgba(46, 126, 174, 0.89));
+    height:40px;color:#fff;font-size:14px;line-height:40px;}
+.lefttop i{ margin-left:10px; }
+.leftmenu {width:187px;padding-bottom: 9999px;margin-bottom: -9999px; overflow:hidden; }
+.leftmenu dd{line-height:42px;font-weight:bold;font-size:14px;border-right:solid 1px #e0dede;}
+
+.leftmenu dd .menuson{display:none;}
+.leftmenu dd .dh-title{cursor:pointer; width: 187px; height: 38px; font-size: 14px; color: #494b49; font-weight: bold;background-image: linear-gradient(to bottom, #FAFAFA, rgba(218, 218, 218, 0.33)); border-bottom:1px solid #e0dede}
+.leftmenu dd .dh-title i{   color: #4292C3; font-size: 16px; margin: 0px 10px; line-height: 36px;
+    width: 16px;height: 16px; }
+
+
+
+
+.leftmenu dd:first-child .menuson{display:block;}
+.menuson {line-height:38px; font-weight:normal; background: #F5F3F3}
+.menuson li{cursor:pointer;  height: 38px; overflow: hidden; padding-left: 16px; border-bottom: 1px dashed #CCC;}
+.menuson li:hover{cursor:pointer; width: 186px; height: 38px; overflow: hidden;
+    -moz-transition: none; transition: background-color 0.3s linear; -moz-transition: background-color 0.3s linear; -webkit-transition: background-color 0.3s linear; -o-transition: background-color 0.3s linear; background-color: #CCC;}
+.menuson li i{ margin-right: 16px; color: #BA523A; margin: 0px 10px; }
+.menuson li.active{position:relative; width: 186px; line-height:38px; color:#fff;  background: #688393;
+    /*background-image: linear-gradient(to bottom, rgba(97, 97, 100, 1), rgba(27, 24, 24, 0.84));*/ }
+.menuson li a{ display:block; *display:inline; *padding-top:5px;}
+.menuson li.active a,.menuson li.active i,.menuson li:hover i,.menuson li:hover a{color:#fff;}
+
+.mainindex{padding:20px; overflow:hidden;}
+.index-content{width: 100%;}
+.place{height:40px;background-image: linear-gradient(to bottom, #FAFAFA, rgba(218, 218, 218, 0.33)); border-bottom:1px solid #e0dede;}
+.place span{line-height:40px; font-weight:bold;float:left; margin-left:12px;}
+.placeul li{float:left; line-height:40px; padding-left:22px; padding-right:12px; background:url(../images/rlist.gif) no-repeat right;}
+.place .w-nav{ background: #B03C3C; width: 60px; height: 40px; float: left; padding-left: 10px;cursor:pointer }
+.place .w-nav:hover{background: #c43d3d}
+.place .w-nav [class*="icon-"] {
+    font-size: 16px;
+    line-height: 36px;
+    width: 18px;
+    height: 18px;
+    float: left;
+    color: #FFF;
+    text-shadow: none;
+}
+.my-page{position: absolute; right: 50px;}
+.my-page .current{ background: #f1f1f1}
