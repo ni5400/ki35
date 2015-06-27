@@ -20,7 +20,7 @@
             <div class="col-lg-10 col-lg-offset-1">
                 <legend></legend>
                 <h4 class="text-center">新增管理员</h4>
-                <form id="manager_add" method="post" class="form-horizontal" action="">
+                <form id="manager_add" method="post" class="form-horizontal" action="<{:U('User/manager_addHandel')}>">
                     <fieldset>
                         <legend></legend>
                         <div class="form-group">
@@ -32,7 +32,7 @@
                         <div class="form-group">
                             <label class="col-lg-2 control-label">别名</label>
                             <div class="col-lg-6">
-                                <input class="form-control" type="text" name="byname" placeholder="请输入您的大名"/>
+                                <input class="form-control" type="text" name="byname" placeholder="请输入您的姓名"/>
                             </div>
                         </div>
                         <div class="form-group">
@@ -51,10 +51,6 @@
                                     <{/volist}>
                                 </select>
                             </div>
-                            <div class="col-lg-1">
-                                <a class="btn btn-sm btn-primary addrole">
-                                <i class="glyphicon glyphicon-plus-sign"></i> 添加多个角色</a>
-                            </div>
                         </div>
                     </fieldset>
                     <div class="form-group" id="lock">
@@ -70,19 +66,17 @@
     </div>
 <script type="text/javascript">
     $(document).ready(function() {
-        //增加角色选择选 项
-        $('.addrole').click(function(){
-            var obj=$(this).parents('.form-group').clone();
-            obj.find('.addrole').remove();
-            $('#lock').before(obj);
-        });
-
         // validate插件护展验证规则字符验证，只能包含英文、数字、下划线等字符。
         jQuery.validator.addMethod("stringCheck", function(value, element) {
             return this.optional(element) || /^[a-zA-Z0-9\-_]+$/.test(value);
         }, "用户名不能有特殊字符");
+        jQuery.validator.addMethod("ChineseName", function(value, element) {
+            return this.optional(element) || /^[^a-zA-Z0-9\-_]+$/.test(value);
+        }, "请输入中文名字");
+        var getUrl='<{:U("User/checkUser")}>';
         //验证规则
         $('#manager_add').validate({
+
             errorElement:'span',   //错语标签
             errorClass:'error',    //错误css
             success:function(span){
@@ -90,16 +84,24 @@
                 span.addClass('success');
             },    //验证成功后移除error,添加success样式
             rules:{
-                username:{required:true,rangelength:[5,20],stringCheck:true},
-                byname:{required:true,rangelength:[5,20],stringCheck:true},
+                username:{required:true,rangelength:[5,20],stringCheck:true,
+                    remote:{
+                        url:getUrl,
+                        type:'post',
+                        dataType:'json',
+                        data:{ username:function(){return $('input[name=username]').val();}},
+                        complete:function(data){}
+                    }
+                },
+                byname:{required:true,rangelength:[2,20],ChineseName:true},
                 password:{required:true,rangelength:[5,20]},
                 group:{required:true}
             },
             messages:{
-                username:{required:'用户名不能为空',rangelength:'用户名长度5-20位'},
-                byname:{required:'姓名名不能为空',rangelength:'姓名长度5-20位'},
+                username:{required:'用户名不能为空',rangelength:'用户名长度5-20位',remote:'用户名以存在'},
+                byname:{required:'姓名不能为空',rangelength:'姓名长度2-20位'},
                 password:{ required:'密码不能为空', rangelength:'密码长度5-20位'},
-                group:{required:'验证码不能为空'}
+                group:{required:'请选择角色'}
             }
         });
     });

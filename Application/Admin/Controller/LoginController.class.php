@@ -58,7 +58,7 @@ class LoginController extends Controller {
         $authInfo=$User->checkLogin($username,$password,$code);
         //登陆信息写入userlogin表里
         $Error_login=D('UserLogin');
-        if($msg = $User->getError()) {
+        if($msg = $User->getError()) {  //if(($msg = $User->getError()) == true)
             $Error_login->addLogin($username,$msg);
             $this->error($msg); //抛出错误信息
         }

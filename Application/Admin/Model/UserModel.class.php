@@ -8,14 +8,16 @@
  */
 namespace Admin\Model;
 use Think\Model;
-
+use MyLibrary\Page;
 class UserModel extends Model {
     //自动验证
     protected $_validate=array(
         //array(验证字段，验证规则，错误提示，验证条件，附加规则，验证时间) 或者单独留给注册用，登陆单独写规则
+        //array('user_name','','帐号名称已经存在！',0,'unique',1),
         array('user_name','require','用户名不能为空',self::EXISTS_VALIDATE),
+        array('user_byname','require','用户名不能为空',self::EXISTS_VALIDATE),
         array('user_name', '5,20', '用户名长度5-20位！', self::EXISTS_VALIDATE,'length'),
-        array('name','','帐号名称已经存在！',0,'unique',4),
+        array('user_byname', '2,20', '用户名长度5-20位！', self::EXISTS_VALIDATE,'length'),
         array('password','require','密码不能为空',self::EXISTS_VALIDATE),
         array('code','require','验证码不能为空',self::EXISTS_VALIDATE),
         array('password', '5,30', '密码长度不合法！', self::EXISTS_VALIDATE,'length'),
@@ -23,26 +25,35 @@ class UserModel extends Model {
         array('code', '4', '请输入4位验证码', self::EXISTS_VALIDATE,'length'),
     );
     //使用create方法创建数据对象的时候,执行Add()方法时，不在$insertFields定义范围内的字段将直接丢弃即只允许新增定义内的字段
-    protected $insertFields = array('user_name','password','code','email');
+    protected $insertFields = array('id','user_name','password','user_byname','reg_time','reg_ip','login_time','login_count','role_id','status','unqi_id');
     //使用create方法更新数据对象的时候,执行sava()方法时，不在$updateFields定义范围内的字段将直接丢弃
-    protected $updateFields = array('user_name','password','code','email');
+    protected $updateFields = array('id','user_name','password','user_byname','reg_time','reg_ip','login_time','login_count','role_id','status','unqi_id');
     //自动完成
-    protected $auto=array(
+    protected $_auto=array(
         array('password', 'sha1', self::MODEL_INSERT, 'function'),
-        array('logintime', 'time', self::MODEL_INSERT, 'function'),
-        array('regtime','time',self::MODEL_INSERT,'function'),
-        array('lock',1,self::MODEL_INSERT),
+        array('login_time', 'time', self::MODEL_INSERT, 'function'),
+        array('reg_time','time',self::MODEL_INSERT,'function'),
+        array('reg_ip','get_client_ip',self::MODEL_INSERT,'function'),
+        array('login_ip','get_client_ip',self::MODEL_BOTH,'function'),
+        array('login_time','time',self::MODEL_BOTH,'function'),
+        array('login_count',0,self::MODEL_INSERT),
+        array('status',1,self::MODEL_INSERT),
         array('password','',self::MODEL_UPDATE,'ignore'),//修改时空白则忽略
     );
 
-    //检帐帐户是否存在或者停用状态
+    //检帐帐户是否存在同时检测停用状态
     public function checkStatus($username){
         $map=array();
         $map['user_name']=$username;
         $map['status']=array('gt',0);
         return $authInfo=$this->where($map)->find();
     }
-
+    //检帐帐户是否存在
+    public function checkUsername($username){
+        $map=array();
+        $map['user_name']=$username;
+        return $authInfo=$this->where($map)->find();
+    }
     //验证登陆
     public function checkLogin($username,$password,$code){
         $data=array(
@@ -57,13 +68,35 @@ class UserModel extends Model {
         }
     }
 
+    //登陆后更新数据库登陆时间和次数级ip
     public function update($user_id,$login_count){
         $data = array(
             'login_time'=>time(),
-            'login_ip'=>get_client_ip(1),
+            'login_ip'=>get_client_ip(),
             'login_count'=>$login_count+1
         );
-       return $this-> where('id'==$user_id )->setField($data);
+       return $this-> where('id='.$user_id )->setField($data);
+
+    }
+
+    //注册管理员
+    public function register($username,$byname,$password){
+        $data=array(
+            'user_name'=>$username,
+            'user_byname'=>$byname,
+            'password'=>$password,
+        );
+        if(!$this->create($data)){
+            return $this->getError();
+        }else{
+            return  $this->add();
+
+        }
+    }
+    //获取管理员列表
+    public function getList(){
+        return $a=2;
+
 
     }
 

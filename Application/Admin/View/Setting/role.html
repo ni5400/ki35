@@ -11,16 +11,16 @@
    <div class="form_con">
 
        <table class="table table-striped table-hover table-bordered" style="color: #888">
-           <thead>
-           <tr  style="font-weight: bold">
+
+           <tr  style="font-weight: bold;background: #efefef;"  >
                <th class="col-md-1">排序</th>
                <th class="col-md-1">ID</th>
                <th class="col-md-4">角色名</th>
                <th class="col-md-1">状态</th>
-               <th class="col-md-3">相关操作</th>
+               <th class="col-md-2">相关操作</th>
            </tr>
-           </thead>
-          <tbody>
+
+
        <{volist name="list" id="vo"}>
            <tr>
                <td><input type="checkbox"  value="option1"></td>
@@ -28,19 +28,19 @@
                <td><{$vo.title}></td>
                <td class="btn_edit">
                    <{if condition="$vo['status']==1"}>
-                   <button class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-ok"></i> 正常</button>
+                   <i class="glyphicon glyphicon-ok" style="color: #5d9912" data-toggle="tooltip" data-placement="right" title="正常"></i>
                    <{else /}>
-                   <button class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i> 停用</button>
+                   <i class="glyphicon glyphicon-remove" style="color: #a80804"  data-toggle="tooltip" data-placement="right" title="已停用"></i>
                    <{/if}>
                </td>
                <td class="btn_edit">
-                   <a href="<{:U('Setting/role_edit',array('role_id'=>$vo['id']))}>" class="btn btn-sm btn-success" <{if condition="$vo['type']==1"}> disabled="disabled"<{/if}> ><i class="glyphicon glyphicon-pencil"></i>修改</a> 　
-                   <button data="<{$vo.id}>" class="btn btn-sm btn-danger btn-remove"  <{if condition="$vo['type']==1"}> disabled="disabled"<{/if}> ><i class="glyphicon glyphicon-trash"></i>删除</button>　
-                   <button class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-cog"></i> 配置权限</button>
+                   <a href="<{:U('Setting/role_edit',array('role_id'=>$vo['id']))}>" class="btn btn-sm btn-success"  data-toggle="tooltip" data-placement="left" title="修改" <{if condition="$vo['type']==1"}> disabled="disabled"<{/if}> ><i class="glyphicon glyphicon-pencil" ></i></a> 　
+                   <button data="<{$vo.id}>" data-toggle="tooltip" data-placement="top" title="删除" class="btn btn-sm btn-danger btn-remove"  <{if condition="$vo['type']==1"}> disabled="disabled"<{/if}> ><i class="glyphicon glyphicon-trash" ></i></button>　
+                   <button class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="right" title="权限配置"><i class="glyphicon glyphicon-cog" ></i></button>
                </td>
            </tr>
        <{/volist}>
-           </tbody>
+
        </table>
        <!--分页开始-->
        <{$page}>
@@ -96,12 +96,12 @@
                 },
                 success: function(data, response, status){
                     if(data){
-                        thisClick.remove();
                         $('.del-result').html('删除成功');
                         $('#error-dialog').modal('show');
                         setTimeout(function(){
                             $('.del-result').html('...');
                             $('#error-dialog').modal('hide');
+                            thisClick.remove();
                         },2000);
                     }else{
                         $('.del-result').html('删除失败,请重试');

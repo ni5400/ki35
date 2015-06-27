@@ -23,7 +23,7 @@ class UserLoginModel extends Model {
             'user_name'=>$username,
             'error_content'=>$error_content,
             'login_time'=>time(),
-            'login_ip'=>get_client_ip(1)
+            'login_ip'=>get_client_ip()
         );
         if($this->create($data)){
             $this->add($data);

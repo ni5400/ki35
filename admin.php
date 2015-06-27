@@ -7,5 +7,5 @@
  * Web:http://www.ki35.com
  */
 
-header('location:/Admin/');
+header('location:/Admin');
   
