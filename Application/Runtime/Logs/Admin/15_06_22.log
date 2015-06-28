@@ -1,0 +1,21 @@
+[ 2015-06-22T21:22:26+08:00 ] 127.0.0.1 /index.php?m=Admin&c=Setting&a=manager
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000265s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000442s ]
+ERR: 非法操作:manager
+
+[ 2015-06-22T21:30:43+08:00 ] 127.0.0.1 /index.php?m=Admin&c=Setting&a=manager
+ERR: 非法操作:manager
+
+[ 2015-06-22T21:30:49+08:00 ] 127.0.0.1 /index.php?m=Admin&c=Setting&a=manager_add
+ERR: 非法操作:manager_add
+
+[ 2015-06-22T21:30:52+08:00 ] 127.0.0.1 /index.php?m=Admin&c=Setting&a=manager_add
+ERR: 非法操作:manager_add
+
+[ 2015-06-22T21:31:17+08:00 ] 127.0.0.1 /index.php?m=Admin&c=Setting&a=manager_add
+ERR: 模板不存在:./Application/Admin/View/Setting/manager_add.html
+
+[ 2015-06-22T21:31:25+08:00 ] 127.0.0.1 /index.php?m=Admin&c=Setting&a=manager_add
+ERR: 模板不存在:./Application/Admin/View/Setting/manager_add.html
+

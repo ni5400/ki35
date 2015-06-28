@@ -8,9 +8,7 @@
     <link href="/./Application/Admin/View/static/css/base.css" rel="stylesheet" type="text/css" />
     <script language="JavaScript" src="/./Application/Admin/View/static/js/jquery.min.js"></script>
     <script language="JavaScript" src="/./Application/Admin/View/static/js/bootstrap.min.js"></script>
-    
-<link href="/./Application/Admin/View/static/css/index.css" rel="stylesheet" type="text/css" />
-
+    <link href="/./Application/Admin/View/static/css/form.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <!--top-->
@@ -67,14 +65,14 @@
     <!--main.left.start-->
     <div id="frame-left">
         
-<div class="lefttop"><i class="icon-cogs"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></i>　工作台</div>
+    <div class="lefttop"><i class="icon-cogs"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></i>　系统设置</div>
 <dl class="leftmenu">
     <dd>
         <div class="dh-title">
             <i class="icon-cogs"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></i>
             基本设置
         </div>
-        <ul class="menuson"style="display: none">
+        <ul class="menuson" style="display: none">
             <li><i class="icon-cogs"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></i><a href="index.html" >基本设置</a></li>
             <li><i class="icon-cogs"><span class="glyphicon glyphicon-retweet" aria-hidden="true"></span></i><a href="right.html" >SEO优化</a></li>
             <li><i class="icon-cogs"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span></i><a href="imgtable.html" >服务器优化</a></li>
@@ -90,11 +88,45 @@
             <i class="icon-cogs"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></i>
             管理员设置
         </div>
-        <ul class="menuson">
-            <li><a href="#"><i class="icon-cogs"><span class="glyphicon glyphicon-align-center"></span></i>管理员列表</a></li>
-            <li><a href="#"><i class="icon-cogs"><span class="glyphicon glyphicon-align-right"></span></i>新增管理员</a></li>
-            <li><a href="#"><i class="icon-cogs"><span class="glyphicon glyphicon-list"></span></i>角色管理</a></li>
-            <li><a href="#"><i class="icon-cogs"><span class="glyphicon glyphicon-edit"></span></i>新增角色</a></li>
+        <ul class="menuson" style="display: block">
+            <li <?php if(ACTION_NAME =='manager'): ?>class="active"<?php endif; ?> >
+                <a href="<?php echo U('Setting/manager');?>">
+                    <i class="icon-cogs">
+                        <span class="glyphicon glyphicon-tasks"></span>
+                    </i>管理员列表
+                </a>
+            </li>
+            <li <?php if(ACTION_NAME =='manager_add'): ?>class="active"<?php endif; ?> >
+                <a href="<?php echo U('Setting/manager_add');?>">
+                    <i class="icon-cogs">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </i>新增管理员
+                </a>
+            </li>
+            <li  <?php if(ACTION_NAME =='role'): ?>class="active"<?php endif; ?>  >
+                <a href="<?php echo U('Setting/role');?>">
+                    <i class="icon-cogs"><span class="glyphicon glyphicon-list"></span></i>
+                    角色列表
+                </a>
+            </li>
+            <li <?php if(ACTION_NAME =='role_add'): ?>class="active"<?php endif; ?>>
+                <a href="<?php echo U('Setting/role_add');?>">
+                    <i class="icon-cogs"><span class="glyphicon glyphicon-edit"></span>
+                    </i>新增角色
+                </a>
+            </li>
+            <li <?php if(ACTION_NAME =='node'): ?>class="active"<?php endif; ?>>
+            <a href="<?php echo U('Setting/node');?>">
+                <i class="icon-cogs"><span class="glyphicon glyphicon-th-list"></span>
+                </i>节点管理
+            </a>
+            </li>
+            <li <?php if(ACTION_NAME =='node_add'): ?>class="active"<?php endif; ?>>
+            <a href="<?php echo U('Setting/node_add');?>">
+                <i class="icon-cogs"><span class="glyphicon glyphicon-plus-sign"></span>
+                </i>新增节点
+            </a>
+            </li>
         </ul>
     </dd>
     <dd>
@@ -137,46 +169,115 @@
     </div>
     <div class="mainindex">
         
-    <div class="welinfo">
-        <span><img src="/./Application/Admin/View/static/images/sun.png" alt="天气" /></span>
-        <b>Admin早上好，欢迎使用信息管理系统</b>(admin@uimaker.com)
-        <a href="#">帐号设置</a>
-    </div>
-    <div class="welinfo">
-        <span><img src="/./Application/Admin/View/static/images/time.png" alt="时间" /></span>
-        <i>您上次登录的时间：2013-10-09 15:22</i> （不是您登录的？<a href="#">请点这里</a>）
-    </div>
-    <div class="xline"></div>
-    <ul class="iconlist">
-        <li><img src="/./Application/Admin/View/static/images/ico01.png" /><p><a href="#">管理设置</a></p></li>
-        <li><img src="/./Application/Admin/View/static/images/ico02.png" /><p><a href="#">发布文章</a></p></li>
-        <li><img src="/./Application/Admin/View/static/images/ico03.png" /><p><a href="#">数据统计</a></p></li>
-        <li><img src="/./Application/Admin/View/static/images/ico04.png" /><p><a href="#">文件上传</a></p></li>
-        <li><img src="/./Application/Admin/View/static/images/ico05.png" /><p><a href="#">目录管理</a></p></li>
-        <li><img src="/./Application/Admin/View/static/images/ico06.png" /><p><a href="#">查询</a></p></li>
 
-    </ul>
-    <div class="ibox"><a class="ibtn"><img src="/./Application/Admin/View/static/images/iadd.png" />添加新的快捷功能</a></div>
-    <div class="xline"></div>
-    <div class="box"></div>
-    <div class="welinfo">
-        <span><img src="/./Application/Admin/View/static/images/dp.png" alt="提醒" /></span>
-        <b>Uimaker信息管理系统使用指南</b>
+    <div class="form_title"><i class="icon-cogs"><span class="glyphicon glyphicon-th-list"></span></i>角色列表</div>
+   <div class="form_con">
+
+       <table class="table table-striped table-hover table-bordered" style="color: #888">
+
+           <tr  style="font-weight: bold;background: #efefef;"  >
+               <th class="col-md-1">排序</th>
+               <th class="col-md-1">ID</th>
+               <th class="col-md-4">角色名</th>
+               <th class="col-md-1">状态</th>
+               <th class="col-md-2">相关操作</th>
+           </tr>
+
+
+       <?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
+               <td><input type="checkbox"  value="option1"></td>
+               <td><?php echo ($vo["id"]); ?></td>
+               <td><?php echo ($vo["title"]); ?></td>
+               <td class="btn_edit">
+                   <?php if($vo['status']==1): ?><i class="glyphicon glyphicon-ok" style="color: #5d9912" data-toggle="tooltip" data-placement="right" title="正常"></i>
+                   <?php else: ?>
+                   <i class="glyphicon glyphicon-remove" style="color: #a80804"  data-toggle="tooltip" data-placement="right" title="已停用"></i><?php endif; ?>
+               </td>
+               <td class="btn_edit">
+                   <a href="<?php echo U('Setting/role_edit',array('role_id'=>$vo['id']));?>" class="btn btn-sm btn-success"  data-toggle="tooltip" data-placement="left" title="修改" <?php if($vo['type']==1): ?>disabled="disabled"<?php endif; ?> ><i class="glyphicon glyphicon-pencil" ></i></a> 　
+                   <button data="<?php echo ($vo["id"]); ?>" data-toggle="tooltip" data-placement="top" title="删除" class="btn btn-sm btn-danger btn-remove"  <?php if($vo['type']==1): ?>disabled="disabled"<?php endif; ?> ><i class="glyphicon glyphicon-trash" ></i></button>　
+                   <button class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="right" title="权限配置"><i class="glyphicon glyphicon-cog" ></i></button>
+               </td>
+           </tr><?php endforeach; endif; else: echo "" ;endif; ?>
+
+       </table>
+       <!--分页开始-->
+       <?php echo ($page); ?>
+       <!--分页结束-->
+   </div>
+   <!--dialog-->
+<div class="modal fade" id="my-modal" style="top:50%; margin-top:-120px;">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">警告框</h4>
+            </div>
+            <div class="modal-body">
+                <p>确定要进行删除操作吗？删除后不可恢复</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" > 取消</button>
+                <button type="button" class="btn btn-primary true-remove">删除</button>
+            </div>
+        </div>
     </div>
-    <ul class="infolist">
-        <li><span>您可以快速进行文章发布管理操作</span><a class="ibtn">发布或管理文章</a></li>
-        <li><span>您可以快速发布产品</span><a class="ibtn">发布或管理产品</a></li>
-        <li><span>您可以进行密码修改、账户设置等操作</span><a class="ibtn">账户管理</a></li>
-    </ul>
-    <div class="xline"></div>
-    <div class="uimakerinfo"><b>查看Uimaker网站使用指南，您可以了解到多种风格的B/S后台管理界面,软件界面设计，图标设计，手机界面等相关信息</b>(<a href="http://www.uimaker.com" target="_blank">www.uimaker.com</a>)</div>
-    <ul class="umlist">
-        <li><a href="#">如何发布文章</a></li>
-        <li><a href="#">如何访问网站</a></li>
-        <li><a href="#">如何管理广告</a></li>
-        <li><a href="#">后台用户设置(权限)</a></li>
-        <li><a href="#">系统设置</a></li>
-    </ul>
+</div>
+<!--dialog-->
+<!--dialog删除-->
+<div class="modal fade bs-example-modal-sm" id="error-dialog" tabindex="-1" style="top:50%; margin-top:-120px;">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" >操作提示</h4>
+            </div>
+            <div class="modal-body del-result">
+                ...
+            </div>
+        </div>
+    </div>
+</div>
+<!--dialog-->
+<script>
+    $('.btn-remove').click(function(){
+        var thisClick=$(this).parents('tr');
+        var getId=$(this).attr('data');
+        var Url="<?php echo U('AuthGroup/role_del');?>";
+        $('#my-modal').modal('show');
+        $('.true-remove').click(function(){
+            $.ajax({
+                url : Url,
+                type : 'POST',
+                data : { id:getId },
+                beforeSend : function () {
+                    $('#my-modal').modal('hide');
+                },
+                success: function(data, response, status){
+                    if(data){
+                        $('.del-result').html('删除成功');
+                        $('#error-dialog').modal('show');
+                        setTimeout(function(){
+                            $('.del-result').html('...');
+                            $('#error-dialog').modal('hide');
+                            thisClick.remove();
+                        },2000);
+                    }else{
+                        $('.del-result').html('删除失败,请重试');
+                        $('#error-dialog').modal('show');
+                        setTimeout(function(){
+                            $('.del-result').html('...');
+                            $('#error-dialog').modal('hide');
+                        },2000);
+                    }
+                }
+            });
+
+
+        })
+    })
+
+</script>
 
     </div>
 </div>

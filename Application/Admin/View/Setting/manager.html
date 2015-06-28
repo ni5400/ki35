@@ -15,17 +15,17 @@
     <div class="form_title"><i class="icon-cogs"><span class="glyphicon glyphicon-th-list"></span></i>管理员列表</div>
    <div class="form_con">
         <!--搜索表单-->
-        <form class="form-inline" action="<{:U('Setting/manager')}>" method="post">
+        <form class="form-inline" action="<{:U('Setting/manager')}>" method="get">
             <div class="form-group  form_layout">
                 <label >排序</label>
                 <select class="form-control input-sm" name="order">
                     <option value="">---排序---</option>
-                    <option value="reg_time desc">注册时间倒序</option>
-                    <option value="reg_time">注册时间正序</option>
-                    <option value="id">ID</option>
-                    <option value="id desc">ID倒序</option>
-                    <option value="login_time">登陆时间</option>
-                    <option value="login_time desc">登陆时间倒序</option>
+                    <option value="1">注册时间倒序</option>
+                    <option value="2">注册时间正序</option>
+                    <option value="3">ID</option>
+                    <option value="4">ID倒序</option>
+                    <option value="5">登陆时间</option>
+                    <option value="6">登陆时间倒序</option>
                 </select>
             </div>
             <div class="form-group form_layout">
@@ -56,8 +56,8 @@
                 <label >状态</label>
                 <select class="form-control input-sm" name="status">
                     <option value="">选择</option>
-                    <option value="1">正常</option>
-                    <option value="0">停用</option>
+                    <option value="true">正常</option>
+                    <option value="false">停用</option>
                 </select>
             </div>
             <div class="form-group  form_layout">
@@ -101,8 +101,8 @@
                    <{/if}>
                </td>
                <td class="btn_edit">
-                   <button class="btn btn-sm btn-success"><i class="glyphicon glyphicon-pencil"></i></button>
-                   <button class="btn btn-sm btn-danger btn-remove"><i class="glyphicon glyphicon-trash"></i></button>
+                   <button class="btn btn-sm btn-success "  data-toggle="tooltip" data-placement="left" title="修改"><i class="glyphicon glyphicon-pencil"></i></button>
+                   <button class="btn btn-sm btn-danger btn-remove"  data-toggle="tooltip" data-placement="right" title="删除"  <{if condition="$vo['id']==1"}>disabled <{/if}> data="<{$vo.id}>" ><i class="glyphicon glyphicon-trash"></i></button>
                </td>
                <td>
                    其它信息
@@ -129,7 +129,7 @@
            </div>
 
 
-           <button type="button" class="btn btn-primary btn-sm">删除</button>
+           <button type="button" class="btn btn-primary btn-sm ">删除</button>
            <button type="button" class="btn btn-primary btn-sm">移动</button>
 
 
@@ -164,9 +164,9 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" >提示</h4>
+                <h4 class="modal-title" >操作提示</h4>
             </div>
-            <div class="modal-body">
+            <div class="modal-body del-result">
                 ...
             </div>
         </div>
@@ -174,35 +174,42 @@
 </div>
 <!--dialog-->
 <script>
-    $('#datetimepicker').datetimepicker('remove');
-    $('#datetimepicker').datetimepicker({
-        format: "dd MM yyyy - HH:ii P",
-        showMeridian: true,
-        autoclose: true,
-        todayBtn: true
-    });
-    $('.date_picker').date_input();
+
     $('.btn-remove').click(function(){
+        var thisClick=$(this).parents('tr');
+        var getId=$(this).attr('data');
+        var Url="<{:U('Setting/user_del')}>";
         $('#my-modal').modal('show');
         $('.true-remove').click(function(){
-//            $.ajax({
-//                url : ThinkPHP['MODULE'] + '/Topic/ajaxCount',
-//                type : 'POST',
-//                data : {
-//
-//                },
-//                success: function(data, response, status){
-//                    window.count = parseInt(data);
-//                }
-//            });
-            $('#my-modal').modal('hide');
-            alert('删除成功');
-            $('.modal-body').html('删除成功');
-            $('#error-dialog').modal('show');
-            setTimeout(function(){
-                $('.modal-body').html('...');
-                $('#error-dialog').modal('hide');
-            },2000);
+            $.ajax({
+                url : Url,
+                type : 'POST',
+                data : { id:getId },
+                beforeSend : function () {
+                    $('#my-modal').modal('hide');
+                },
+                success: function(data, response, status){
+
+                    if(data){
+                        $('.del-result').html('删除成功');
+                        $('#error-dialog').modal('show');
+                        setTimeout(function(){
+                            $('.del-result').html('...');
+                            $('#error-dialog').modal('hide');
+                            thisClick.remove();
+                        },2000);
+                    }else{
+                        alert(data)
+                        $('.del-result').html('删除失败,请重试');
+                        $('#error-dialog').modal('show');
+                        setTimeout(function(){
+                            $('.del-result').html('...');
+                            $('#error-dialog').modal('hide');
+                        },2000);
+                    }
+                }
+            });
+
 
         })
     })

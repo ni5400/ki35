@@ -46,7 +46,7 @@ class UserController extends CommonController {
             );
             //角色id插入表AuthGroupAccess
             if($AuthGroupAccess=M('AuthGroupAccess')->add($groupData)){
-                $this->success('添加成功',U('Setting/role'));
+                $this->success('添加成功',U('Setting/manager'));
             }else{
                 $this->error('写入AuthGroupAccess表失败');
             }

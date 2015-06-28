@@ -9,7 +9,8 @@
     <script language="JavaScript" src="/./Application/Admin/View/static/js/jquery.min.js"></script>
     <script language="JavaScript" src="/./Application/Admin/View/static/js/bootstrap.min.js"></script>
     
-<link href="/./Application/Admin/View/static/css/index.css" rel="stylesheet" type="text/css" />
+<link href="/./Application/Admin/View/static/css/form.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/./Application/Admin/View/static/js/jquery-validate.js"></script>
 
 </head>
 <body>
@@ -67,14 +68,14 @@
     <!--main.left.start-->
     <div id="frame-left">
         
-<div class="lefttop"><i class="icon-cogs"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></i>　工作台</div>
+    <div class="lefttop"><i class="icon-cogs"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></i>　系统设置</div>
 <dl class="leftmenu">
     <dd>
         <div class="dh-title">
             <i class="icon-cogs"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></i>
             基本设置
         </div>
-        <ul class="menuson"style="display: none">
+        <ul class="menuson" style="display: none">
             <li><i class="icon-cogs"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></i><a href="index.html" >基本设置</a></li>
             <li><i class="icon-cogs"><span class="glyphicon glyphicon-retweet" aria-hidden="true"></span></i><a href="right.html" >SEO优化</a></li>
             <li><i class="icon-cogs"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span></i><a href="imgtable.html" >服务器优化</a></li>
@@ -90,11 +91,45 @@
             <i class="icon-cogs"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></i>
             管理员设置
         </div>
-        <ul class="menuson">
-            <li><a href="#"><i class="icon-cogs"><span class="glyphicon glyphicon-align-center"></span></i>管理员列表</a></li>
-            <li><a href="#"><i class="icon-cogs"><span class="glyphicon glyphicon-align-right"></span></i>新增管理员</a></li>
-            <li><a href="#"><i class="icon-cogs"><span class="glyphicon glyphicon-list"></span></i>角色管理</a></li>
-            <li><a href="#"><i class="icon-cogs"><span class="glyphicon glyphicon-edit"></span></i>新增角色</a></li>
+        <ul class="menuson" style="display: block">
+            <li <?php if(ACTION_NAME =='manager'): ?>class="active"<?php endif; ?> >
+                <a href="<?php echo U('Setting/manager');?>">
+                    <i class="icon-cogs">
+                        <span class="glyphicon glyphicon-tasks"></span>
+                    </i>管理员列表
+                </a>
+            </li>
+            <li <?php if(ACTION_NAME =='manager_add'): ?>class="active"<?php endif; ?> >
+                <a href="<?php echo U('Setting/manager_add');?>">
+                    <i class="icon-cogs">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </i>新增管理员
+                </a>
+            </li>
+            <li  <?php if(ACTION_NAME =='role'): ?>class="active"<?php endif; ?>  >
+                <a href="<?php echo U('Setting/role');?>">
+                    <i class="icon-cogs"><span class="glyphicon glyphicon-list"></span></i>
+                    角色列表
+                </a>
+            </li>
+            <li <?php if(ACTION_NAME =='role_add'): ?>class="active"<?php endif; ?>>
+                <a href="<?php echo U('Setting/role_add');?>">
+                    <i class="icon-cogs"><span class="glyphicon glyphicon-edit"></span>
+                    </i>新增角色
+                </a>
+            </li>
+            <li <?php if(ACTION_NAME =='node'): ?>class="active"<?php endif; ?>>
+            <a href="<?php echo U('Setting/node');?>">
+                <i class="icon-cogs"><span class="glyphicon glyphicon-th-list"></span>
+                </i>节点管理
+            </a>
+            </li>
+            <li <?php if(ACTION_NAME =='node_add'): ?>class="active"<?php endif; ?>>
+            <a href="<?php echo U('Setting/node_add');?>">
+                <i class="icon-cogs"><span class="glyphicon glyphicon-plus-sign"></span>
+                </i>新增节点
+            </a>
+            </li>
         </ul>
     </dd>
     <dd>
@@ -137,46 +172,73 @@
     </div>
     <div class="mainindex">
         
-    <div class="welinfo">
-        <span><img src="/./Application/Admin/View/static/images/sun.png" alt="天气" /></span>
-        <b>Admin早上好，欢迎使用信息管理系统</b>(admin@uimaker.com)
-        <a href="#">帐号设置</a>
-    </div>
-    <div class="welinfo">
-        <span><img src="/./Application/Admin/View/static/images/time.png" alt="时间" /></span>
-        <i>您上次登录的时间：2013-10-09 15:22</i> （不是您登录的？<a href="#">请点这里</a>）
-    </div>
-    <div class="xline"></div>
-    <ul class="iconlist">
-        <li><img src="/./Application/Admin/View/static/images/ico01.png" /><p><a href="#">管理设置</a></p></li>
-        <li><img src="/./Application/Admin/View/static/images/ico02.png" /><p><a href="#">发布文章</a></p></li>
-        <li><img src="/./Application/Admin/View/static/images/ico03.png" /><p><a href="#">数据统计</a></p></li>
-        <li><img src="/./Application/Admin/View/static/images/ico04.png" /><p><a href="#">文件上传</a></p></li>
-        <li><img src="/./Application/Admin/View/static/images/ico05.png" /><p><a href="#">目录管理</a></p></li>
-        <li><img src="/./Application/Admin/View/static/images/ico06.png" /><p><a href="#">查询</a></p></li>
+    <div class="form_title"><i class="icon-cogs"><span class="glyphicon glyphicon-th-list"></span></i>导航</div>
+    <div class="form_con">
+        <!--表单-->
+        <div class="alert alert-warning alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>提示！</strong> 角色新增成功后需要单独配置权限方案 <br/>
+        </div>
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1">
+                <legend></legend>
+                <h4 class="text-center">新增角色</h4>
+                <form id="role_add" method="post" class="form-horizontal" action="<?php echo U('AuthGroup/group_addHandle');?>">
+                    <fieldset>
+                        <legend></legend>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">角色名</label>
+                            <div class="col-lg-6">
+                                <input class="form-control" type="text" name="title" placeholder="请输入角色名"/>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="status" value="1" checked>  启用(默认是启用状态)
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <legend></legend>
 
-    </ul>
-    <div class="ibox"><a class="ibtn"><img src="/./Application/Admin/View/static/images/iadd.png" />添加新的快捷功能</a></div>
-    <div class="xline"></div>
-    <div class="box"></div>
-    <div class="welinfo">
-        <span><img src="/./Application/Admin/View/static/images/dp.png" alt="提醒" /></span>
-        <b>Uimaker信息管理系统使用指南</b>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-success">提 　交</button>
+                            <button type="reset" class="btn btn2">重 　置</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--表单-->
     </div>
-    <ul class="infolist">
-        <li><span>您可以快速进行文章发布管理操作</span><a class="ibtn">发布或管理文章</a></li>
-        <li><span>您可以快速发布产品</span><a class="ibtn">发布或管理产品</a></li>
-        <li><span>您可以进行密码修改、账户设置等操作</span><a class="ibtn">账户管理</a></li>
-    </ul>
-    <div class="xline"></div>
-    <div class="uimakerinfo"><b>查看Uimaker网站使用指南，您可以了解到多种风格的B/S后台管理界面,软件界面设计，图标设计，手机界面等相关信息</b>(<a href="http://www.uimaker.com" target="_blank">www.uimaker.com</a>)</div>
-    <ul class="umlist">
-        <li><a href="#">如何发布文章</a></li>
-        <li><a href="#">如何访问网站</a></li>
-        <li><a href="#">如何管理广告</a></li>
-        <li><a href="#">后台用户设置(权限)</a></li>
-        <li><a href="#">系统设置</a></li>
-    </ul>
+<script type="text/javascript">
+    $(document).ready(function() {
+        // validate插件护展验证规则字符验证，只能包含英文、数字、下划线等字符。
+        jQuery.validator.addMethod("stringCheck", function(value, element) {
+            return this.optional(element) || /^[a-zA-Z0-9\-_]+$/.test(value);
+        }, "用户名不能有特殊字符");
+        //验证规则
+        $('#role_add').validate({
+            errorElement:'span',   //错语标签
+            errorClass:'error',    //错误css
+            success:function(span){
+                span.removeClass('error');
+                span.addClass('success');
+            },    //验证成功后移除error,添加success样式
+            rules:{
+                title:{required:true,rangelength:[2,20],stringCheck:true}
+            },
+            messages:{
+                title:{required:'角色名不能为空',rangelength:'角色长度2-20位'}
+            }
+        });
+    });
+</script>
+
 
     </div>
 </div>
