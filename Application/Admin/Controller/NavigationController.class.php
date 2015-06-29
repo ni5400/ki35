@@ -11,7 +11,7 @@ use Think\Controller;
 use MyLibrary\Category;
 
 //后台首页左侧导航
-class NavigationController extends BaseController {
+class NavigationController extends CommonController{
 
 
     public function index(){

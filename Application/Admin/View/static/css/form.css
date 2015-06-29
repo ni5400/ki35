@@ -26,3 +26,5 @@ span.error{  color: #a80804; padding-left: 5px; margin-top: 3px;}
 .length-120{width: 120px !important;color: #999}
 .length-150{width: 150px !important;color: #999}
 .form_layout{margin-bottom: 10px !important; margin-right: 12px !important;}
+.form_layout input,.form_layout select,.form_layout .btn{height: 26px;}
+.form_layout .input-group-addon{ padding: 0 5px;}

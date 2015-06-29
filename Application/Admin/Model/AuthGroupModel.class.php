@@ -38,7 +38,7 @@ class AuthGroupModel extends Model {
     public function getRole($map){
         return $this->field('id,title,status')->where($map)->find();
     }
-
+    //更新角色
     public function updata($map){
         return $this->data($map)->save();
     }

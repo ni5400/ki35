@@ -26,6 +26,7 @@ class UserController extends CommonController {
     }
     //添加管理员处理
     public function manager_addHandel(){
+        if(!IS_POST) $this->error('非法操作');
         $data=array(
             'username'=>$username=I('post.username'),
             'byname'=>$byname=I('post.byname'),

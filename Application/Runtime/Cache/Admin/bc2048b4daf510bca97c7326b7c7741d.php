@@ -180,191 +180,65 @@
            <strong>操作名</strong>对应的ThinkPHP的ACTION_NAME <br/>
        </div>
        <!--模块开始-->
-       <div class="form_title"><i class="icon-cogs"><span class="glyphicon glyphicon-th-list"></span></i>后台模块</div>
-       <div class="form_con bottom10" style="background: #F1F1F1">
-           <!--方法开始-->
-           <div class="form_title form_title2"><i class="icon-cogs"><span class="glyphicon glyphicon-th-list"></span></i>后台首页</div>
-           <div class="form_con2 bottom10" >
-               <div class="role-list">
-                   <li>
-                       生成首页
-                       <button class="btn btn-sm btn-success"><i class="glyphicon glyphicon-pencil"></i></button>
-                       <button class="btn btn-sm btn-danger btn-remove"><i class="glyphicon glyphicon-trash"></i></button>
-                   </li>
-                   <li>
-                       生成首页
-                       <button class="btn btn-sm btn-success"><i class="glyphicon glyphicon-pencil"></i></button>
-                       <button class="btn btn-sm btn-danger btn-remove"><i class="glyphicon glyphicon-trash"></i></button>
-                   </li>
-                   <li>
-                       生成首页
-                       <button class="btn btn-sm btn-success"><i class="glyphicon glyphicon-pencil"></i></button>
-                       <button class="btn btn-sm btn-danger btn-remove"><i class="glyphicon glyphicon-trash"></i></button>
-                   </li>
-                   <li>
-                       生成首页
-                       <button class="btn btn-sm btn-success"><i class="glyphicon glyphicon-pencil"></i></button>
-                       <button class="btn btn-sm btn-danger btn-remove"><i class="glyphicon glyphicon-trash"></i></button>
-                   </li>
-                   <li>
-                       生成首页
-                       <button class="btn btn-sm btn-success"><i class="glyphicon glyphicon-pencil"></i></button>
-                       <button class="btn btn-sm btn-danger btn-remove"><i class="glyphicon glyphicon-trash"></i></button>
-                   </li>
-                   <li>
-                       生成首页
-                       <button class="btn btn-sm btn-success"><i class="glyphicon glyphicon-pencil"></i></button>
-                       <button class="btn btn-sm btn-danger btn-remove"><i class="glyphicon glyphicon-trash"></i></button>
-                   </li>
-                   <li>
-                       生成首页
-                       <button class="btn btn-sm btn-success"><i class="glyphicon glyphicon-pencil"></i></button>
-                       <button class="btn btn-sm btn-danger btn-remove"><i class="glyphicon glyphicon-trash"></i></button>
-                   </li>
-                   <li>
-                       生成首页
-                       <button class="btn btn-sm btn-success"><i class="glyphicon glyphicon-pencil"></i></button>
-                       <button class="btn btn-sm btn-danger btn-remove"><i class="glyphicon glyphicon-trash"></i></button>
-                   </li>
-                   <li>
-                       生成首页
-                       <button class="btn btn-sm btn-success"><i class="glyphicon glyphicon-pencil"></i></button>
-                       <button class="btn btn-sm btn-danger btn-remove"><i class="glyphicon glyphicon-trash"></i></button>
-                   </li>
-               </div>
-           </div>
-           <!--一个节点-->
-           <div class="form_title form_title2"><i class="icon-cogs"><span class="glyphicon glyphicon-th-list"></span></i>后台首页</div>
-           <div class="form_con2 bottom10" >
-               <div class="role-list">
-                   <li>
-                       生成首页
-                       <button class="btn btn-sm btn-success"><i class="glyphicon glyphicon-pencil"></i></button>
-                       <button class="btn btn-sm btn-danger btn-remove"><i class="glyphicon glyphicon-trash"></i></button>
-                   </li>
-                   <li>生成首页
-                       <button class="btn btn-sm btn-success"><i class="glyphicon glyphicon-pencil"></i></button>
-                       <button class="btn btn-sm btn-danger btn-remove"><i class="glyphicon glyphicon-trash"></i></button>
-                   </li>
-                   <li>生成首页
-                       <button class="btn btn-sm btn-success"><i class="glyphicon glyphicon-pencil"></i></button>
-                       <button class="btn btn-sm btn-danger btn-remove"><i class="glyphicon glyphicon-trash"></i></button>
-                   </li>
-                   <li>生成首页
-                       <button class="btn btn-sm btn-success"><i class="glyphicon glyphicon-pencil"></i></button>
-                       <button class="btn btn-sm btn-danger btn-remove"><i class="glyphicon glyphicon-trash"></i></button>
-                   </li>
-                   <li>生成首页
-                       <button class="btn btn-sm btn-success"><i class="glyphicon glyphicon-pencil"></i></button>
-                       <button class="btn btn-sm btn-danger btn-remove"><i class="glyphicon glyphicon-trash"></i></button>
-                   </li>
-                   <li>生成首页
-                       <button class="btn btn-sm btn-success"><i class="glyphicon glyphicon-pencil"></i></button>
-                       <button class="btn btn-sm btn-danger btn-remove"><i class="glyphicon glyphicon-trash"></i></button>
-                   </li>
-                   <li>生成首页
-                       <button class="btn btn-sm btn-success"><i class="glyphicon glyphicon-pencil"></i></button>
-                       <button class="btn btn-sm btn-danger btn-remove"><i class="glyphicon glyphicon-trash"></i></button>
-                   </li>
-                   <li>生成首页
-                       <button class="btn btn-sm btn-success"><i class="glyphicon glyphicon-pencil"></i></button>
-                       <button class="btn btn-sm btn-danger btn-remove"><i class="glyphicon glyphicon-trash"></i></button>
-                   </li>
-               </div>
-           </div>
-           <!--一个结点结束-->
-        </div>
-   <!--模块结束-->
+       <!--列表开始-->
+       <table class="table table-striped table-hover">
+           <tbody>
+           <tr style="background: #efefef;">
+               <th><input type="checkbox" value="option1"></th>
+               <th>ID</th>
+               <th>节点名称</th>
+               <th>节点名</th>
+               <th>状态</th>
+               <th>管理操作</th>
+               <th>详细信息</th>
+           </tr>
+           <?php if(is_array($cate)): $i = 0; $__LIST__ = $cate;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
+               <td><input type="checkbox" value="option1"></td>
+               <td><?php echo ($vo["id"]); ?></td>
+               <td>
+                   <?php if($vo['pid']==0): ?><i class="glyphicon glyphicon-check" style="color: #a80804" data-toggle="tooltip" data-placement="left" title="分组"></i> <?php echo ($vo["title"]); ?>
+                   <?php else: ?>
+                   <?php if($vo['level']==2): echo ($vo["html"]); ?>
+                   <i class="glyphicon glyphicon-hand-right" style="color: #187baf" data-toggle="tooltip" data-placement="left" title="模块"></i>├【<?php echo ($vo["title"]); ?>】<?php else: ?>
+                   <?php echo ($vo["html"]); ?>　<i class="glyphicon glyphicon-log-in" style="color: #5d9912" data-toggle="tooltip" data-placement="left" title="方法"></i>├【<?php echo ($vo["title"]); ?>】<?php endif; endif; ?>
+               </td>
+               <td><?php echo ($vo["name"]); ?></td>
+               <td class="btn_edit">
+                   <?php if($vo['status']==1): ?><i class="glyphicon glyphicon-ok" style="color: #5d9912" data-toggle="tooltip" data-placement="right" title="正常"></i>
+                   <?php else: ?>
+                   <i class="glyphicon glyphicon-remove" style="color: #a80804"  data-toggle="tooltip" data-placement="right" title="已停用"></i><?php endif; ?>
+               </td>
+               <td class="btn_edit">
+                   <button class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="left" title="修改" ><i class="glyphicon glyphicon-pencil"></i></button>
+                   <button class="btn btn-sm btn-danger btn-remove" data-toggle="tooltip" data-placement="right" title="删除"><i class="glyphicon glyphicon-trash"></i></button>
+               </td>
+               <td>
+                   其它信息
+               </td>
+           </tr><?php endforeach; endif; else: echo "" ;endif; ?>
 
+           </tbody>
+       </table>
+       <!--列表结束-->
+       <!--操作-->
 
+       <div class="btn-group" role="group">
+           <div class="btn-group dropup">
 
-       <!--模块开始-->
-       <div class="form_title"><i class="icon-cogs"><span class="glyphicon glyphicon-th-list"></span></i>前台模块</div>
-       <div class="form_con">
-           <!--模椟-->
-           <div class="form_title form_title2"><i class="icon-cogs"><span class="glyphicon glyphicon-th-list"></span></i>后台首页</div>
-           <div class="form_con2 bottom10" >
-               <div class="role-list">
-                   <li>
-                       生成首页
-                       <button class="btn btn-sm btn-success"><i class="glyphicon glyphicon-pencil"></i></button>
-                       <button class="btn btn-sm btn-danger btn-remove"><i class="glyphicon glyphicon-trash"></i></button>
-                   </li>
-                   <li>生成首页
-                       <button class="btn btn-sm btn-success"><i class="glyphicon glyphicon-pencil"></i></button>
-                       <button class="btn btn-sm btn-danger btn-remove"><i class="glyphicon glyphicon-trash"></i></button>
-                   </li>
-                   <li>生成首页
-                       <button class="btn btn-sm btn-success"><i class="glyphicon glyphicon-pencil"></i></button>
-                       <button class="btn btn-sm btn-danger btn-remove"><i class="glyphicon glyphicon-trash"></i></button>
-                   </li>
-                   <li>生成首页
-                       <button class="btn btn-sm btn-success"><i class="glyphicon glyphicon-pencil"></i></button>
-                       <button class="btn btn-sm btn-danger btn-remove"><i class="glyphicon glyphicon-trash"></i></button>
-                   </li>
-                   <li>生成首页
-                       <button class="btn btn-sm btn-success"><i class="glyphicon glyphicon-pencil"></i></button>
-                       <button class="btn btn-sm btn-danger btn-remove"><i class="glyphicon glyphicon-trash"></i></button>
-                   </li>
-                   <li>生成首页
-                       <button class="btn btn-sm btn-success"><i class="glyphicon glyphicon-pencil"></i></button>
-                       <button class="btn btn-sm btn-danger btn-remove"><i class="glyphicon glyphicon-trash"></i></button>
-                   </li>
-                   <li>生成首页
-                       <button class="btn btn-sm btn-success"><i class="glyphicon glyphicon-pencil"></i></button>
-                       <button class="btn btn-sm btn-danger btn-remove"><i class="glyphicon glyphicon-trash"></i></button>
-                   </li>
-                   <li>生成首页
-                       <button class="btn btn-sm btn-success"><i class="glyphicon glyphicon-pencil"></i></button>
-                       <button class="btn btn-sm btn-danger btn-remove"><i class="glyphicon glyphicon-trash"></i></button>
-                   </li>
-               </div>
+               <button type="button" class="btn btn-sm btn-primary">操作</button>
+               <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                   <span class="caret"></span>
+               </button>
+               <ul class="dropdown-menu">
+                   <li><a href="#">批量删除</a></li>
+                   <li><a href="#">新增</a></li>
+               </ul>
            </div>
-           <!--一个节点-->
-           <div class="form_title form_title2"><i class="icon-cogs"><span class="glyphicon glyphicon-th-list"></span></i>后台首页</div>
-           <div class="form_con2 bottom10" >
-               <div class="role-list">
-                   <li>
-                       生成首页
-                       <button class="btn btn-sm btn-success"><i class="glyphicon glyphicon-pencil"></i></button>
-                       <button class="btn btn-sm btn-danger btn-remove"><i class="glyphicon glyphicon-trash"></i></button>
-                   </li>
-                   <li>生成首页
-                       <button class="btn btn-sm btn-success"><i class="glyphicon glyphicon-pencil"></i></button>
-                       <button class="btn btn-sm btn-danger btn-remove"><i class="glyphicon glyphicon-trash"></i></button>
-                   </li>
-                   <li>生成首页
-                       <button class="btn btn-sm btn-success"><i class="glyphicon glyphicon-pencil"></i></button>
-                       <button class="btn btn-sm btn-danger btn-remove"><i class="glyphicon glyphicon-trash"></i></button>
-                   </li>
-                   <li>生成首页
-                       <button class="btn btn-sm btn-success"><i class="glyphicon glyphicon-pencil"></i></button>
-                       <button class="btn btn-sm btn-danger btn-remove"><i class="glyphicon glyphicon-trash"></i></button>
-                   </li>
-                   <li>生成首页
-                       <button class="btn btn-sm btn-success"><i class="glyphicon glyphicon-pencil"></i></button>
-                       <button class="btn btn-sm btn-danger btn-remove"><i class="glyphicon glyphicon-trash"></i></button>
-                   </li>
-                   <li>生成首页
-                       <button class="btn btn-sm btn-success"><i class="glyphicon glyphicon-pencil"></i></button>
-                       <button class="btn btn-sm btn-danger btn-remove"><i class="glyphicon glyphicon-trash"></i></button>
-                   </li>
-                   <li>生成首页
-                       <button class="btn btn-sm btn-success"><i class="glyphicon glyphicon-pencil"></i></button>
-                       <button class="btn btn-sm btn-danger btn-remove"><i class="glyphicon glyphicon-trash"></i></button>
-                   </li>
-                   <li>生成首页
-                       <button class="btn btn-sm btn-success"><i class="glyphicon glyphicon-pencil"></i></button>
-                       <button class="btn btn-sm btn-danger btn-remove"><i class="glyphicon glyphicon-trash"></i></button>
-                   </li>
-               </div>
-           </div>
-           <!--一个结点结束-->
        </div>
-       <!--模块结束-->
+       <!--操作-->
 
 
-
+     <!--模块结束-->
 
 </div>
 <!--dialog-->

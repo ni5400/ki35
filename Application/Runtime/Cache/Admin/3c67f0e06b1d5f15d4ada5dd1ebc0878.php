@@ -206,7 +206,7 @@
 
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-success">提 　交</button>
+                            <button type="submit" id="fat-btn" class="btn btn-success" data-loading-text="提交中" type="button">提 　交</button>
                             <button type="reset" class="btn btn2">重 　置</button>
                         </div>
                     </div>
@@ -214,14 +214,28 @@
             </div>
         </div>
         <!--表单-->
+        <!--遮罩-->
+        <!--dialog删除-->
+        <div class="modal fade bs-example-modal-sm" id="error-dialog" tabindex="-1" style="top:50%; margin-top:-120px;">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" >操作提示</h4>
+                    </div>
+                    <div class="modal-body del-result">
+                        正在提交中，请稍等！
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--dialog-->
+        <!--遮罩-->
     </div>
 <script type="text/javascript">
     $(document).ready(function() {
-        // validate插件护展验证规则字符验证，只能包含英文、数字、下划线等字符。
-        jQuery.validator.addMethod("stringCheck", function(value, element) {
-            return this.optional(element) || /^[a-zA-Z0-9\-_]+$/.test(value);
-        }, "用户名不能有特殊字符");
         //验证规则
+        var getUrl="<?php echo U('AuthGroup/checkRole');?>"
         $('#role_add').validate({
             errorElement:'span',   //错语标签
             errorClass:'error',    //错误css
@@ -229,11 +243,25 @@
                 span.removeClass('error');
                 span.addClass('success');
             },    //验证成功后移除error,添加success样式
+            submitHandler:function(){
+                $('#fat-btn').button('loading').queue(function() {
+                    $('#error-dialog').modal('show');
+                    form.submit();
+                });
+            },
             rules:{
-                title:{required:true,rangelength:[2,20],stringCheck:true}
+                title:{required:true,rangelength:[2,20],
+                    remote:{
+                        url:getUrl,
+                        type:'post',
+                        dataType:'json',
+                        data:{ title:function(){return $('input[name=title]').val();}},
+                        complete:function(data){}
+                    }
+                }
             },
             messages:{
-                title:{required:'角色名不能为空',rangelength:'角色长度2-20位'}
+                title:{required:'角色名不能为空',rangelength:'角色长度2-20位',remote:'角色名重复'}
             }
         });
     });

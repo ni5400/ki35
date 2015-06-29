@@ -1,0 +1,78 @@
+<{extend name="Base/common" /}>
+<!--首页左侧菜单-->
+<{block name="style"}><link href="__CSS__/form.css" rel="stylesheet" type="text/css" /><{/block}>
+<{block name="menu"}>
+<{include file="Public/left-setting" /}>
+<{/block}>
+
+<{block name="main"}>
+
+<div class="form_title"><i class="icon-cogs"><span class="glyphicon glyphicon-th-list"></span></i>节点管理</div>
+<div class="form_con">
+    <div class="alert alert-warning alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>谨慎操作！</strong> 权限方案，请勿删除已有节点，否则可能造成系统错误 <br/>
+        <strong>模块</strong>对应的ThinkPHP分组即MODULE_NAME <br/>
+        <strong>控制器</strong>对应的ThinkPHP的 CONTROLLER_NAME <br/>
+        <strong>操作名</strong>对应的ThinkPHP的ACTION_NAME <br/>
+    </div>
+    <!--模块开始-->
+    <{foreach name="cate" item="vo"}>
+    <div class="form_title"><i class="icon-cogs"><span class="glyphicon glyphicon-list-alt"></span></i><{$vo.title}>(<{$vo.name}>)</div>
+    <div class="form_con bottom10" style="background: #F1F1F1">
+        <!--方法开始-->
+        <{if condition="$vo['child']"}>
+        <{foreach name="vo.child" item="tvo"}>
+        <div class="form_title form_title2"><i class="icon-cogs"><span class="glyphicon glyphicon-folder-open"></span></i><{$tvo.title}>(<{$tvo.name}>)</div>
+        <div class="form_con2 bottom10" >
+            <div class="role-list">
+                <{if condition="$tvo['child']"}>
+                <{foreach name="tvo.child" item="svo"}>
+                <li>
+                    <{$svo.title}>(<{$svo.name}>)
+                    <button class="btn btn-sm btn-success"><i class="glyphicon glyphicon-pencil"></i></button>
+                    <button class="btn btn-sm btn-danger btn-remove"><i class="glyphicon glyphicon-trash"></i></button>
+                </li>
+                <{/foreach}>
+                <{/if}>
+            </div>
+        </div>
+        <{/foreach}>
+        <{/if}>
+        <!--方法结束-->
+    </div>
+    <{/foreach}>
+    <!--模块结束-->
+
+</div>
+<!--dialog-->
+<script>
+    $('.btn-remove').click(function(){
+        $('#my-modal').modal('show');
+        $('.true-remove').click(function(){
+//            $.ajax({
+//                url : ThinkPHP['MODULE'] + '/Topic/ajaxCount',
+//                type : 'POST',
+//                data : {
+//
+//                },
+//                success: function(data, response, status){
+//                    window.count = parseInt(data);
+//                }
+//            });
+            $('#my-modal').modal('hide');
+            alert('删除成功');
+            $('.modal-body').html('删除成功');
+            $('#error-dialog').modal('show');
+            setTimeout(function(){
+                $('.modal-body').html('...');
+                $('#error-dialog').modal('hide');
+            },2000);
+
+        })
+    })
+
+
+</script>
+
+<{/block}>

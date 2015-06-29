@@ -185,7 +185,7 @@
         <div class="row">
             <div class="col-lg-10 col-lg-offset-1">
 
-                <form id="node_add" method="post" class="form-horizontal" action="">
+                <form id="node_add" method="post" class="form-horizontal" action="<?php echo U('AuthRule/nodeHandle');?>">
                     <fieldset>
 
                         <div class="form-group">
@@ -200,16 +200,19 @@
                             <div class="col-lg-6">
                                 <input class="form-control" type="text" name="title" placeholder="请输入title"/>
                             </div>
+
                         </div>
                         <div class="form-group " >
                             <legend></legend>
                             <label class="col-lg-2 control-label">节点归属</label>
-                            <div class="col-lg-3">
-                                <select name="pid" class="form-control">
-                                    <option value="" >--新增模型(分组)--</option>
-                                    <option value="1" >11111</option>
+                            <div class="col-lg-4">
+                                <select name="pid" class="form-control form-select">
+                                    <option value="" >--选择节点归属--</option>
+                                    <option value="0" >新增模型(分组)</option>
+                                    <?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><option value="<?php echo ($vo["id"]); ?>" data="<?php echo ($vo["level"]); ?>" <?php if($vo['level']==3): ?>disabled<?php endif; ?> > <?php if($vo['pid']==0): ?>├<?php echo ($vo["title"]); ?>(<?php echo ($vo["name"]); ?>)<?php else: ?>├<?php echo ($vo["html"]); ?>[<?php echo ($vo["title"]); ?>(<?php echo ($vo["name"]); ?>)]<?php endif; ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
                                 </select>
                             </div>
+                            <div class="col-lg-4">(新增模型代表前台或后台或会员中心的模块)</div>
                         </div>
                         <div class="form-group" >
                             <label class="col-lg-2 control-label">节点类型</label>
@@ -217,8 +220,8 @@
                                 <select name="level" class="form-control">
                                     <option value="" >选择节点类型</option>
                                     <option value="1" >项目分组(GROUP_NAME)</option>
-                                    <option value="1" >模块（MODEL_NAME）</option>
-                                    <option value="1" >方法(ACTION_NAME)</option>
+                                    <option value="2" >模块（MODEL_NAME）</option>
+                                    <option value="3" >方法(ACTION_NAME)</option>
                                 </select>
                             </div>
                         </div>
@@ -248,16 +251,27 @@
                     <div class="form-group" id="lock">
                         <legend></legend>
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-success">提 　交</button>
+                            <button type="submit" id="fat-btn" class="btn btn-success" data-loading-text="Loading..." type="button">提 　交</button>
                             <button type="reset" class="btn btn2">重 　置</button>
                         </div>
                     </div>
+
                 </form>
             </div>
         </div>
     </div>
 <script type="text/javascript">
     $(document).ready(function() {
+
+//        $(".form-select").bind("change",function(){
+//            if($(this).val()>0){
+//                alert($(this).val());
+//                alert($(this).attr('data'));
+//            }
+//            else{
+//                $("#thediv").text($(this).val());
+//            }
+//        });
         // validate插件护展验证规则字符验证，只能包含英文、数字、下划线等字符。
         jQuery.validator.addMethod("stringCheck", function(value, element) {
             return this.optional(element) || /^[a-zA-Z0-9\-_\/]+$/.test(value);
@@ -270,15 +284,20 @@
                 span.removeClass('error');
                 span.addClass('success');
             },    //验证成功后移除error,添加success样式
+            submitHandler:function(){
+                $('#fat-btn').button('loading').queue(function() {
+                    form.submit();
+                });
+            },
             rules:{
-                name:{required:true,rangelength:[5,100],stringCheck:true},
-                title:{required:true,rangelength:[5,200],stringCheck:true},
+                name:{required:true,rangelength:[4,60],stringCheck:true},
+                title:{required:true,rangelength:[2,20]},
                 status:{required:true},
                 pid:{required:true},
                 level:{required:true}
             },
             messages:{
-                name:{required:'名称不能为空',rangelength:'名称长度5-100位'},
+                name:{required:'名称不能为空',rangelength:'名称长度4-60位'},
                 title:{required:'显示名不能为空',rangelength:'显示名长度2-20位'},
                 status:{required:'请选择状态'},
                 pid:{required:'请选择节点归属'},

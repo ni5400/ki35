@@ -20,14 +20,14 @@ class Category {
      * @param int $level
      * @return array
      */
-     public function cate_ollist($cate,$pid=0,$html='--',$level=0){
+    public function cate_ollist($cate,$pid=0,$html='--',$level=0){
         $data=array();
         foreach($cate as $v){
             if($v['pid']==$pid){
                 $v['level']=$level+1;
                 $v['html']=str_repeat($html,$level);
                 $data[]=$v;
-                $data=array_merge($data,static::cate_ollist($cate,$v['catid'],$html,$level+1));
+                $data=array_merge($data,static::cate_ollist($cate,$v['id'],$html,$level+1));
             }
 
         }
@@ -40,11 +40,12 @@ class Category {
      * @param string $name  子类默认值child
      * @return array  返回结果集
      */
-     public function cate_ullist($cate,$pid=0,$name='child'){
+    public function cate_ullist($cate,$pid=0,$name='child',$qh=1){
         $data=array();
         foreach($cate as $v){
             if($v['pid']==$pid){
-                $v[$name]=static::cate_ullist($cate,$v['id'],$name);
+                $v['qh']=$qh++;
+                $v[$name]=$this->cate_ullist($cate,$v['id'],$name);
 
                 $data[]=$v;
             }
@@ -61,9 +62,9 @@ class Category {
         $data=array();
         foreach($cate as $v){
             if($v['id']==$id){
-               $data[]=$v;
-               //$data[]=static::cate_parents($cate,$v['pid']);
-              $data=array_merge(static::cate_parents($cate,$v['pid']),$data);
+                $data[]=$v;
+                //$data[]=static::cate_parents($cate,$v['pid']);
+                $data=array_merge(static::cate_parents($cate,$v['pid']),$data);
             }
         }
         return $data;

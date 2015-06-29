@@ -216,7 +216,7 @@
                     <div class="form-group" id="lock">
                         <legend></legend>
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-success">提 　交</button>
+                            <button type="submit" id="fat-btn" class="btn btn-success" data-loading-text="提交中" type="button">提 　交</button>
                             <button type="reset" class="btn btn2">重 　置</button>
                         </div>
                     </div>
@@ -243,6 +243,11 @@
                 span.removeClass('error');
                 span.addClass('success');
             },    //验证成功后移除error,添加success样式
+            submitHandler:function(){
+                $('#fat-btn').button('loading').queue(function() {
+                    form.submit();
+                });
+            },
             rules:{
                 username:{required:true,rangelength:[5,20],stringCheck:true,
                     remote:{

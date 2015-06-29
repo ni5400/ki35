@@ -180,48 +180,81 @@
         <!--搜索表单-->
         <form class="form-inline" action="<?php echo U('Setting/manager');?>" method="get">
             <div class="form-group  form_layout">
-                <label >排序</label>
+                <label >排序&nbsp;</label>
                 <select class="form-control input-sm" name="order">
                     <option value="">---排序---</option>
-                    <option value="1">注册时间倒序</option>
-                    <option value="2">注册时间正序</option>
-                    <option value="3">ID</option>
+                    <option value="1">注册时间正序</option>
+                    <option value="2">注册时间倒序</option>
+                    <option value="3">ID正序</option>
                     <option value="4">ID倒序</option>
-                    <option value="5">登陆时间</option>
+                    <option value="5">登陆时间正序</option>
                     <option value="6">登陆时间倒序</option>
                 </select>
             </div>
             <div class="form-group form_layout">
-                <label>ID</label>
-                <input type="text" class="form-control input-sm length-50" name="id">
-            </div>
-            <div class="form-group form_layout">
-                <label >用户名</label>
-                <input type="text" class="form-control input-sm length-80"  placeholder="用户名" name="username">
-            </div>
-            <div class="form-group  form_layout">
-                <label >姓名</label>
-                <input type="text" class="form-control input-sm length-80"  placeholder="姓名" name="byname">
-            </div>
-            <div class="form-group form_layout">
-                <label >登陆时间</label>
+                <label>ID&nbsp;</label>
                 <div class="input-group">
-                    <input id="d5221"  name="date_from" class=" form-control input-sm length-100" type="text" onFocus="var d5222=$dp.$('d5222');WdatePicker({skin:'whyGreen',onpicked:function(){d5222.focus();},maxDate:'#F{$dp.$D(\'d5222\')}'})"/>
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar" ></i></span>
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-zoom-in" ></i></span>
+                    <input type="text" class="form-control input-sm length-80 " name="id">
                 </div>
-                至
+            </div>
+            <div class="form-group form_layout">
+                <label >用户名&nbsp;</label>
                 <div class="input-group">
-                    <input id="d5222" name="date_to" class=" form-control input-sm length-100" type="text" onFocus="WdatePicker({skin:'whyGreen',minDate:'#F{$dp.$D(\'d5221\')}'})"/>
-                    <span class="input-group-addon" ><i class="glyphicon glyphicon-list-alt"></i></span>
-                 </div>
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user" ></i></span>
+                    <input type="text" class="form-control input-sm "  placeholder="用户名" name="username">
+                </div>
             </div>
             <div class="form-group  form_layout">
-                <label >状态</label>
+                <label >姓名&nbsp;</label>
+                <div class="input-group">
+                    <input type="text" class="form-control input-sm "  placeholder="姓名" name="byname">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-question-sign" ></i></span>
+                </div>
+            </div>
+            <div class="form-group  form_layout">
+                <label >登陆IP &nbsp;</label>
+                <input type="text" class="form-control input-sm "  placeholder="IP" name="login_ip">
+            </div>
+            <div class="form-group  form_layout">
+                <label >状态&nbsp;</label>
                 <select class="form-control input-sm" name="status">
                     <option value="">选择</option>
                     <option value="true">正常</option>
                     <option value="false">停用</option>
                 </select>
+            </div>
+            <div class="form-group  form_layout">
+                <label >角色&nbsp;</label>
+                <select class="form-control input-sm" name="role">
+                    <option value="">--选择角色--</option>
+                </select>
+            </div>
+            <div class="form-group form_layout">
+                <label >登陆时间&nbsp;</label>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar" ></i></span>
+                    <input id="d5221"  name="date_from" class=" form-control input-sm length-100" type="text" onFocus="var d5222=$dp.$('d5222');WdatePicker({skin:'whyGreen',onpicked:function(){d5222.focus();},maxDate:'#F{$dp.$D(\'d5222\')}'})"/>
+                </div>
+                至
+                <div class="input-group">
+                    <input id="d5222" name="date_to" class=" form-control input-sm length-100" type="text" onFocus="WdatePicker({skin:'whyGreen',minDate:'#F{$dp.$D(\'d5221\')}'})"/>
+                    <span class="input-group-addon" ><i class="glyphicon glyphicon-calendar"></i></span>
+                 </div>
+            </div>
+
+            <div class="form-group form_layout">
+                <label >注册时间&nbsp;</label>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+                    <input id="d5223"  name="reg_date_from" class=" form-control input-sm length-100" type="text" onFocus="var d5224=$dp.$('d5224');WdatePicker({skin:'whyGreen',onpicked:function(){d5224.focus();},maxDate:'#F{$dp.$D(\'d5224\')}'})"/>
+
+                </div>
+                至
+                <div class="input-group">
+                    <input id="d5224" name="reg_date_to" class=" form-control input-sm length-100" type="text" onFocus="WdatePicker({skin:'whyGreen',minDate:'#F{$dp.$D(\'d5223\')}'})"/>
+                    <span class="input-group-addon" ><i class="glyphicon glyphicon-list-alt"></i></span>
+                </div>
             </div>
             <div class="form-group  form_layout">
                 <button type="submit" class="btn btn-sm btn-success">提交</button>
@@ -252,7 +285,7 @@
                <td><?php echo ($vo["user_byname"]); ?></td>
                <td><?php echo ($vo["role_name"]); ?></td>
                <td><?php echo ($vo["login_time"]); ?></td>
-               <td><?php echo ($vo["reg_time"]); ?></td>
+               <td><?php echo ($vo["login_ip"]); ?></td>
                <td><?php echo ($vo["reg_time"]); ?></td>
                <td><?php echo ($vo["login_count"]); ?></td>
                <td class="btn_edit">

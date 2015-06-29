@@ -10,7 +10,7 @@
 namespace Admin\Controller;
 use Think\Controller;
 
-class AuthGroupController extends Controller {
+class AuthGroupController extends CommonController {
 
     public function index(){
         $this->display();
@@ -38,6 +38,7 @@ class AuthGroupController extends Controller {
 
     //修改分组list
     public function group_editHandle(){
+        if(!IS_POST) $this->error('非法操作');
         $map['id']=I('post.id');
         $map['status']=I('post.status');
         if($role_edit=D('AuthGroup')->updata($map)){
@@ -52,6 +53,20 @@ class AuthGroupController extends Controller {
         $role_id= I('post.id');
         $AuthGroup=M('AuthGroup')->where('id='.$role_id)->delete();
         echo $AuthGroup ? 'true':'false';
+    }
+
+    //检测角色是否重复
+    public function checkRole(){
+        if(!IS_AJAX) $this->error('非法操作');
+        $data=array(
+            'title'=>I('post.title')
+        );
+        $Role=D('AuthGroup');
+        if($Role->create($data)){
+            echo 'true';
+        }else{
+            echo 'false';
+        }
     }
 
 
