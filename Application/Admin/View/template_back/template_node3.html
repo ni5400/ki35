@@ -19,7 +19,7 @@
        <!--模块开始-->
        <!--列表开始-->
        <tbody>
-       <table class="table table-striped table-hover table-condensed" id="table-list">
+       <table class="table table-striped table-hover" id="table-list">
 
            <tr style="background: #efefef;">
                <th>　<input type="checkbox" id="all"></th>
@@ -47,7 +47,7 @@
                    <{/if}>
                </td>
                <td class="btn_edit">
-                   <a href="<{:U('Setting/node_edit',array('id'=>$vo['id']))}>" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="left" title="修改" ><i class="glyphicon glyphicon-pencil"></i></a>
+                   <a class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="left" title="修改" ><i class="glyphicon glyphicon-pencil"></i></a>
                    <button class="btn btn-sm btn-danger btn-remove" data="<{$vo.id}>" data-toggle="tooltip" data-placement="top" title="删除"><i class="glyphicon glyphicon-trash"></i></button>
                    <{if condition="($vo['level'] lt 3)"}>
                    <a href="<{:U('Setting/node_add',array('add_id'=>$vo['id']))}>" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="bottom" title="添加子节点" ><i class="glyphicon glyphicon-plus"></i></a>
@@ -115,7 +115,6 @@
     </div>
 </div>
 <!--dialog-->
-
 <script>
     //反选 全选操作
     function allchk(){
@@ -155,7 +154,6 @@
         });
         allchk();
     });
-    //删除事件
     $('.btn-remove').click(function(){
         var thisClick=$(this).parents('tr');
         var getId=$(this).attr('data');
@@ -208,6 +206,7 @@
                 }
             }
         });
+
     })
 
 </script>

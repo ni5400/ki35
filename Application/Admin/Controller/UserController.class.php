@@ -12,9 +12,7 @@ use Think\Controller;
 
 class UserController extends CommonController {
 
-    public function index(){
-        $this->display();
-    }
+
     //ajax检测用户是否存在
     public function checkUser(){
         if(!IS_AJAX) $this->error('非法操作');
@@ -31,11 +29,13 @@ class UserController extends CommonController {
             'username'=>$username=I('post.username'),
             'byname'=>$byname=I('post.byname'),
             'password'=>$password=I('post.password'),
-            'group'=>$group=I('post.group')
+            'group'=>$group=I('post.group'),
+            'status'=>$status=I('status','','intval')
         );
+        if(!$group) $this->error('未选择分组');
         //写入model
         $User=D('User');
-        $addResult=$User->register($username,$byname,$password);
+        $addResult=$User->register($username,$byname,$password,$status);
         if($msg=$User->getError()){
             $this->error($msg);  //自动验证未通过抛出错误
         }
@@ -57,6 +57,33 @@ class UserController extends CommonController {
 
     }
 
+    //修改管理员处理
+    public function manager_editHandel(){
+        if(!IS_POST) $this->error('非法操作');
+        $data=array(
+            'id'=>$uid=I('post.id'),
+            'user_byname'=>$byname=I('post.byname'),
+            'group'=>$group=I('post.group'),
+            'status'=>$status=I('status','','intval')
+        );
+        if(!$group) $this->error('分组未选择');
+        if($_POST['password']) $data['password']=sha1(I('post.password'));
+        $User = D("User"); // 实例化User对象
+        if (!$User->create($data)){
+            $this->error($User->getError());
+        }else{
+            $groupMap['uid']=$uid;
+            $groupData['group_id']=$group;
+            if(M('AuthGroupAccess')->where($groupMap)->save($groupData) || $User->save($data) ){
+                $this->success('修改成功',U('Setting/manager'));
+            }else{
+                $this->error('修改失败或数据未更改');
+            }
+        }
+
+    }
+
+
     /**
      * 添加管理员处理表单
      * 由于用户对应多角色存在bug暂时弃用
@@ -71,10 +98,14 @@ class UserController extends CommonController {
             'username'=>$username=I('post.username'),
             'byname'=>$byname=I('post.byname'),
             'password'=>$password=I('post.password'),
+            'status'=>$status=I('status','','intval')
         );
+        P($_POST);
+        P($data);
+        die;
         //写入model
         $User=D('User');
-        $addResult=$User->register($username,$byname,$password);
+        $addResult=$User->register($username,$byname,$password,$status);
         //自动验证未通过抛出错误
         if($msg=$User->getError()){
             $this->error($msg);

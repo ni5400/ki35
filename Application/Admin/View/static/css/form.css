@@ -1,13 +1,13 @@
 .form_con{ padding: 20px 20px; background: #FFF; border: 1px solid #2D86B5;  width: 100%; float: left; }
 .form_con2{ padding: 20px 20px; background: #FFF; border: 1px solid #A0AEB3;  width: 100%; float: left}
-.form_title{ background: #2D86B5 ; height: 36px; line-height: 36px; color: #FFF; font-size: 14px;float: left; width: 100% }
+.form_title{ background: #2D86B5; height: 36px; line-height: 36px; color: #FFF; font-size: 14px;float: left; width: 100% }
 .form_title2{ background: #A0AEB3; height: 30px; line-height: 30px; }
 .form_title i{margin:0 12px;}
 .table_border{ border: 1px solid #CCc; float: left; height: auto}
 .form-horizontal{ text-align: left;}
 .btn_edit .btn{ color: #FFF; padding: 2px 5px; }
 
-.role-list li{  float: left;   border: 1px dashed #f1f1f1; padding: 4px 8px; color: #056dae; margin: 5px 7px;}
+.role-list li{ background: #f1f1f1; float: left;   border: 1px dashed #f1f1f1; padding: 4px 8px; font-size:13px !important;margin: 5px 7px;}
 .role-list {  float: left}
 .role-list li .btn{  padding: 0; padding: 0 4px;}
 .form_con .page-header{margin: 10px 0 10px;}
@@ -15,7 +15,7 @@
 .form_con .bv-form .tooltip-inner {text-align: left;}
 .form_con .nav-tabs li.bv-tab-success > a {  color: #3c763d;}
 .form_con .nav-tabs li.bv-tab-error > a {color: #a94442;}
-
+.node-list{display: block; clear: both}
 /*****jQuery Validate 错误信息*****/
 span.error{  color: #a80804; padding-left: 5px; margin-top: 3px;}
 .control-label{ font-size: 14px; color: #444}

@@ -31,6 +31,7 @@ class SettingController extends CommonController {
         $this->assign('page',$show);// 赋值分页输出
         $this->display();
     }
+
     //角色添加
     public function role_add(){
         $this->display();
@@ -38,7 +39,6 @@ class SettingController extends CommonController {
 
     //修改角色
     public function role_edit($role_id){
-        if(!IS_POST) $this->error('非法操作');
         $map['id']=I('role_id','','htmlspecialchars,intval');
         if($map['id']==1) $this->error('管理员禁止操作');
         $AuthGroup = D('AuthGroup');
@@ -111,7 +111,7 @@ class SettingController extends CommonController {
         }
         $User = D('UserView');
         $count      = $User->where($map)->count();// 查询满足要求的总记录数
-        $Page       = new Page($count,6);  // 每页显示的记录数(25)
+        $Page       = new Page($count,10);  // 每页显示的记录数(25)
         $show       = $Page->show();// 分页显示输出
         // 进行分页数据查询 注意limit方法的参数要使用Page类的属性
         $list = $User->field('id,user_name,user_byname,login_time,login_ip,reg_time,login_count,status,role_name')->where($map)->order($sort)->limit($Page->firstRow.','.$Page->listRows)->select();
@@ -157,6 +157,7 @@ class SettingController extends CommonController {
 
     //节点添加
     public function node_add(){
+        if($add_id=I('add_id','','intval')) $this->assign('add_id',$add_id);
         $getNodeList=M('AuthRule')->select();
         $Category=new Category();
         $list=$Category->cate_ollist($getNodeList,0,'┈┈┤');
@@ -164,6 +165,66 @@ class SettingController extends CommonController {
         $this->assign('list',$list);
         $this->display();
     }
+    //修改节点
+    public function node_edit(){
+        //查询获节点列表
+        $AuthRule=M('AuthRule');
+        $getNodeList=$AuthRule->select();
+        $Category=new Category();
+        $list=$Category->cate_ollist($getNodeList,0,'┈┈┤');
+        $this->assign('list',$list);
+
+        //写入当前节点信息
+        $map['id']=I('id','','intval');
+        $getResult=$AuthRule->where($map)->find();
+        $this->assign('one',$getResult);
+
+        //查询是否有字节点
+        $map2['pid']=I('id','','intval');
+        $pid=$AuthRule->where($map2)->count();
+
+        $this->display();
+    }
+
+    //修改管理员模板显示
+    public function manager_edit(){
+        $data['id']=I('edit','','intval');
+        $User=D('UserView')->field('id,user_name,user_byname,role_name,status')->where($data)->find();
+        $this->assign('user',$User);
+        //assign角色
+        $GroupList=$Group=D('AuthGroup')->getList($Field="id,title,status,type");
+        $this->assign('group',$GroupList);
+        $this->display();
+    }
+
+    //权限配置显示节点列表
+    public function role_node(){
+        $roleId=I('role','','intval');
+        //取出现在的节点
+        $Role=D('AuthGroup')->field('rules')->where('id='.$roleId)->find();
+        $Role=explode(',',$Role['rules']);
+        //查询节点信息以多维数据分配
+        $getNodeList=M('AuthRule')->field('id,title,name,pid,level')->select();
+        //匹配$Role的键值 与 $getNodeList 键值的[id]值相等 设置[check]=1;
+        $new=array();
+        foreach($getNodeList as $key){
+            foreach($Role as $k){
+                if($k==$key['id']){
+                    $key['check']=1;
+                }
+            }
+            $new[]=$key;
+        }
+        //分配节点到模板
+        $category=new Category();
+        $cate=$category->cate_ullist($new);
+        //P($cate);
+        //角色id传值过去
+        $this->assign('cate',$cate);
+        $this->assign('role_id',$roleId);
+        $this->display();
+    }
+
 
     //代码调试
     public function abc(){

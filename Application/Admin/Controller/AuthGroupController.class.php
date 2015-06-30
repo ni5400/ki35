@@ -69,6 +69,29 @@ class AuthGroupController extends CommonController {
         }
     }
 
+    //权限配置
+    public function role_nodeHandle(){
+        $data=array(
+            'id'=>I('id','','intval'),
+            'node'=>I('node','','intval')
+        );
+        $map['id']=$data['id'];
+        $map['rules']='';
+        //重新权限id
+        foreach($data['node'] as $key=>$value){
+            $map['rules'].=$value.',';
+        }
+        //对掉结尾的逗号
+        $map['rules']=substr($map['rules'],0,-1);
+//        echo $map['rules'];
+        $Role=D('AuthGroup');
+        if($Role->save($map)){
+            $this->success('权限配置成功',U('Setting/role'));
+        }else{
+            $this->error('权限修改失败，请重试');
+        }
+    }
+
 
 
 }

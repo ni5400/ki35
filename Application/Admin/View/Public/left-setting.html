@@ -1,5 +1,6 @@
 <div class="lefttop"><i class="icon-cogs"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></i>　系统设置</div>
 <dl class="leftmenu">
+    <!--
     <dd>
         <div class="dh-title">
             <i class="icon-cogs"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></i>
@@ -16,12 +17,13 @@
             <li><i class="icon-cogs"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span></i><a href="form.html" >水印设置</a></li>
         </ul>
     </dd>
+    -->
     <dd>
         <div class="dh-title">
             <i class="icon-cogs"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></i>
             管理员设置
         </div>
-        <ul class="menuson" style="display: block">
+        <ul class="menuson" <{if condition="CONTROLLER_NAME =='Setting'"}> style="display: block" <{/if}> >
             <li <{if condition="ACTION_NAME =='manager'"}> class="active" <{/if}> >
                 <a href="<{:U('Setting/manager')}>">
                     <i class="icon-cogs">

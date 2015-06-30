@@ -8,10 +8,10 @@
 <{/block}>
 <!--主体-->
 <{block name="main"}>
-    <div class="form_title"><i class="icon-cogs"><span class="glyphicon glyphicon-th-list"></span></i>添加节点</div>
+    <div class="form_title"><i class="icon-cogs"><span class="glyphicon glyphicon-th-list"></span></i>导航</div>
     <div class="form_con">
         <legend></legend>
-        <h4 class="text-center">新增节点</h4>
+        <h4 class="text-center">节点 <code><{$one.name}></code>修改</h4>
         <legend></legend>
         <div class="alert alert-info alert-dismissible" role="alert" style="font-size: 14px;">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -23,20 +23,21 @@
         <div class="row">
             <div class="col-lg-10 col-lg-offset-1">
 
-                <form id="node_add" method="post" class="form-horizontal" action="<{:U('AuthRule/nodeHandle')}>">
+                <form id="node_add" method="post" class="form-horizontal" action="<{:U('AuthRule/nodeEditHandle')}>">
                     <fieldset>
 
                         <div class="form-group">
                             <label class="col-lg-2 control-label">名　称</label>
                             <div class="col-lg-6">
-                                <input class="form-control" type="text" name="name"  placeholder="请输入节点的url如Admin/index/index"/>
+                                <input class="form-control" type="text" name="name"  value="<{$one.name}>" placeholder="请输入节点的url如Admin/index/index"/>
+                                <input type="hidden" name="id" value="<{$one.id}>"/>
                             </div>
                             <div class="col-lg-4">(对应的规则为"模型/控制器/操作方法")</div>
                         </div>
                         <div class="form-group">
                             <label class="col-lg-2 control-label">显示名</label>
                             <div class="col-lg-6">
-                                <input class="form-control" type="text" name="title" placeholder="请输入title"/>
+                                <input class="form-control" type="text" name="title" value="<{$one.title}>" placeholder="请输入title"/>
                             </div>
 
                         </div>
@@ -48,7 +49,7 @@
                                     <option value="" >--选择节点归属--</option>
                                     <option value="0" >新增模型(分组)</option>
                                     <{volist name="list" id="vo"}>
-                                    <option value="<{$vo.id}>"  <{if condition="$add_id==$vo['id']"}> selected="selected" <{/if}>  data="<{$vo.level}>" <{if condition="$vo['level']==3"}> disabled <{/if}> > <{if condition="$vo['pid']==0"}>
+                                    <option value="<{$vo.id}>"  <{if condition="$one['pid']==$vo['id']"}> selected="selected" <{/if}>  data="<{$vo.level}>" <{if condition="$vo['level']==3"}> disabled <{/if}> > <{if condition="$vo['pid']==0"}>
                                         ├<{$vo.title}>(<{$vo.name}>)<{else /}>├<{$vo.html}>[<{$vo.title}>(<{$vo.name}>)]<{/if}></option><{/volist}>
                                 </select>
                             </div>
@@ -59,31 +60,31 @@
                             <div class="col-lg-3">
                                 <select name="level" class="form-control">
                                     <option value="" >选择节点类型</option>
-                                    <option value="1" >项目分组(GROUP_NAME)</option>
-                                    <option value="2" >模块（MODEL_NAME）</option>
-                                    <option value="3" >方法(ACTION_NAME)</option>
+                                    <option value="1" <{if condition="$one['level']==1"}> selected="selected" <{/if}> >项目分组(GROUP_NAME)</option>
+                                    <option value="2"  <{if condition="$one['level']==2"}> selected="selected" <{/if}>  >模块（MODEL_NAME）</option>
+                                    <option value="3"  <{if condition="$one['level']==3"}> selected="selected" <{/if}>  >方法(ACTION_NAME)</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group" >
                             <label class="col-lg-2 control-label">描述</label>
                             <div class="col-lg-6">
-                                <textarea class="form-control" rows="3" name="remark" placeholder="请输入100字内的描述"></textarea>
+                                <textarea class="form-control" rows="3" name="remark" placeholder="请输入100字内的描述"><{$one.remark}></textarea>
                             </div>
                         </div>
                         <div class="form-group">
                             <legend></legend>
                             <label class="col-lg-2 control-label">额外规则</label>
                             <div class="col-lg-6">
-                                <input class="form-control" type="text" name="condition"  placeholder="请输入附加规则"/>
+                                <input class="form-control" type="text" name="condition" value="<{$one.condition}>"  placeholder="请输入附加规则"/>
                             </div>
                         </div>
                         <div class="form-group" >
                             <label class="col-lg-2 control-label">状态</label>
                             <div class="col-lg-2">
                                 <select name="status" class="form-control">
-                                    <option value="1" >正常</option>
-                                    <option value="0" >停用</option>
+                                    <option value="1" <{if condition="$one['status']==1"}>selected<{/if}> >正常</option>
+                                    <option value="0" <{if condition="$one['status']==0"}>selected<{/if}> >停用</option>
                                 </select>
                             </div>
                         </div>

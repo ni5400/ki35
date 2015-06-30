@@ -14,7 +14,7 @@
     <div class="form_con">
         <div class="alert alert-warning alert-dismissible" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <strong>提示！</strong> 一个管理员可以对应多个管理角色 <br/>
+            <strong>提示！</strong> 一个管理员可以对应单个管理角色 <br/>
         </div>
         <div class="row">
             <div class="col-lg-10 col-lg-offset-1">
@@ -49,6 +49,15 @@
                                     <{volist name="group" id="vo"}>
                                     <option value="<{$vo.id}>" <{if condition="$vo['status']==0 || $vo['type']==1"}> disabled <{/if}> ><{$vo.title}></option>
                                     <{/volist}>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">状态</label>
+                            <div class="col-lg-2">
+                                <select name="status" class="form-control">
+                                    <option value="1">正常</option>
+                                    <option value="0">停用</option>
                                 </select>
                             </div>
                         </div>

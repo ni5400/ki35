@@ -1,0 +1,67 @@
+<{extend name="Base/common" /}>
+<!--首页左侧菜单-->
+<{block name="style"}><link href="__CSS__/form.css" rel="stylesheet" type="text/css" /><{/block}>
+<{block name="menu"}>
+<{include file="Public/left-setting" /}>
+<{/block}>
+
+<{block name="main"}>
+    <legend></legend>
+    <h4 class="text-center">角色权限配置</h4>
+    <legend></legend>
+
+    <!--模块开始-->
+    <form action="<{:U('AuthGroup/role_nodeHandle')}>" class="form-horizontal" method="post">
+        <input type="hidden" value="<{$role_id}>" name="id"/>
+        <{foreach name="cate" item="vo"}>
+            <div class="node-box">
+                <div class="form_title">　<input type="checkbox" <{if condition="$vo['check']==1"}>checked<{/if}>  value="<{$vo.id}>" name="node[]" class="all-check"/>&nbsp;&nbsp;<{$vo.title}> &nbsp;&nbsp;<{$vo.name}><i class="icon-cogs"><span class="glyphicon glyphicon-list-alt"></span></i></div>
+                <div class="form_con bottom10" style="background: #F1F1F1; padding: 10px 10px 0px 10px;">
+                    <!--方法开始-->
+                    <{if condition="$vo['child']"}>
+                    <{foreach name="vo.child" item="tvo"}>
+                <div class="node-list">
+                    <div class="form_title form_title2">　<input type="checkbox" <{if condition="$tvo['check']==1"}>checked<{/if}> value="<{$tvo.id}>" name="node[]" class="two-all"/>&nbsp;&nbsp;<{$tvo.title}><{$tvo.name}><i class="icon-cogs"><span class="glyphicon glyphicon-folder-open"></span></i></div>
+                    <div class="form_con2 bottom10" style="padding: 0px;">
+                        <div class="role-list">
+                            <{if condition="$tvo['child']"}>
+                            <{foreach name="tvo.child" item="svo"}>
+                            <li><input type="checkbox" <{if condition="$svo['check']==1"}>checked<{/if}>  value="<{$svo.id}>" name="node[]"/><code><strong><{$svo.title}></strong></code><{$svo.name}><i class="glyphicon glyphicon-log-in" style="color: #08575B"></i></li>
+                            <{/foreach}>
+                            <{/if}>
+                        </div>
+                    </div>
+                </div>
+                    <{/foreach}>
+                    <{/if}>
+                    <!--方法结束-->
+                </div>
+            </div>
+        <{/foreach}>
+        <legend></legend>
+
+        <div class="form-group">
+            <div class="col-sm-offset-9 col-sm-3">
+                <button type="submit" id="fat-btn" class="btn btn-success" data-loading-text="提交中" type="button">提 　交</button>
+                <button type="reset" class="btn btn2">重 　置</button>
+            </div>
+        </div>
+     </form>
+    <!--模块结束-->
+
+
+<!--dialog-->
+<script>
+    //控制器的全选框
+    $('.two-all').click(function(){
+        var inputs=$(this).parents('.node-list').find('input');
+        $(this).prop('checked')?inputs.prop('checked', 'checked'):inputs.removeAttr('checked');
+    });
+    //分组的全选框
+    $('.all-check').click(function(){
+        var inputs=$(this).parents('.node-box').find('input');
+        $(this).prop('checked')?inputs.prop('checked', 'checked'):inputs.removeAttr('checked');
+    });
+</script>
+
+<{/block}>

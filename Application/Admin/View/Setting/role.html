@@ -10,20 +10,22 @@
     <div class="form_title"><i class="icon-cogs"><span class="glyphicon glyphicon-th-list"></span></i>角色列表</div>
    <div class="form_con">
 
-       <table class="table table-striped table-hover table-bordered" style="color: #888">
+       <table class="table table-striped table-hover " id="table-list" >
 
            <tr  style="font-weight: bold;background: #efefef;"  >
+               <th style="width: 40px;"><input type="checkbox"  value="option1" id="all"></th>
                <th class="col-md-1">排序</th>
-               <th class="col-md-1">ID</th>
-               <th class="col-md-4">角色名</th>
-               <th class="col-md-1">状态</th>
-               <th class="col-md-2">相关操作</th>
+               <th >ID</th>
+               <th >角色名</th>
+               <th >状态</th>
+               <th >相关操作</th>
            </tr>
 
 
        <{volist name="list" id="vo"}>
            <tr>
                <td><input type="checkbox"  value="option1"></td>
+               <td><input type="text" class="form-control input-sm length-50 " placeholder="排序" ></td>
                <td><{$vo.id}></td>
                <td><{$vo.title}></td>
                <td class="btn_edit">
@@ -36,12 +38,29 @@
                <td class="btn_edit">
                    <a href="<{:U('Setting/role_edit',array('role_id'=>$vo['id']))}>" class="btn btn-sm btn-success"  data-toggle="tooltip" data-placement="left" title="修改" <{if condition="$vo['type']==1"}> disabled="disabled"<{/if}> ><i class="glyphicon glyphicon-pencil" ></i></a> 　
                    <button data="<{$vo.id}>" data-toggle="tooltip" data-placement="top" title="删除" class="btn btn-sm btn-danger btn-remove"  <{if condition="$vo['type']==1"}> disabled="disabled"<{/if}> ><i class="glyphicon glyphicon-trash" ></i></button>　
-                   <button class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="right" title="权限配置"><i class="glyphicon glyphicon-cog" ></i></button>
+                   <a href="<{:U('Setting/role_node',array('role'=>$vo['id']))}>" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="right" title="权限配置"><i class="glyphicon glyphicon-cog" ></i></a>
                </td>
            </tr>
-       <{/volist}>
-
+        <{/volist}>
        </table>
+       <!--列表结束-->
+       <!--操作-->
+       <div class="btn-group" role="group">
+           <button type="button" class="btn btn-sm btn-primary select-all">全选</button>
+           <button type="button" class="btn btn-sm btn-primary select-un">全不选</button>
+           <button type="button" class="btn btn-sm btn-primary select-re">反选</button>
+           <div class="btn-group dropup">
+               <button type="button" class="btn btn-sm btn-primary">操作</button>
+               <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                   <span class="caret"></span>
+               </button>
+               <ul class="dropdown-menu">
+                   <li><a href="#">批量删除</a></li>
+                   <li><a href="#">新增</a></li>
+               </ul>
+           </div>
+       </div>
+       <!--操作-->
        <!--分页开始-->
        <{$page}>
        <!--分页结束-->
@@ -117,6 +136,44 @@
 
         })
     })
+    //反选 全选操作
+    function allchk(){
+        var chknum = $("#table-list :checkbox").size();//选项总个数
+        var chk = 0;
+        $("#table-list :checkbox").each(function () {
+            if($(this).prop("checked")==true){
+                chk++;
+            }
+        });
+        if(chknum==chk){//全选
+            $("#all").prop("checked",true);
+        }else{//不全选
+            $("#all").prop("checked",false);
+        }
+    }
+    //全选框
+    $("#all").click(function(){
+        if(this.checked){
+            $("#table-list :checkbox").prop("checked", true);
+        }else{
+            $("#table-list :checkbox").prop("checked", false);
+        }
+    });
+    //全选按扭
+    $(".select-all").click(function () {
+        $("#table-list :checkbox,#all").prop("checked", true);
+    });
+    //全不选按扭
+    $('.select-un').click(function(){
+        $("#table-list :checkbox").prop("checked", false);
+    });
+    //反选按扭
+    $('.select-re').click(function(){
+        $("#table-list :checkbox").each(function () {
+            $(this).prop("checked", !$(this).prop("checked"));
+        });
+        allchk();
+    });
 
 </script>
 <{/block}>
