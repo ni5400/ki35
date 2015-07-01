@@ -47,7 +47,7 @@ body{background-image: url(../images/indexTopBg.gif);}
 .topright ul li a{font-size:13px; color:#e9f2f7;}
 .topright ul li a:hover{color:#fff;}
 .topright ul li span{margin-top:2px;float:left;padding-right:3px;}
-.topright .user{height:30px;background:url(../images/ub1.png) repeat-x;clear:both;margin-top:10px;float:right; margin-right:12px;border-radius:30px; behavior:url(js/pie.htc); white-space:nowrap;position:relative;}
+.topright .user{height:30px;background:url(../images/ub1.png) repeat-x;clear:both;margin-top:10px;float:right; margin-right:12px;border-radius:30px; white-space:nowrap;position:relative;}
 .topright .user span{display:inline-block;padding-right:10px; background:url(../images/user.png) no-repeat 15px 10px; line-height:30px; font-size:14px;color:#b8ceda; padding-left:20px; padding-left:35px;}
 .topright .user b{display:inline-block;width:20px;height:18px; background:url(../images/msg.png);text-align:center; font-weight:normal; color:#fff;font-size:14px;margin-right:13px; margin-top:7px; line-height:18px;}
 .topright .user i{display:inline-block;margin-right:5px;font-style:normal;line-height:30px; font-size:14px;color:#b8ceda;}
@@ -64,7 +64,7 @@ body{background-image: url(../images/indexTopBg.gif);}
 .lefttop{
     background-image: linear-gradient(to bottom, rgba(72, 186, 228, 0.99), rgba(46, 126, 174, 0.89));
     height:40px;color:#fff;font-size:14px;line-height:40px;}
-.lefttop i{ margin-left:10px; }
+.lefttop i{ margin-left:10px;  color: #CCC;}
 .leftmenu {width:187px;padding-bottom: 9999px;margin-bottom: -9999px; overflow:hidden; }
 .leftmenu dd{line-height:42px;font-weight:bold;font-size:14px;border-right:solid 1px #e0dede;}
 

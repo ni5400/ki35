@@ -13,7 +13,7 @@ class UserModel extends Model {
     //自动验证
     protected $_validate=array(
         //array(验证字段，验证规则，错误提示，验证条件，附加规则，验证时间) 或者单独留给注册用，登陆单独写规则
-        array('user_name','','帐号名称已经存在！',0,'unique',1),
+//        array('user_name','','帐号名称已经存在！',0,'unique',1),
         array('user_name','require','用户名不能为空',0,'',1),
         array('user_name', '5,20', '用户名长度5-20位！',0,'length',1),
         array('user_byname','require','别名不能为空',0,'',3),

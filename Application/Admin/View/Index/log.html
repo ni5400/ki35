@@ -7,25 +7,23 @@
 
 <{/block}>
 <{block name="menu"}>
-    <{include file="Public/left-setting" /}>
+    <{include file="Public/left-index" /}>
 <{/block}>
 
 <{block name="main"}>
 
-    <div class="form_title"><i class="icon-cogs"><span class="glyphicon glyphicon-th-list"></span></i>管理员列表</div>
+    <div class="form_title"><i class="icon-cogs"><span class="glyphicon glyphicon-th-list"></span></i>登陆日志</div>
    <div class="form_con">
         <!--搜索表单-->
-        <form class="form-inline" action="<{:U('Setting/manager')}>" method="get">
-            <div class="form-group  form_layout">
-                <label >排序&nbsp;</label>
-                <select class="form-control input-sm" name="order" >
-                    <option value="">---排序---</option>
-                    <option value="1">注册时间正序</option>
-                    <option value="2">注册时间倒序</option>
-                    <option value="3">ID正序</option>
-                    <option value="4">ID倒序</option>
-                    <option value="5">登陆时间正序</option>
-                    <option value="6">登陆时间倒序</option>
+        <form class="form-inline" action="<{:U('Index/log')}>" method="get">
+            <div class="form-group form_layout">
+                <label>每页条数</label>
+                <select class="form-control input-sm" name="num" >
+                    <option value="">-默认-</option>
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
                 </select>
             </div>
             <div class="form-group form_layout">
@@ -36,39 +34,11 @@
                 </div>
             </div>
             <div class="form-group form_layout">
-                <label >用户名&nbsp;</label>
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-user" ></i></span>
+                <label >用户&nbsp;</label>
                     <input type="text" class="form-control input-sm "  placeholder="用户名" name="username">
-                </div>
-            </div>
-            <div class="form-group  form_layout">
-                <label >姓名&nbsp;</label>
-                <div class="input-group">
-                    <input type="text" class="form-control input-sm "  placeholder="姓名" name="byname">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-question-sign" ></i></span>
-                </div>
-            </div>
-            <div class="form-group  form_layout">
-                <label >登陆IP &nbsp;</label>
-                <input type="text" class="form-control input-sm "  placeholder="IP" name="login_ip">
-            </div>
-            <div class="form-group  form_layout">
-                <label >状态&nbsp;</label>
-                <select class="form-control input-sm" name="status">
-                    <option value="">选择</option>
-                    <option value="true">正常</option>
-                    <option value="false">停用</option>
-                </select>
-            </div>
-            <div class="form-group  form_layout">
-                <label >角色&nbsp;</label>
-                <select class="form-control input-sm" name="role">
-                    <option value="">--选择角色--</option>
-                </select>
             </div>
             <div class="form-group form_layout">
-                <label >登陆时间&nbsp;</label>
+                <label >操作时间&nbsp;</label>
                 <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar" ></i></span>
                     <input id="d5221"  name="date_from" class=" form-control input-sm length-100" type="text" onFocus="var d5222=$dp.$('d5222');WdatePicker({skin:'whyGreen',onpicked:function(){d5222.focus();},maxDate:'#F{$dp.$D(\'d5222\')}'})"/>
@@ -77,21 +47,25 @@
                 <div class="input-group">
                     <input id="d5222" name="date_to" class=" form-control input-sm length-100" type="text" onFocus="WdatePicker({skin:'whyGreen',minDate:'#F{$dp.$D(\'d5221\')}'})"/>
                     <span class="input-group-addon" ><i class="glyphicon glyphicon-calendar"></i></span>
-                 </div>
+                </div>
             </div>
-
-            <div class="form-group form_layout">
-                <label >注册时间&nbsp;</label>
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-                    <input id="d5223"  name="reg_date_from" class=" form-control input-sm length-100" type="text" onFocus="var d5224=$dp.$('d5224');WdatePicker({skin:'whyGreen',onpicked:function(){d5224.focus();},maxDate:'#F{$dp.$D(\'d5224\')}'})"/>
-
-                </div>
-                至
-                <div class="input-group">
-                    <input id="d5224" name="reg_date_to" class=" form-control input-sm length-100" type="text" onFocus="WdatePicker({skin:'whyGreen',minDate:'#F{$dp.$D(\'d5223\')}'})"/>
-                    <span class="input-group-addon" ><i class="glyphicon glyphicon-list-alt"></i></span>
-                </div>
+            <div class="form-group  form_layout">
+                <label >登陆IP &nbsp;</label>
+                <input type="text" class="form-control input-sm "  placeholder="IP" name="login_ip">
+            </div>
+            <div class="form-group  form_layout">
+                <label >排序&nbsp;</label>
+                <select class="form-control input-sm" name="order" >
+                    <option value="">---排序---</option>
+                    <option value="3">ID正序</option>
+                    <option value="4">ID倒序</option>
+                    <option value="5">登陆时间正序</option>
+                    <option value="6">登陆时间倒序</option>
+                </select>
+            </div>
+            <div class="form-group  form_layout">
+                <label >登陆信息&nbsp;</label>
+                <input type="text" class="form-control input-sm"  style="min-width: 450px;" placeholder="登陆信息" name="content">
             </div>
             <div class="form-group  form_layout">
                 <button type="submit" class="btn btn-sm btn-success">提交</button>
@@ -100,68 +74,53 @@
        <!--搜索表单结束-->
        <legend style="margin-bottom: 10px;"></legend>
        <!--列表开始-->
+   <form action="<{:U('Index/delBatchDialog')}>" method="post">
        <table class="table table-striped table-hover  table-bordered" style="color: #494b49" id="table-list">
-           <tr style="background: #efefef;">
-               <th><input type="checkbox"  value="option1" id="all"></th>
-               <th>ID</th>
-               <th>用户名</th>
-               <th>姓名</th>
-               <th>角色</th>
-               <th>最后登陆时间</th>
-               <th>登陆IP</th>
-               <th>注册时间</th>
-               <th>登陆次数</th>
-               <th>状态</th>
-               <th>管理操作</th>
-               <th>详细信息</th>
-           </tr>
-           <{volist name="list" id="vo" }>
-           <tr>
-               <td><input type="checkbox"  value="option1"></td>
-               <td> <{$vo.id}></td>
-               <td><{$vo.user_name}></td>
-               <td><code><{$vo.user_byname}></code></td>
-               <td><{$vo.role_name}></td>
-               <td><{$vo.login_time|date="Y-m-d H:i:s",###}></td>
-               <td><{$vo.login_ip}></td>
-               <td><{$vo.reg_time|date="Y-m-d",###}></td>
-               <td><{$vo.login_count}></td>
-               <td class="btn_edit">
-                   <{if condition="$vo['status']==1"}>
-                   <i class="glyphicon glyphicon-ok" style="color: #5d9912" data-toggle="tooltip" data-placement="right" title="正常"></i>
-                   <{else /}>
-                   <i class="glyphicon glyphicon-remove" style="color: #a80804"  data-toggle="tooltip" data-placement="right" title="已停用"></i>
-                   <{/if}>
-               </td>
-               <td class="btn_edit">
-                   <a href="<{:U('Setting/manager_edit',array('edit'=>$vo['id']))}>" class="btn btn-sm btn-success "  data-toggle="tooltip" data-placement="left" title="修改"><i class="glyphicon glyphicon-pencil"></i></a>
-                   <button class="btn btn-sm btn-danger btn-remove"  data-toggle="tooltip" data-placement="right" title="删除"  <{if condition="$vo['id']==1"}>disabled <{/if}> data="<{$vo.id}>" ><i class="glyphicon glyphicon-trash"></i></button>
-               </td>
-               <td>
-                   其它信息
-               </td>
 
-           </tr>
-           <{/volist}>
+               <tr style="background: #efefef;">
+                   <th><input type="checkbox"  name="check[]" id="all"></th>
+                   <th>ID</th>
+                   <th>用户</th>
+                   <th class="col-lg-6">登陆信息</th>
+                   <th>操作时间</th>
+                   <th>登陆IP</th>
+
+                   <th>删除</th>
+               </tr>
+               <{volist name="list" id="vo" }>
+               <tr>
+                   <td><input type="checkbox"  value="<{$vo.id}>" name="check[]"></td>
+                   <td> <{$vo.id}></td>
+                   <td> <{$vo.user_name}></td>
+                   <td><{$vo.error_content}></td>
+                   <td><{$vo.login_time|date="Y-m-d H:i:s",###}></td>
+                   <td><{$vo.login_ip}></td>
+
+                   <td class="btn_edit">
+                       <button class="btn btn-sm btn-danger btn-remove"  data-toggle="tooltip" data-placement="right" title="删除"  <{if condition="$vo['id']==1"}>disabled <{/if}> data="<{$vo.id}>" ><i class="glyphicon glyphicon-trash"></i></button>
+                   </td>
+               </tr>
+               <{/volist}>
 
        </table>
        <!--列表结束-->
        <!--操作-->
-       <div class="btn-group" role="group">
+       <div class="btn-group public-tools" role="group">
            <button type="button" class="btn btn-sm btn-primary select-all">全选</button>
            <button type="button" class="btn btn-sm btn-primary select-un">全不选</button>
            <button type="button" class="btn btn-sm btn-primary select-re">反选</button>
            <div class="btn-group dropup">
-               <button type="button" class="btn btn-sm btn-primary">操作</button>
-               <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               <button type="button" class="btn btn-sm btn-danger">操作</button>
+               <button type="button" class="btn btn-sm btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                    <span class="caret"></span>
                </button>
-               <ul class="dropdown-menu">
-                   <li><a href="#">批量删除</a></li>
-                   <li><a href="#">新增</a></li>
+               <ul class="dropdown-menu top_menu">
+                   <li class="btn btn-danger btn-sm all-del"> 指量删除</li>
+                   <li class="btn btn-danger btn-sm all-del"> 指量修改</li>
                </ul>
            </div>
        </div>
+   </form>
        <!--操作-->
 
        <!--分页-->
@@ -204,10 +163,11 @@
 <!--dialog-->
 <script>
 
+    //删除操作
     $('.btn-remove').click(function(){
         var thisClick=$(this).parents('tr');
         var getId=$(this).attr('data');
-        var Url="<{:U('Setting/user_del')}>";
+        var Url="<{:U('Index/delDialog')}>";
         $('#my-modal').modal('show');
         $('.true-remove').click(function(){
             $.ajax({
@@ -218,8 +178,7 @@
                     $('#my-modal').modal('hide');
                 },
                 success: function(data, response, status){
-
-                    if(data){
+                    if(data=="true"){
                         $('.del-result').html('删除成功');
                         $('#error-dialog').modal('show');
                         setTimeout(function(){

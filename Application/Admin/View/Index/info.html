@@ -1,0 +1,67 @@
+<{extend name="Base/common" /}>
+<!--样式-->
+<{block name="style"}>
+<link href="__CSS__/form.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__JS__/jquery-validate.js"></script>
+<{/block}>
+<!--首页左侧菜单-->
+<{block name="menu"}>
+    <{include file="Public/left-index" /}>
+<{/block}>
+<!--主体-->
+
+<{block name="main"}>
+<div class="form_title"><i class="icon-cogs"><span class="glyphicon glyphicon-th-list"></span></i>导航</div>
+    <div class="form_con">
+        <table class="table  table-hover table-bordered" >
+            <legend></legend>
+            <legend><h4 class="text-center"><i class="icon-cogs" style="color: #056dae"><span class="glyphicon glyphicon-road" ></span></i> 个人信息</h4></legend>
+            <tr >
+                <th class="col-lg-2 text-right text-right" style="background: #F1F1F1">用户名　</th>
+                <th >　 <code><{$user.user_name}></code></th>
+            </tr>
+            <tr >
+                <th class="col-lg-2 text-right" style="background: #F1F1F1">真实姓名　</th>
+                <th> 　<code><{$user.user_byname}></code></th>
+            </tr>
+            <tr >
+                <th class="col-lg-2 text-right" style="background: #F1F1F1">角色　</th>
+                <th> 　<code><{$user.role_name}></code></th>
+            </tr>
+            <tr >
+                <th class="col-lg-2 text-right" style="background: #F1F1F1">累计登陆次数　</th>
+                <th>　 <code><{$user.login_count}></code></th>
+            </tr>
+            <tr >
+                <th class="col-lg-2 text-right" style="background: #F1F1F1">最后登陆时间　</th>
+                <th>　<code><{$user.login_time|date="y-m-d H:i:s",###}></code></th>
+            </tr>
+            <tr >
+                <th class="col-lg-2 text-right" style="background: #F1F1F1">最后登陆IP　</th>
+                <th>　<code><{$user.login_ip}></code></th>
+            </tr>
+            <tr >
+                <th class="col-lg-2 text-right" style="background: #F1F1F1">注册时间　</th>
+                <th>　<code><{$user.reg_time|date="y-m-d H:i:s",###}></code></th>
+            </tr>
+            <tr >
+                <th class="col-lg-2 text-right" style="background: #F1F1F1">注册IP　</th>
+                <th>　<code><{$user.reg_ip}></code></th>
+            </tr>
+            <tr >
+                <th class="col-lg-2 text-right" style="background: #F1F1F1">状态　</th>
+                <th>　　
+                    <{if condition="$user['status']==1"}>
+                    <i class="glyphicon glyphicon-ok" style="color: #5d9912" data-toggle="tooltip" data-placement="right" title="正常"></i>
+                    <{else /}>
+                    <i class="glyphicon glyphicon-remove" style="color: #a80804"  data-toggle="tooltip" data-placement="right" title="已停用"></i>
+                    <{/if}>
+                </th>
+            </tr>
+        </table>
+    </div>
+
+<style>
+
+</style>
+<{/block}>

@@ -53,72 +53,14 @@ class SettingController extends CommonController {
     //管理员列表
     public function manager(){
         //获取表单检索的条件
-        if($_GET['username']) $username=I('username','','htmlspecialchars,trim');
-        if($_GET['byname']) $byname=I('byname','','htmlspecialchars,trim');
-        if($_GET['date_from']) $date_from=I('date_from','','htmlspecialchars,trim');
-        if($_GET['date_to']) $date_to=I('date_to','','htmlspecialchars,trim');
-        if($_GET['reg_date_from']) $reg_date_from=I('reg_date_from','','htmlspecialchars,trim');
-        if($_GET['reg_date_to']) $reg_date_to=I('reg_date_to','','htmlspecialchars,trim');
-        if($_GET['login_ip']) $login_ip=I('login_ip','','htmlspecialchars,trim');
-        if($_GET['order']) $order=I('order','','intval');
-        if($_GET['status']) $status=I('status','','htmlspecialchars,trim');
-        if($_GET['id']) $id=I('id','','intval');
-        //排序条件
-        $map = array(); //查询条件,列表的搜索表单
-        if ($username)  $map['user_name'] = array('like', '%'.$username.'%');
-        if ($byname)    $map['user_byname'] = array('like', '%'.$byname.'%');
-        if ($id)  $map['id'] = array('EQ', $id);
-        if ($login_ip)  $map['login_ip'] = array('EQ', $login_ip);
-        if($status == "true") $map['status']=array('EQ',1);
-        if($status == "false") $map['status']=array('EQ',0);
-        if($order){
-            switch($order){
-                case 1:
-                    $sort="reg_time";
-                    break;
-                case 2:
-                    $sort="reg_time desc";
-                    break;
-                case 3:
-                    $sort="id";
-                    break;
-                case 4:
-                    $sort="id desc";
-                    break;
-                case 5:
-                    $sort="login_time";
-                    break;
-                case 6:
-                     $sort="login_time desc";
-                    break;
-            }
-        }
-        //按登陆时间条件
-        if ($date_from && $date_to) {
-            $map['login_time'] = array(array('egt', strtotime($date_from)), array('elt', strtotime($date_to)));
-        } else if ($date_from) {
-            $map['login_time'] = array('egt', strtotime($date_from));
-        } else if ($date_to) {
-            $map['login_time'] = array('elt', strtotime($date_to));
-        }
-        //按注册时间条件
-        if ($reg_date_from && $reg_date_to) {
-            $map['reg_time'] = array(array('egt', strtotime($reg_date_from)), array('elt', strtotime($reg_date_to)));
-        } else if ($reg_date_from) {
-            $map['reg_time'] = array('egt', strtotime($reg_date_from));
-        } else if ($reg_date_to) {
-            $map['reg_time'] = array('elt', strtotime($reg_date_to));
-        }
+        $data=A('Common')->whereCondition();
+
         $User = D('UserView');
-        $count      = $User->where($map)->count();// 查询满足要求的总记录数
-        $Page       = new Page($count,10);  // 每页显示的记录数(25)
+        $count      = $User->where($data['map'])->count();// 查询满足要求的总记录数
+        $Page       = new Page($count,$data['num']);  // 每页显示的记录数(25)
         $show       = $Page->show();// 分页显示输出
         // 进行分页数据查询 注意limit方法的参数要使用Page类的属性
-        $list = $User->field('id,user_name,user_byname,login_time,login_ip,reg_time,login_count,status,role_name')->where($map)->order($sort)->limit($Page->firstRow.','.$Page->listRows)->select();
-        foreach($list as $key=>$values){
-            $list[$key]['login_time']=date('Y-m-d H:i:s',$values['login_time']);
-            $list[$key]['reg_time']=date('Y-m-d',$values['reg_time']);
-        }
+        $list = $User->field('id,user_name,user_byname,login_time,login_ip,reg_time,login_count,status,role_name')->where($data['where'])->order($data['order'])->limit($Page->firstRow.','.$Page->listRows)->select();
         $this->assign('list',$list);// 赋值数据集
         $this->assign('page',$show);// 赋值分页输出
         $this->display();

@@ -38,7 +38,7 @@
                <td class="btn_edit">
                    <a href="<{:U('Setting/role_edit',array('role_id'=>$vo['id']))}>" class="btn btn-sm btn-success"  data-toggle="tooltip" data-placement="left" title="修改" <{if condition="$vo['type']==1"}> disabled="disabled"<{/if}> ><i class="glyphicon glyphicon-pencil" ></i></a> 　
                    <button data="<{$vo.id}>" data-toggle="tooltip" data-placement="top" title="删除" class="btn btn-sm btn-danger btn-remove"  <{if condition="$vo['type']==1"}> disabled="disabled"<{/if}> ><i class="glyphicon glyphicon-trash" ></i></button>　
-                   <a href="<{:U('Setting/role_node',array('role'=>$vo['id']))}>" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="right" title="权限配置"><i class="glyphicon glyphicon-cog" ></i></a>
+                   <a href="<{:U('Setting/role_node',array('role'=>$vo['id']))}>" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="right" title="权限配置"   <{if condition="$vo['type']==1"}> disabled="disabled"<{/if}>><i class="glyphicon glyphicon-cog" ></i></a>
                </td>
            </tr>
         <{/volist}>

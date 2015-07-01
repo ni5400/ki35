@@ -4,7 +4,7 @@
 $(function(){
     function change_code(){
         var time = new Date().getTime();
-        $(".login-code").attr("src",ThinkPHP['Code']+'&'+Math.random());
+        $(".login-code").attr("src",ThinkPHP['Code']+'/'+Math.random());
         return false;
     }
     //刷新验证码

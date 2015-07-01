@@ -26,5 +26,7 @@ span.error{  color: #a80804; padding-left: 5px; margin-top: 3px;}
 .length-120{width: 120px !important;color: #999}
 .length-150{width: 150px !important;color: #999}
 .form_layout{margin-bottom: 10px !important; margin-right: 12px !important;}
-.form_layout input,.form_layout select,.form_layout .btn{height: 26px;}
+.form_layout input,.form_layout select,.form_layout .btn{height: 26px; padding: 2px 10px;}
 .form_layout .input-group-addon{ padding: 0 5px;}
+.public-tools .dropdown-menu{min-width: 0px; width: 70px; padding: 0px; border: 0px;}
+.public-tools .dropdown-menu .btn{ width: 100%;border: 0px; border-radius: 0px; margin-left:0px;}

@@ -44,11 +44,11 @@
                             <legend></legend>
                             <label class="col-lg-2 control-label">节点归属</label>
                             <div class="col-lg-4">
-                                <select name="pid" class="form-control form-select">
+                                <select name="pid" class="form-control node-select">
                                     <option value="" >--选择节点归属--</option>
-                                    <option value="0" >新增模型(分组)</option>
+                                    <option value="0" data-level="0">新增模型(分组)</option>
                                     <{volist name="list" id="vo"}>
-                                    <option value="<{$vo.id}>"  <{if condition="$add_id==$vo['id']"}> selected="selected" <{/if}>  data="<{$vo.level}>" <{if condition="$vo['level']==3"}> disabled <{/if}> > <{if condition="$vo['pid']==0"}>
+                                    <option value="<{$vo.id}>"  <{if condition="$add_id==$vo['id']"}> selected="selected" <{/if}>  data-level="<{$vo.level}>" <{if condition="$vo['level']==3"}> disabled <{/if}> > <{if condition="$vo['pid']==0"}>
                                         ├<{$vo.title}>(<{$vo.name}>)<{else /}>├<{$vo.html}>[<{$vo.title}>(<{$vo.name}>)]<{/if}></option><{/volist}>
                                 </select>
                             </div>
@@ -57,11 +57,11 @@
                         <div class="form-group" >
                             <label class="col-lg-2 control-label">节点类型</label>
                             <div class="col-lg-3">
-                                <select name="level" class="form-control">
+                                <select name="level" class="form-control node-type">
                                     <option value="" >选择节点类型</option>
-                                    <option value="1" >项目分组(GROUP_NAME)</option>
-                                    <option value="2" >模块（MODEL_NAME）</option>
-                                    <option value="3" >方法(ACTION_NAME)</option>
+                                    <option value="1" >项目分组(MODEL_NAME)</option>
+                                    <option value="2" >控制器（CONTROLLER_NAME）</option>
+                                    <option value="3" >操作方法(ACTION_NAME)</option>
                                 </select>
                             </div>
                         </div>
@@ -102,16 +102,28 @@
     </div>
 <script type="text/javascript">
     $(document).ready(function() {
-
-//        $(".form-select").bind("change",function(){
-//            if($(this).val()>0){
-//                alert($(this).val());
-//                alert($(this).attr('data'));
-//            }
-//            else{
-//                $("#thediv").text($(this).val());
-//            }
-//        });
+       //节点选择操作时对应的项目类型自动指定
+        $('.node-select').blur(function(){
+            var node_level=$('.node-select option:selected').attr('data-level');
+            var nodeType=$('.node-type option');
+            if(node_level==0){
+                nodeType.eq(1).show();
+                nodeType.eq(2).hide();
+                nodeType.eq(3).hide();
+            }else if(node_level==1){
+                nodeType.eq(1).hide();
+                nodeType.eq(2).show();
+                nodeType.eq(3).hide();
+            }else if(node_level>1){
+                nodeType.eq(1).hide();
+                nodeType.eq(2).hide();
+                nodeType.eq(3).show();
+            }else{
+                nodeType.eq(1).show();
+                nodeType.eq(2).show();
+                nodeType.eq(3).show();
+            }
+        });
         // validate插件护展验证规则字符验证，只能包含英文、数字、下划线等字符。
         jQuery.validator.addMethod("stringCheck", function(value, element) {
             return this.optional(element) || /^[a-zA-Z0-9\-_\/]+$/.test(value);
