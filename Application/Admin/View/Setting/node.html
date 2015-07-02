@@ -186,7 +186,7 @@
                                 $('#my-modal').modal('hide');
                             },
                             success: function(data, response, status){
-                                if(data){
+                                if(data=="true"){
                                     $('.del-result').html('删除成功');
                                     $('#error-dialog').modal('show');
                                     setTimeout(function(){

@@ -54,7 +54,6 @@ class SettingController extends CommonController {
     public function manager(){
         //获取表单检索的条件
         $data=A('Common')->whereCondition();
-
         $User = D('UserView');
         $count      = $User->where($data['map'])->count();// 查询满足要求的总记录数
         $Page       = new Page($count,$data['num']);  // 每页显示的记录数(25)

@@ -1,0 +1,45 @@
+<div class="lefttop"><i class="icon-cogs"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></i>　内容模型</div>
+<dl class="leftmenu">
+    <dd>
+        <div class="dh-title">
+            <i class="icon-cogs"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></i>
+            内容模型
+        </div>
+        <ul class="menuson">
+            <li  <{if condition="ACTION_NAME =='article_add'"}> class="active" <{/if}>>
+                <a href="<{:U('Document/article_add')}>"><i class="icon-cogs"><span class="glyphicon glyphicon-edit"></span></i>添加文档</a>
+            </li>
+            <li  <{if condition="ACTION_NAME =='Article'"}> class="active" <{/if}>>
+                <a href="<{:U('Document/Article')}>"><i class="icon-cogs"><span class="glyphicon glyphicon-file"></span></i>文档管理</a>
+            </li>
+            <li><a href="#"><i class="icon-cogs"><span class="glyphicon glyphicon-ok-sign"></span></i>我发布的文档</a></li>
+            <li>
+                <a href="#"><i class="icon-cogs"><span class="glyphicon glyphicon-question-sign"></span></i>待审核文档</a>
+            </li>
+            <li><a href="#"><i class="icon-cogs"><span class="glyphicon glyphicon-trash"></span></i>已删除文档</a></li>
+            <li   <{if condition="ACTION_NAME =='category_add'"}> class="active" <{/if}>>
+                <a href="<{:U('Document/category_add')}>"><i class="icon-cogs"><span class="glyphicon glyphicon-plus-sign"></span></i>添加栏目</a>
+            </li>
+            <li   <{if condition="ACTION_NAME =='category'"}> class="active" <{/if}>>
+                <a href="<{:U('Document/category')}>"><i class="icon-cogs"><span class="glyphicon glyphicon-hdd"></span></i>栏目管理</a>
+            </li>
+            <li><a href="#"><i class="icon-cogs"><span class="glyphicon glyphicon-hand-right"></span></i>推荐位管理</a></li>
+            <li><a href="#"><i class="icon-cogs"><span class="glyphicon glyphicon-cog"></span></i>模型设置</a></li>
+        </ul>
+    </dd>
+    <dd>
+        <div class="dh-title">
+            <i class="icon-cogs"><span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span></i>
+            发布管理
+        </div>
+        <ul class="menuson">
+            <li><a href="#"><i class="icon-cogs"><span class="glyphicon glyphicon-random"></span></i>更新系统缓存</a></li>
+            <li><a href="#"><i class="icon-cogs"><span class="glyphicon glyphicon-refresh"></span></i>更新首页HTML</a></li>
+            <li><a href="#"><i class="icon-cogs"><span class="glyphicon glyphicon-align-right"></span></i>一键更新全站</a></li>
+            <li><a href="#"><i class="icon-cogs"><span class="glyphicon glyphicon-list"></span></i>更新栏目HTML</a></li>
+            <li><a href="#"><i class="icon-cogs"><span class="glyphicon glyphicon-edit"></span></i>更新文档HTML</a></li>
+            <li><a href="#"><i class="icon-cogs"><span class="glyphicon glyphicon-map-marker"></span></i>更新专题</a></li>
+        </ul>
+    </dd>
+
+</dl>

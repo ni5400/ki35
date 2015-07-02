@@ -1,0 +1,310 @@
+<{extend name="Base/common" /}>
+<{block name="style"}>
+<!-- 引入编辑器插件-->
+<link rel="stylesheet" type="text/css" href="__DATA__/myeditor/themes/default/default.css"/>
+<script charset="utf-8" src="__DATA__/myeditor/kindeditor.js"></script>
+<script charset="utf-8" src="__DATA__/myeditor/lang/zh_CN.js"></script>
+<!-- 日期插件-->
+<script src="__DATA__/My97DatePicker/WdatePicker.js"></script>
+<link href="__CSS__/form.css" rel="stylesheet" type="text/css" />
+<!-- 引入插件节束-->
+<script>
+    //编辑器引用激活
+    KindEditor.ready(function(K) {
+        //文章内容编辑器
+        K.create('#content', {
+            themeType : 'simple',
+            width : "98%",
+            height:400,
+            allowUpload : true//允许上传图片
+            //imageUploadJson : '{:U("Admin/Article/uplaod")}' //服务端上传图片处理URI
+        });
+
+        //标题图片提交
+        var editor = K.editor({
+            allowFileManager : true
+        });
+        //标题图片提交
+        K('#thumb').click(function() {
+            editor.loadPlugin('image', function() {
+                editor.plugin.imageDialog({
+                    imageUrl : K('#url1').val(),
+                    clickFn : function(url, title, width, height, border, align) {
+                        K('#url1').val(url);
+                        editor.hideDialog();
+                    }
+                });
+            });
+        });
+        //标题颜色对话框
+        var colorpicker;
+        K('#colorpicker').bind('click', function(e) {
+            e.stopPropagation();
+            if (colorpicker) {
+                colorpicker.remove();
+                colorpicker = null;
+                return;
+            }
+            var colorpickerPos = K('#colorpicker').pos();
+            colorpicker = K.colorpicker({
+                x : colorpickerPos.x,
+                y : colorpickerPos.y + K('#colorpicker').height(),
+                z : 19811214,
+                selectedColor : 'default',
+                noColor : '无颜色',
+                click : function(color) {
+                    K('#color').val(color);
+                    K('.color').css('background-color',color);
+                    colorpicker.remove();
+                    colorpicker = null;
+                }
+            });
+        });
+        K(document).click(function() {
+            if (colorpicker) {
+                colorpicker.remove();
+                colorpicker = null;
+            }
+        });
+    });
+</script>
+<{/block}>
+<{block name="menu"}><{include file="Public/left-content" /}><{/block}>
+<{block name="main"}>
+
+<div class="form_con" style="padding: 0px; border: 0px solid #CCC; border-top: none">
+    <!--表单-->
+    <legend></legend>
+    <h4 class="text-center">添加文档</h4>
+    <legend></legend>
+    <table class="table mytable table-striped  ">
+        <tbody>
+        <tr class=" table_title">
+            <th> 　文档-基本信息</th>
+            <th></th>
+        </tr>
+        <tr class="form-group form-group-sm">
+            <th class="text-right" style=" width: 120px;">所属栏目　</th>
+            <th >
+                <div class="col-lg-4">
+                    <select name="group" class="form-control">
+                        <option value="">选择角色分组</option>
+                        <option value="1" disabled="">网站创始员</option>
+                        <option value="33">bafdfdf</option>
+                        <option value="34">超级管理员fd</option>                                                                 </select>
+                </div>
+            </th>
+        </tr>
+        <tr class="form-group form-group-sm">
+            <th class="text-right" >标题　</th>
+            <th >
+                <div class="col-lg-8">
+                    <input class="form-control " type="text" name="" placeholder="请输入">
+                    <a type="submit" class="btn btn-sm btn-danger no-btn re-name" type="button">重名检测</a>
+                    <div class="color" style="background-color: {$data.style}" id="colorpicker" ></div> <input type="hidden" id="color" name="style"/>
+                </div>
+            </th>
+        </tr>
+        <tr class="form-group form-group-sm">
+            <th class="text-right" >栏目图片　</th>
+            <th class="form-inline"> 　
+                <input type="text" id="url1" class="form-control length-250"  placeholder="栏目图片" disabled>
+                <a id="thumb" type="submit" class="btn btn-sm btn-primary no-btn " type="button">选择图片</a>（网络图片 + 本地上传）
+            </th>
+        </tr>
+        <tr class=" table_title">
+            <th>　文档-SEO信息</th>
+            <th></th>
+        </tr>
+        <tr class="form-group form-group-sm">
+            <th class="text-right" >SEO标题　</th>
+            <th >
+                <div class="col-lg-8">
+                    <input class="form-control " type="text" name="" placeholder="请输入">
+                </div>
+            </th>
+        </tr>
+        <tr class="form-group form-group-sm">
+            <th class="text-right" >关键字　</th>
+            <th >
+                <div class="col-lg-8">
+                    <input class="form-control " type="text" name="" placeholder="请输入">
+                </div>
+            </th>
+        </tr>
+
+        <tr class="form-group form-group-sm">
+            <th class="text-right" >描述　</th>
+            <th >
+                <div class="col-lg-6">
+                    <textarea class="form-control" rows="3" name="remark" placeholder="请输入100字内的描述" style="margin: 0px -166.5px 0px 0px; height: 101px; min-width: 600px;"></textarea>
+                </div>
+            </th>
+        </tr>
+        <tr class=" table_title">
+            <th>　文档-页面属性</th>
+            <th></th>
+        </tr>
+        <tr class="form-group form-group-sm">
+            <th class="text-right" >推荐位　</th>
+            <th >
+                <div class="col-lg-10">
+                    <input type="checkbox" value=""> 头图
+                    <input type="checkbox"  value=""> 热门
+                    <input type="checkbox" value=""> 幻灯
+                    <input type="checkbox" value=""> 其它
+                    <input type="checkbox" value=""> 头图
+                    <input type="checkbox"  value=""> 热门
+                    <input type="checkbox" value=""> 幻灯
+                    <input type="checkbox" value=""> 其它
+                    <input type="checkbox" value=""> 头图
+                    <input type="checkbox"  value=""> 热门
+                    <input type="checkbox" value=""> 幻灯
+                    <input type="checkbox" value=""> 其它
+                    <input type="checkbox" value=""> 头图
+                    <input type="checkbox"  value=""> 热门
+                    <input type="checkbox" value=""> 幻灯
+                    <input type="checkbox" value=""> 其它
+                    <input type="checkbox" value=""> 头图
+                    <input type="checkbox"  value=""> 热门
+                    <input type="checkbox" value=""> 幻灯
+                    <input type="checkbox" value=""> 其它
+                    <input type="checkbox"  value=""> 热门
+                    <input type="checkbox" value=""> 幻灯
+                    <input type="checkbox" value=""> 其它
+                    <input type="checkbox" value=""> 头图
+                    <input type="checkbox"  value=""> 热门
+                    <input type="checkbox" value=""> 幻灯
+                    <input type="checkbox" value=""> 其它
+                    <input type="checkbox" value=""> 头图
+                    <input type="checkbox"  value=""> 热门
+                    <input type="checkbox" value=""> 幻灯
+                    <input type="checkbox" value=""> 其它
+                    <input type="checkbox"  value=""> 热门
+                    <input type="checkbox" value=""> 幻灯
+                    <input type="checkbox" value=""> 其它
+                    <input type="checkbox" value=""> 头图
+                    <input type="checkbox"  value=""> 热门
+                    <input type="checkbox" value=""> 幻灯
+                    <input type="checkbox" value=""> 其它
+                    <input type="checkbox" value=""> 头图
+                    <input type="checkbox"  value=""> 热门
+                    <input type="checkbox" value=""> 幻灯
+                    <input type="checkbox" value=""> 其它
+                </div>
+            </th>
+        </tr>
+        <tr class="form-group form-group-sm">
+            <th class="text-right" >TAG标签　</th>
+            <th >
+                <div class="col-lg-8">
+                    <input class="form-control " type="text" name="" placeholder="请输入">
+                </div>
+            </th>
+        </tr>
+        <tr class=" table_title">
+            <th>　文档-主体信息</th>
+            <th></th>
+        </tr>
+        <tr class="form-group form-group-sm">
+            <th class="text-right" >内容　</th>
+            <th >
+                <div class="col-lg-12">
+                    <textarea name="content" class="form-control" id="content" ></textarea>
+                </div>
+            </th>
+        </tr>
+        <tr class="form-group form-group-sm">
+            <th class="text-right">状态　</th>
+            <th >
+                <div class="col-lg-2">
+                    <select name="group" class="form-control">
+                        <option value="1">正常</option>
+                        <option value="0">待审核</option>
+                        <option value="2">拒绝</option>
+                        <option value="3">已删除</option>
+                    </select>
+                </div>
+            </th>
+        </tr>
+        <tr class=" table_title">
+            <th>　文档-附加信息</th>
+            <th></th>
+        </tr>
+        <tr class="form-group form-group-sm">
+            <th class="text-right" >发布时间　</th>
+            <th >
+                <div class="col-lg-8">
+                    <input class="Wdate  form-control input-sm length-150" type="text" onclick="WdatePicker()" onFocus="WdatePicker({skin:'whyGreen',isShowClear:false,readOnly:true})" value="<{php}>echo date('Y-m-d H:i:s',time()) <{/php}>">
+                </div>
+            </th>
+        </tr>
+        <tr class="form-group form-group-sm">
+            <th class="text-right" >来源URL　</th>
+            <th >
+                <div class="col-lg-8">
+                    <input class="form-control " type="text" name="" placeholder="请输入">
+                </div>
+            </th>
+        </tr>
+        <tr class="form-group form-group-sm">
+            <th class="text-right" >其它相关　</th>
+            <th class="form-inline"> 　
+                <div class="form-group">
+                    <label >作者</label>
+                    <input type="text" class="form-control "  placeholder="栏目图片" >
+                </div>
+                <div class="form-group">
+                    <label >来源</label>
+                    <input type="text" class="form-control" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <label >点击</label>
+                    <input type="text" class="form-control" placeholder="Password">
+                </div>
+            </th>
+        </tr>
+
+        <tr class="form-group form-group-sm">
+            <th class="text-right" >关键字　</th>
+            <th >
+                <div class="col-lg-8">
+                    <input class="form-control " type="text" name="" placeholder="请输入">
+                </div>
+            </th>
+        </tr>
+        <tr class=" table_title">
+            <th>　文档-模板设置</th>
+            <th></th>
+        </tr>
+        <tr class="form-group form-group-sm">
+            <th class="text-right" style=" width: 120px;">模板选择　</th>
+            <th >
+                <div class="col-lg-2">
+                    <select name="group" class="form-control">
+                        <option value="">默认</option>
+                    </select>
+                </div>
+            </th>
+        </tr>
+        </tbody>
+    </table>
+
+
+
+
+
+    <legend></legend>
+    <div class="form-group" id="lock">
+        <div class="col-sm-offset-5 col-sm-4">
+            <button type="submit" id="fat-btn" class="btn btn-success no-btn" data-loading-text="提交中" type="button">提 　交</button>
+            <button type="reset" class="btn btn2 no-btn">重 　置</button>
+        </div>
+    </div>
+
+</div>
+
+
+<!--表单-->
+
+<{/block}>

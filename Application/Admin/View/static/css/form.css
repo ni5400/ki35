@@ -1,4 +1,4 @@
-.form_con{ padding: 20px 20px; background: #FFF; border: 1px solid #2D86B5;  width: 100%; float: left; }
+.form_con{padding: 20px 20px; background: #FFF; border: 1px solid #2D86B5;  width: 100%; float: left; }
 .form_con2{ padding: 20px 20px; background: #FFF; border: 1px solid #A0AEB3;  width: 100%; float: left}
 .form_title{ background: #2D86B5; height: 36px; line-height: 36px; color: #FFF; font-size: 14px;float: left; width: 100% }
 .form_title2{ background: #A0AEB3; height: 30px; line-height: 30px; }
@@ -25,8 +25,24 @@ span.error{  color: #a80804; padding-left: 5px; margin-top: 3px;}
 .length-100{width: 100px !important;color: #999}
 .length-120{width: 120px !important;color: #999}
 .length-150{width: 150px !important;color: #999}
+.length-250{width: 250px !important;color: #999}
 .form_layout{margin-bottom: 10px !important; margin-right: 12px !important;}
 .form_layout input,.form_layout select,.form_layout .btn{height: 26px; padding: 2px 10px;}
 .form_layout .input-group-addon{ padding: 0 5px;}
 .public-tools .dropdown-menu{min-width: 0px; width: 70px; padding: 0px; border: 0px;}
 .public-tools .dropdown-menu .btn{ width: 100%;border: 0px; border-radius: 0px; margin-left:0px;}
+.no-btn{ border-radius:0; }
+
+.class_lmqh{height:34px; border:1px solid #DBE6E3; width:100%; margin-bottom: 8px; border-left:none; margin-top: 2px; }
+.class_lmqh li{ border-left:1px solid #DBE6E3; border-right:1px solid #DBE6E3; list-style:none; float:left; line-height:34px; width:auto; text-align:center; height:33px; margin-right:8px;  padding:0px 15px; display:block;}
+.gg_a{background:#4D8BD8;}
+.gg_a a{color:#FFF; font-weight:bold;}
+.gg_b{background:#EAEEF4;}
+
+.color {height: 20px;position: absolute;left: 670px; bottom: 5px; width: 23px; border:1px solid #D0D5D5;background-image: url(../images/color.gif);}
+.re-name{ position: absolute;left: 590px; bottom: 0px;}
+
+.mytable {color: #666;vertical-align:baseline !important}
+.mytable tr:hover{background: rgba(241, 247, 253, 0.21) !important;}
+.mytable>tbody>tr>td,.mytable>tbody>tr>th,.mytable>tfoot>tr>td,.mytable >tfoot>tr>th,.mytable >thead>tr>td,.mytable >thead>tr>th  {color: #666;vertical-align:middle !important}
+.table_title{background: #F1F7Fd !important; color: #134d9d ;}
