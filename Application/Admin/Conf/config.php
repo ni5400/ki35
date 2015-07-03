@@ -17,6 +17,8 @@ return array(
     'TMPL_R_DELIM'          =>  '}>',            // 模板引擎普通标签结束标记
     'TMPL_TEMPLATE_SUFFIX'  => '.html',     // 默认模板文件后缀
 
+    'DEFAULT_FILTER'        =>  'htmlspecialchars,trim', // 默认参数过滤方法 用于I函数..
+
 
 
 );

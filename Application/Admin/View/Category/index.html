@@ -46,7 +46,7 @@
             <a href="<{:U('Document/category_add',array('add_id'=>$vo['id']))}>" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="bottom" title="添加子节点" ><i class="glyphicon glyphicon-plus"></i></a>
             <{/if}>
         </td>
-        <td>文章管理 </td>
+        <td><code><a href="<{:U('Article/index',array('cateid'=>$vo['id']))}>">文章管理</a></code> </td>
         </tr>
 
         <{/volist}>

@@ -85,6 +85,11 @@ class IndexController extends CommonController {
         P($_POST);
     }
 
+    //文档表表
+    public function document(){
+        A('Article')->index();
+    }
+
 
 
 }

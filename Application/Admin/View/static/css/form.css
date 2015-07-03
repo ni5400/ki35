@@ -25,6 +25,7 @@ span.error{  color: #a80804; padding-left: 5px; margin-top: 3px;}
 .length-100{width: 100px !important;color: #999}
 .length-120{width: 120px !important;color: #999}
 .length-150{width: 150px !important;color: #999}
+.length-200{width: 200px !important;color: #999}
 .length-250{width: 250px !important;color: #999}
 .form_layout{margin-bottom: 10px !important; margin-right: 12px !important;}
 .form_layout input,.form_layout select,.form_layout .btn{height: 26px; padding: 2px 10px;}

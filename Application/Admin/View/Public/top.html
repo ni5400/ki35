@@ -8,7 +8,7 @@
             <a href="<{:U('Index/index')}>"  <{if condition="CONTROLLER_NAME =='Index'"}> class="selected" <{/if}>><img src="__IMG__/icon01.png" title="工作台" /><h2>工作台</h2></a>
         </li>
         <li>
-            <a href="<{:U('Document/index')}>"  <{if condition="CONTROLLER_NAME =='Document'"}> class="selected" <{/if}>  /><img src="__IMG__/icon02.png" title="内容模型" /><h2>内容模型</h2></a>
+            <a href="<{:U('Article/content')}>"  <{if condition="(CONTROLLER_NAME =='Article') or (CONTROLLER_NAME =='Category')"}> class="selected" <{/if}>  /><img src="__IMG__/icon02.png" title="内容模型" /><h2>内容模型</h2></a>
         </li>
         <li>
             <a href="<{:U('Setting/index')}>"  <{if condition="CONTROLLER_NAME =='Setting'"}> class="selected" <{/if}> /><img src="__IMG__/icon06.png" title="系统设置" /><h2>系统设置</h2></a>

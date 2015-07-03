@@ -3,33 +3,53 @@
     <dd>
         <div class="dh-title">
             <i class="icon-cogs"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></i>
-            内容模型
+            文档管理
         </div>
-        <ul class="menuson">
-            <li  <{if condition="ACTION_NAME =='article_add'"}> class="active" <{/if}>>
-                <a href="<{:U('Document/article_add')}>"><i class="icon-cogs"><span class="glyphicon glyphicon-edit"></span></i>添加文档</a>
+        <ul class="menuson"  <{if condition="CONTROLLER_NAME =='Article'"}>style="display:block"<{else /}>style="display:none"<{/if}> >
+            <li  <{if condition="ACTION_NAME =='add'"}> class="active" <{/if}>>
+                <a href="<{:U('Article/add')}>"><i class="icon-cogs"><span class="glyphicon glyphicon-edit"></span></i>添加文档</a>
             </li>
-            <li  <{if condition="ACTION_NAME =='Article'"}> class="active" <{/if}>>
-                <a href="<{:U('Document/Article')}>"><i class="icon-cogs"><span class="glyphicon glyphicon-file"></span></i>文档管理</a>
+            <li  <{if condition="ACTION_NAME =='index'"}> class="active" <{/if}>>
+                <a href="<{:U('Article/index')}>"><i class="icon-cogs"><span class="glyphicon glyphicon-file"></span></i>文档管理</a>
             </li>
-            <li><a href="#"><i class="icon-cogs"><span class="glyphicon glyphicon-ok-sign"></span></i>我发布的文档</a></li>
+            <li   <{if condition="ACTION_NAME =='my'"}> class="active" <{/if}>>
+                <a href="<{:U('Article/my')}>"><i class="icon-cogs"><span class="glyphicon glyphicon-eye-open"></span></i>我发布的文档</a>
+        </li>
+            <li   <{if condition="ACTION_NAME =='normal'"}> class="active" <{/if}>>
+        <a href="<{:U('Article/normal')}>"><i class="icon-cogs"><span class="glyphicon glyphicon-ok-sign"></span></i>审核通过文档</a>
+        </li>
+            <li   <{if condition="ACTION_NAME =='wait'"}> class="active" <{/if}>>
+                <a href="<{:U('Article/wait')}>"><i class="icon-cogs"><span class="glyphicon glyphicon-question-sign"></span></i>待审核文档</a>
+            </li>
+            <li   <{if condition="ACTION_NAME =='remove'"}> class="active" <{/if}>>
+                <a href="<{:U('Article/remove')}>"><i class="icon-cogs"><span class="glyphicon glyphicon-trash"></span></i>已删除文档</a>
+            </li>
             <li>
-                <a href="#"><i class="icon-cogs"><span class="glyphicon glyphicon-question-sign"></span></i>待审核文档</a>
-            </li>
-            <li><a href="#"><i class="icon-cogs"><span class="glyphicon glyphicon-trash"></span></i>已删除文档</a></li>
-            <li   <{if condition="ACTION_NAME =='category_add'"}> class="active" <{/if}>>
-                <a href="<{:U('Document/category_add')}>"><i class="icon-cogs"><span class="glyphicon glyphicon-plus-sign"></span></i>添加栏目</a>
-            </li>
-            <li   <{if condition="ACTION_NAME =='category'"}> class="active" <{/if}>>
-                <a href="<{:U('Document/category')}>"><i class="icon-cogs"><span class="glyphicon glyphicon-hdd"></span></i>栏目管理</a>
-            </li>
-            <li><a href="#"><i class="icon-cogs"><span class="glyphicon glyphicon-hand-right"></span></i>推荐位管理</a></li>
-            <li><a href="#"><i class="icon-cogs"><span class="glyphicon glyphicon-cog"></span></i>模型设置</a></li>
+                <a href="#"><i class="icon-cogs"><span class="glyphicon glyphicon-cog"></span></i>模型设置</a></li>
         </ul>
     </dd>
     <dd>
         <div class="dh-title">
-            <i class="icon-cogs"><span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span></i>
+            <i class="icon-cogs"><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span></i>
+            栏目管理
+        </div>
+        <ul class="menuson"   <{if condition="CONTROLLER_NAME =='Category'"}>style="display:block"<{else /}>style="display:none"<{/if}>>
+            <li   <{if condition="ACTION_NAME =='add'"}> class="active" <{/if}>>
+            <a href="<{:U('Category/add')}>"><i class="icon-cogs"><span class="glyphicon glyphicon-plus-sign"></span></i>添加栏目</a>
+            </li>
+            <li   <{if condition="ACTION_NAME =='index'"}> class="active" <{/if}>>
+            <a href="<{:U('Category/index')}>"><i class="icon-cogs"><span class="glyphicon glyphicon-hdd"></span></i>栏目管理</a>
+            </li>
+            <li><a href="#"><i class="icon-cogs"><span class="glyphicon glyphicon-menu-hamburger"></span></i>推荐位管理</a></li>
+            <li><a href="#"><i class="icon-cogs"><span class="glyphicon glyphicon-edit"></span></i>添加推荐位</a></li>
+            <li><a href="#"><i class="icon-cogs"><span class="glyphicon glyphicon-equalizer"></span></i>类别管理</a></li>
+            <li><a href="#"><i class="icon-cogs"><span class="glyphicon glyphicon-th-large"></span></i>添加类别</a></li>
+            <li><a href="#"><i class="icon-cogs"><span class="glyphicon glyphicon-cog"></span></i>栏目设置</a></li>
+        </ul>
+    </dd>
+    <dd>
+        <div class="dh-title">
+            <i class="icon-cogs"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></i>
             发布管理
         </div>
         <ul class="menuson">

@@ -58,11 +58,13 @@ class SettingController extends CommonController {
         $count      = $User->where($data['map'])->count();// 查询满足要求的总记录数
         $Page       = new Page($count,$data['num']);  // 每页显示的记录数(25)
         $show       = $Page->show();// 分页显示输出
+//        P($data);
         // 进行分页数据查询 注意limit方法的参数要使用Page类的属性
-        $list = $User->field('id,user_name,user_byname,login_time,login_ip,reg_time,login_count,status,role_name')->where($data['where'])->order($data['order'])->limit($Page->firstRow.','.$Page->listRows)->select();
+        $list = $User->field('id,user_name,user_byname,login_time,login_ip,reg_time,login_count,status,role_name')->where($data['map'])->order($data['order'])->limit($Page->firstRow.','.$Page->listRows)->select();
         $this->assign('list',$list);// 赋值数据集
         $this->assign('page',$show);// 赋值分页输出
         $this->display();
+
 
     }
     //管理员添加

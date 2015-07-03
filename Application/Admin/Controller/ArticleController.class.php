@@ -9,48 +9,114 @@
 
 namespace Admin\Controller;
 use Admin\Model\ArticleDataViewModel;
+use MyLibrary\Category;
+use MyLibrary\Page;
 
 class ArticleController extends CommonController{
 
-    public function index(){
-
-        //查询无序分类到搜索的栏目条件
-        $cate=M('category')->select();
-        $category=new \MyLibrary\Category();
-        $this->cate=$category->cate_ollist($cate,0,'　');
-
-        //显示栏目内容页条件
-        if(isset($_GET['catid'])){
-            $this->catid=$catid=I('catid','','intval') ;
-            $where=array('catid'=>$catid);
-        }
-
-        //分配资源
-        $article=M('article'); // 实例化对象
-        $this->count=$count= $article->where($where)->count();// 查询满足要求的总记录数
-        $page=new \MyLibrary\Pagetwo($count,20);// 实例化分页类 传入总记录数和每页显示的记录数(25)
-        $show   = $page->show();// 分页显示输出
-        //查询
-        $list=D('ArticleView')->where($where)->field('itemid,catid,title,ctitle,addtime,edittime,addtime,status,hits,username')->limit($page->firstRow.','.$page->listRows)->order('itemid desc')->select();
-
-        $this->assign('page',$show);
-        $this->assign('list',$list);// 赋值数据集
-        $this->display(); // 输出模板
+    //内容模型首页
+   public function content(){
+       $this->display();
+   }
+    //公共获取栏目
+    public function getCategory(){
+        $getNodeList=M('Category')->field('id,pid,ctitle')->select();
+        $Category=new Category();
+        $CategoryList=$Category->cate_ollist($getNodeList,0,'┈┈┤');
+        $this->assign('category',$CategoryList);
     }
 
-    public function add(){
-
-        if(isset($_GET['catid'])){
-            $this->catid=$catid=I('catid','','intval') ;
-
+    //检索的表单的变量返还给模板
+    public function assignMap($data){
+        $map=array();
+        foreach($data['map'] as $key =>$value){
+            $map['user_name']=$data['map']['user_name'][1];
+            $map['add_time_from']=$data['map']['add_time'][0][1];
+            $map['add_time_to']=$data['map']['add_time'][1][1];
+            $map['status']=$data['map']['status'][1];
+            $map['cateid']=$data['map']['cateid'][1];
+            $map['id']=$data['map']['id'][1];
+        };
+        $map['order']=$data['order'];
+        $newMap=array();
+        foreach($map as $v){
+            $newMap['user_name']=substr($map['user_name'],1,-1);
+            if($map['add_time_from']) $newMap['add_time_from']=date('Y-m-d',$map['add_time_from']);
+            if($map['add_time_to']) $newMap['add_time_to']=date('Y-m-d',$map['add_time_to']);
+            //if(empty($map['status'])) $newMap['status']='false';
+            if(isset($map['status'])){
+                $newMap['status']=$map['status'];
+            }else{
+                $newMap['status']='false';
+            }
+            $newMap['cateid']=$map['cateid'];
+            $newMap['id']=$map['id'];
+            $newMap['order']=$map['order'];
         }
-        //查询无序分类到模板
-        $this->catid=I('catid','','intval');
-        $cate=M('category')->select();
-        $category=new \MyLibrary\Category();
+        $this->assign('map',$newMap);
+    }
 
-        $this->cate=$category->cate_ollist($cate,0,'　');
-//        P($category->cate_ollist($cate,0,'　'));
+    //获取文章列表
+    public function getArticle($data){
+        $this->getCategory(); //取得栏目下拉菜单
+        if($_GET['cateid']) $data['map']['cateid']=I('cateid','intval');
+        if(!$data['order']) $data['order']='id Desc';
+        $User = D('ArticleView');
+        $count      = $User->where($data['map'])->count();// 查询满足要求的总记录数
+        $Page       = new Page($count,$data['num']);  // 每页显示的记录数(25)
+        $show       = $Page->show();// 分页显示输出
+        // 进行分页数据查询 注意limit方法的参数要使用Page类的属性
+        $list = $User->where($data['map'])
+             ->field('id,catid,title,add_time,status,hits,update_time,user_name,ctitle,cateid')
+             ->order($data['order'])
+             ->limit($Page->firstRow.','.$Page->listRows)
+             ->select();
+        $this->assign('list',$list);// 赋值数据集
+        $this->assign('page',$show);// 赋值分页输出
+        $this->display('Article/index');
+    }
+
+    //文章列表
+    public function index(){
+        //获取表单检索的条件
+        $data=A('Common')->whereCondition();
+        $this->assignMap($data); //注册搜索条件给模板
+        $this->getArticle($data);  //获取表表
+    }
+
+    //待审核的文章列表
+    public function wait(){
+        $data=A('Common')->whereCondition();
+        $data['map']['status']=array('EQ',2);
+        $this->assignMap($data);
+        $this->getArticle($data);
+
+    }
+    //已删除的文档
+    public function remove(){
+        $data=A('Common')->whereCondition();
+        $data['map']['status']=array('EQ',3);
+        $this->assignMap($data);
+        $this->getArticle($data);
+    }
+
+    //我发布的文档即当前登陆人发布的文档
+    public function my(){
+        $data=A('Common')->whereCondition();
+        $data['map']['user_name']=session('admin_auth')['user_name'];
+        $this->assignMap($data);
+        $this->getArticle($data);
+    }
+    //审核通过的文档，即正常显示的文档
+    public function normal(){
+        $data=A('Common')->whereCondition();
+        $data['map']['status']=array('EQ',1);
+        $this->assignMap($data);
+        $this->getArticle($data);
+    }
+
+
+    public function add(){
         $this->display();
     }
 

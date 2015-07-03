@@ -31,7 +31,6 @@ class CommonController extends Controller {
             return true;
         }
 
-
         $Auth = new Auth();
         if (!$Auth->check(MODULE_NAME.'/'.CONTROLLER_NAME.'/'.ACTION_NAME.'/', session('admin_auth')['user_id'])) {
             echo '<p style="margin:10px;color:red;">对不起，您没有权限操作此模块！</p>';
@@ -42,18 +41,21 @@ class CommonController extends Controller {
     //表单公共检索条件
     public function whereCondition(){
         //获取的查询条件
-        if($_GET['username']) $username=I('username','','htmlspecialchars,trim');
-        if($_GET['byname']) $byname=I('byname','','htmlspecialchars,trim');
-        if($_GET['date_from']) $date_from=I('date_from','','htmlspecialchars,trim');
-        if($_GET['date_to']) $date_to=I('date_to','','htmlspecialchars,trim');
-        if($_GET['content']) $error_content=I('content','','htmlspecialchars,trim');
-        if($_GET['reg_date_from']) $reg_date_from=I('reg_date_from','','htmlspecialchars,trim');
-        if($_GET['reg_date_to']) $reg_date_to=I('reg_date_to','','htmlspecialchars,trim');
-        if($_GET['login_ip']) $login_ip=I('login_ip','','htmlspecialchars,trim');
-        if($_GET['order']) $order=I('order','','intval');
-        if($_GET['status']) $status=I('status','','htmlspecialchars,trim');
-        if($_GET['id']) $id=I('id','','intval');
-        if($_GET['content']) $error_content=I('content','','htmlspecialchars,trim');
+        $username=I('username');  //用户
+        $byname=I('byname');  //姓名
+        $date_from=I('date_from'); //登陆时间起
+        $date_to=I('date_to'); //登陆时间到
+        $reg_date_from=I('reg_date_from');  //注册时间
+        $reg_date_to=I('reg_date_to');
+        $add_time_from=I('addtime_from');//添加时间
+        $add_time_to=I('addtime_to');
+        $login_ip=I('login_ip');  //登陆ip
+        $order=I('order','','intval');
+        $status=I('status');
+        $error_content=I('content','','htmlspecialchars,trim');  //登陆日志
+        if($_GET['cateid']) $cateid=I('cateid','intval'); //文章列表里的
+        if($_GET['id']) $id=I('id','','intval');  //按id检索
+
         //页码
         if($_GET['num']) {
             $num=I('num','','intval');
@@ -66,9 +68,13 @@ class CommonController extends Controller {
         if ($username)  $map['user_name'] = array('like', '%'.$username.'%');
         if ($byname)    $map['user_byname'] = array('like', '%'.$byname.'%');
         if ($id)  $map['id'] = array('EQ', $id);
+        if ($cateid)  $map['cateid'] = array('EQ', $cateid);
         if ($login_ip)  $map['login_ip'] = array('EQ', $login_ip);
-        if($status == "true") $map['status']=array('EQ',1);
-        if($status == "false") $map['status']=array('EQ',0);
+        if($status == "正常" ||$status == "normal") $map['status']=array('EQ',1); //状态1正常
+        if($status == "停用" || $status == "refuse") $map['status']=array('EQ',0);  //状态0为停用或审核未通过
+        if($status == "待审核" || $status == "wait") $map['status']=array('EQ',2);  //状态2为待审核
+        if($status == "已删除" || $status == "remove") $map['status']=array('EQ',3);  //状态3为已删除
+        if($title=I('title','','htmlspecialchars')) $map['title']=array('like', '%'.$title.'%');
         if($order){
             switch($order){
                 case 1:
@@ -89,6 +95,12 @@ class CommonController extends Controller {
                 case 6:
                     $sort="login_time desc";
                     break;
+                case 7:
+                    $sort="add_time ";
+                    break;
+                case 8:
+                    $sort="add_time desc";
+                    break;
             }
         }
         //按登陆时间条件
@@ -106,6 +118,14 @@ class CommonController extends Controller {
             $map['reg_time'] = array('egt', strtotime($reg_date_from));
         } else if ($reg_date_to) {
             $map['reg_time'] = array('elt', strtotime($reg_date_to));
+        }
+        //按添加时间条件
+        if ($add_time_from && $add_time_to) {
+            $map['add_time'] = array(array('egt', strtotime($add_time_from)), array('elt', strtotime($add_time_to)));
+        } else if ($add_time_from) {
+            $map['add_time'] = array('egt', strtotime($add_time_from));
+        } else if ($add_time_to) {
+            $map['add_time'] = array('elt', strtotime($add_time_to));
         }
         $data=array(
             'map'=>$map,
