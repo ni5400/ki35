@@ -14,7 +14,8 @@ use Think\Controller;
 class AuthRuleController extends CommonController {
 
     //添加节点
-    public function nodeHandle(){
+    public function nodeHandle()
+    {
         if(!IS_POST) $this->error('非法操作');
         $data=array(
             'name'=>I('name','','htmlspecialchars,trim'),
@@ -34,7 +35,8 @@ class AuthRuleController extends CommonController {
         }
 
     }
-    public function nodeEditHandle(){
+    public function nodeEditHandle()
+    {
         if(!IS_POST) $this->error('非法操作');
         $data=array(
             'id'=>I('id','','intval'),
@@ -56,14 +58,15 @@ class AuthRuleController extends CommonController {
         }
     }
     //查询是否有子节点存在
-    public function nodePid(){
+    public function nodePid()
+    {
         if(!IS_AJAX) $this->error("非法操作");
         $data['pid']=I('id','','intval');
         echo $AuthRule=D('AuthRule')->where($data)->count();
-
     }
     //节点删除
-    public function node_del(){
+    public function node_del()
+    {
         if(!IS_AJAX) $this->error("非法操作");
         $data['pid']=I('id','','intval');
         $map['id']=I('id','','intval');

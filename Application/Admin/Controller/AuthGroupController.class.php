@@ -12,12 +12,14 @@ use Think\Controller;
 
 class AuthGroupController extends CommonController {
 
-    public function index(){
+    public function index()
+    {
         $this->display();
     }
 
     //添加角色分组
-    public function group_addHandle(){
+    public function group_addHandle()
+    {
        if(!IS_POST) $this->error('非法操作');
         $data=array(
             'title'=>I('title','','htmlspecialchars'),
@@ -37,7 +39,8 @@ class AuthGroupController extends CommonController {
     }
 
     //修改分组list
-    public function group_editHandle(){
+    public function group_editHandle()
+    {
         if(!IS_POST) $this->error('非法操作');
         $map['id']=I('post.id');
         $map['status']=I('post.status');
@@ -48,7 +51,8 @@ class AuthGroupController extends CommonController {
         }
     }
     //删除角色操作
-    public function role_del(){
+    public function role_del()
+    {
         if(!IS_AJAX) $this->error('非法操作');
         $role_id= I('post.id');
         $AuthGroup=M('AuthGroup')->where('id='.$role_id)->delete();
@@ -56,7 +60,8 @@ class AuthGroupController extends CommonController {
     }
 
     //检测角色是否重复
-    public function checkRole(){
+    public function checkRole()
+    {
         if(!IS_AJAX) $this->error('非法操作');
         $data=array(
             'title'=>I('post.title')
@@ -70,7 +75,8 @@ class AuthGroupController extends CommonController {
     }
 
     //权限配置
-    public function role_nodeHandle(){
+    public function role_nodeHandle()
+    {
         $data=array(
             'id'=>I('id','','intval'),
             'node'=>I('node','','intval')

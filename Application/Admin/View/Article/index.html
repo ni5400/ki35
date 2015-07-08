@@ -107,7 +107,7 @@
                 <{/if}>
             </td>
             <td class="btn_edit">
-                <a href="<{:U('Document/article_edit',array('edit'=>$vo['id']))}>" class="btn btn-sm btn-success "  data-toggle="tooltip" data-placement="left" title="修改"><i class="glyphicon glyphicon-pencil"></i></a>
+                <a href="<{:U('Article/article_edit',array('edit'=>$vo['id']))}>" class="btn btn-sm btn-success "  data-toggle="tooltip" data-placement="left" title="修改"><i class="glyphicon glyphicon-pencil"></i></a>
                 <button class="btn btn-sm btn-danger btn-remove"  data-toggle="tooltip" data-placement="right" title="删除"  <{if condition="$vo['id']==1"}>disabled <{/if}> data="<{$vo.id}>" ><i class="glyphicon glyphicon-trash"></i></button>
             </td>
 
@@ -177,7 +177,7 @@
     $('.btn-remove').click(function(){
         var thisClick=$(this).parents('tr');
         var getId=$(this).attr('data');
-        var Url="<{:U('/')}>";
+        var Url="<{:U('Article/document_del')}>";
         $('#my-modal').modal('show');
         $('.true-remove').click(function(){
             $.ajax({
@@ -198,7 +198,6 @@
                             thisClick.remove();
                         },2000);
                     }else{
-                        alert(data)
                         $('.del-result').html('删除失败,请重试');
                         $('#error-dialog').modal('show');
                         setTimeout(function(){

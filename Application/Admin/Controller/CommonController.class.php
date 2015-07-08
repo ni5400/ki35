@@ -13,7 +13,8 @@ use Think\Controller;
 //基类
 class CommonController extends Controller {
 
-    protected   function _initialize(){
+    protected   function _initialize()
+    {
 
         if(!isset(session('admin_auth')['user_id'])){
             redirect(U('Login/index'));
@@ -39,7 +40,8 @@ class CommonController extends Controller {
     }
 
     //表单公共检索条件
-    public function whereCondition(){
+    public function whereCondition()
+    {
         //获取的查询条件
         $username=I('username');  //用户
         $byname=I('byname');  //姓名

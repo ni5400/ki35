@@ -6,10 +6,10 @@
             文档管理
         </div>
         <ul class="menuson"  <{if condition="CONTROLLER_NAME =='Article'"}>style="display:block"<{else /}>style="display:none"<{/if}> >
-            <li  <{if condition="ACTION_NAME =='add'"}> class="active" <{/if}>>
-                <a href="<{:U('Article/add')}>"><i class="icon-cogs"><span class="glyphicon glyphicon-edit"></span></i>添加文档</a>
+            <li  <{if condition="ACTION_NAME =='articleAdd'"}> class="active" <{/if}>>
+                <a href="<{:U('Article/articleAdd')}>"><i class="icon-cogs"><span class="glyphicon glyphicon-edit"></span></i>添加文档</a>
             </li>
-            <li  <{if condition="ACTION_NAME =='index'"}> class="active" <{/if}>>
+            <li  <{if condition="(CONTROLLER_NAME =='Article') and (ACTION_NAME =='index')"}> class="active" <{/if}>>
                 <a href="<{:U('Article/index')}>"><i class="icon-cogs"><span class="glyphicon glyphicon-file"></span></i>文档管理</a>
             </li>
             <li   <{if condition="ACTION_NAME =='my'"}> class="active" <{/if}>>
@@ -34,14 +34,16 @@
             栏目管理
         </div>
         <ul class="menuson"   <{if condition="CONTROLLER_NAME =='Category'"}>style="display:block"<{else /}>style="display:none"<{/if}>>
-            <li   <{if condition="ACTION_NAME =='add'"}> class="active" <{/if}>>
-            <a href="<{:U('Category/add')}>"><i class="icon-cogs"><span class="glyphicon glyphicon-plus-sign"></span></i>添加栏目</a>
+            <li   <{if condition="ACTION_NAME =='category_add'"}> class="active" <{/if}>>
+            <a href="<{:U('Category/category_add')}>"><i class="icon-cogs"><span class="glyphicon glyphicon-plus-sign"></span></i>添加栏目</a>
             </li>
-            <li   <{if condition="ACTION_NAME =='index'"}> class="active" <{/if}>>
+            <li   <{if condition="(CONTROLLER_NAME =='Category') and (ACTION_NAME =='index')"}> class="active" <{/if}>>
             <a href="<{:U('Category/index')}>"><i class="icon-cogs"><span class="glyphicon glyphicon-hdd"></span></i>栏目管理</a>
             </li>
-            <li><a href="#"><i class="icon-cogs"><span class="glyphicon glyphicon-menu-hamburger"></span></i>推荐位管理</a></li>
-            <li><a href="#"><i class="icon-cogs"><span class="glyphicon glyphicon-edit"></span></i>添加推荐位</a></li>
+            <li <{if condition="ACTION_NAME =='nature'"}> class="active" <{/if}>>
+                <a href="<{:U('Category/nature')}>"><i class="icon-cogs"><span class="glyphicon glyphicon-menu-hamburger"></span></i>推荐位管理</a></li>
+            <li <{if condition="ACTION_NAME =='nature_add'"}> class="active" <{/if}>>
+                <a href="<{:U('Category/nature_add')}>"><i class="icon-cogs"><span class="glyphicon glyphicon-edit"></span></i>添加推荐位</a></li>
             <li><a href="#"><i class="icon-cogs"><span class="glyphicon glyphicon-equalizer"></span></i>类别管理</a></li>
             <li><a href="#"><i class="icon-cogs"><span class="glyphicon glyphicon-th-large"></span></i>添加类别</a></li>
             <li><a href="#"><i class="icon-cogs"><span class="glyphicon glyphicon-cog"></span></i>栏目设置</a></li>

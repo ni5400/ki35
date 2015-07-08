@@ -1,0 +1,283 @@
+<{extend name="Base/common" /}>
+<{block name="style"}>
+<!-- 引入编辑器插件-->
+<link rel="stylesheet" type="text/css" href="__DATA__/myeditor/themes/default/default.css"/>
+<script charset="utf-8" src="__DATA__/myeditor/kindeditor.js"></script>
+<script charset="utf-8" src="__DATA__/myeditor/lang/zh_CN.js"></script>
+<script type="text/javascript" src="__JS__/jquery-validate.js"></script>
+<!-- 日期插件-->
+<script src="__DATA__/My97DatePicker/WdatePicker.js"></script>
+<link href="__CSS__/form.css" rel="stylesheet" type="text/css" />
+<{/block}>
+<{block name="menu"}><{include file="Public/left-content" /}><{/block}>
+<{block name="main"}>
+<!-- 引入插件节束-->
+<script>
+    //编辑器引用激活
+    KindEditor.ready(function(K) {
+        //文章内容编辑器
+        K.create('#content', {
+            themeType : 'simple',
+            width : "98%",
+            height:400,
+            allowUpload : true//允许上传图片
+            //imageUploadJson : '{:U("Admin/Article/uplaod")}' //服务端上传图片处理URI
+        });
+
+        //标题图片提交
+        var editor = K.editor({
+            allowFileManager : true
+        });
+        //标题图片提交
+        K('#thumb').click(function() {
+            editor.loadPlugin('image', function() {
+                editor.plugin.imageDialog({
+                    imageUrl : K('#url1').val(),
+                    clickFn : function(url, title, width, height, border, align) {
+                        K('#url1').val(url);
+                        editor.hideDialog();
+                    }
+                });
+            });
+        });
+        //标题颜色对话框
+        var colorpicker;
+        K('#colorpicker').bind('click', function(e) {
+            e.stopPropagation();
+            if (colorpicker) {
+                colorpicker.remove();
+                colorpicker = null;
+                return;
+            }
+            var colorpickerPos = K('#colorpicker').pos();
+            colorpicker = K.colorpicker({
+                x : colorpickerPos.x,
+                y : colorpickerPos.y + K('#colorpicker').height(),
+                z : 19811214,
+                selectedColor : 'default',
+                noColor : '无颜色',
+                click : function(color) {
+                    K('#color').val(color);
+                    K('.color').css('background-color',color);
+                    colorpicker.remove();
+                    colorpicker = null;
+                }
+            });
+        });
+        K(document).click(function() {
+            if (colorpicker) {
+                colorpicker.remove();
+                colorpicker = null;
+            }
+        });
+    });
+</script>
+<div class="form_con" style="padding: 0px; border: 0px solid #CCC; border-top: none">
+    <form action="<{:U('Article/editHandle')}>" method="post" id="manager_add">
+        <!--表单-->
+        <legend></legend>
+        <h4 class="text-center">修改文档</h4>
+        <legend></legend>
+        <table class="table mytable table-striped  ">
+            <tbody>
+            <tr class=" table_title">
+                <th> 　文档-基本信息</th>
+                <th></th>
+            </tr>
+            <tr class="form-group form-group-sm">
+                <th class="text-right" style=" width: 120px;">所属栏目　</th>
+                <th >
+                    <div class="col-lg-4">
+                        <select name="catid" class="form-control">
+                            <option value="">选择栏目归属</option>
+                            <{volist name="cate" id="vo"}>
+                            <option <{if condition="$content['catid']==$vo['id']"}>selected="selected"<{/if}>  value="<{$vo.id}>"  > <{if condition="$vo['pid']==0"}>
+                            ├【<{$vo.ctitle}>】<{else /}>├<{$vo.html}>【<{$vo.ctitle}>】<{/if}></option><{/volist}>                  </select>
+                    </div>
+                </th>
+            </tr>
+            <tr class="form-group form-group-sm">
+                <th class="text-right" >标题</th>
+                <th >
+                    <div class="col-lg-8">
+                        <input class="form-control" value="<{$content.title}>" type="text" name="title" placeholder="请输入文章标题">
+                        <input value="<{$content.id}>" type="hidden" name="id">
+                        <a type="submit" class="btn btn-sm btn-danger no-btn re-name" type="button">重名检测</a>
+                        <div class="color" style="background-color: {$data.style}" id="colorpicker" ></div> <input type="hidden" id="color" name="style"/>
+                    </div>
+                </th>
+            </tr>
+            <tr class="form-group form-group-sm">
+                <th class="text-right" >标题图片　</th>
+                <th class="form-inline"> 　
+                    <input type="text"  value="<{$content.thumb}>" name="thumb" id="url1" class="form-control length-250"  placeholder="栏目图片">
+                    <a id="thumb" type="submit" class="btn btn-sm btn-primary no-btn " type="button">选择图片</a>（网络图片 + 本地上传）
+                </th>
+            </tr>
+            <tr class=" table_title">
+                <th>　文档-推荐属性</th>
+                <th></th>
+            </tr>
+            <tr class="form-group form-group-sm">
+                <th class="text-right" >推荐位　</th>
+                <th >
+                    <div class="col-lg-11">
+                        <{volist name="nature" id="nvo"}>
+                        <div class="nature">
+                            <div class="title"><{$nvo.title}></div>
+                            <ul><{volist name="nvo.child" id="svo"}><li> <input type="checkbox" name="nature[]" value="<{$svo.id}>" <{if condition="$svo['check']==1"}>checked<{/if}>> <{$svo.title}></li><{/volist}></ul>
+                        </div>
+                        <{/volist}>
+                    </div>
+                </th>
+            </tr>
+            <tr class=" table_title">
+                <th>　文档-SEO信息</th>
+                <th></th>
+            </tr>
+            <tr class="form-group form-group-sm">
+                <th class="text-right" >SEO标题　</th>
+                <th >
+                    <div class="col-lg-8">
+                        <input class="form-control "  value="<{$content.stitle}>" type="text" name="stitle" placeholder="请输入SEO标题">
+                    </div>
+                </th>
+            </tr>
+            <tr class="form-group form-group-sm">
+                <th class="text-right" >关键字　</th>
+                <th >
+                    <div class="col-lg-8">
+                        <input class="form-control"  value="<{$content.keyword}>" type="text" name="keyword" placeholder="请输入关键字">
+                    </div>
+                </th>
+            </tr>
+    
+            <tr class="form-group form-group-sm">
+                <th class="text-right" >描述　</th>
+                <th >
+                    <div class="col-lg-6">
+                        <textarea class="form-control" rows="3" name="introduce" placeholder="请输入100字内的描述,若留空则自动截取内容的前100个字符作为内容描述" style="height: 101px; min-width: 600px;"> <{$content.introduce}></textarea>
+                    </div>
+                </th>
+            </tr>
+            <tr class=" table_title">
+                <th>　文档-主体信息</th>
+                <th></th>
+            </tr>
+            <tr class="form-group form-group-sm">
+                <th class="text-right" >内容　</th>
+                <th >
+                    <div class="col-lg-12">
+                        <textarea name="content" class="form-control" id="content" >
+                           <{$content.content}>
+                        </textarea>
+                    </div>
+                </th>
+            </tr>
+            <tr class="form-group form-group-sm">
+                <th class="text-right">状态　</th>
+                <th >
+                    <div class="col-lg-2">
+                        <select name="status" class="form-control">
+                            <option value="1"  <{if condition="$content['status']==1"}>selected="selected"<{/if}> >正常</option>
+                            <option value="0"  <{if condition="$content['status']==0"}>selected="selected"<{/if}>>未通过(不显示)</option>
+                            <option value="2"  <{if condition="$content['status']==2"}>selected="selected"<{/if}>>待审核</option>
+                            <option value="3"  <{if condition="$content['status']==3"}>selected="selected"<{/if}>>已删除</option>
+                        </select>
+                    </div>
+                </th>
+            </tr>
+            <tr class=" table_title">
+                <th>　文档-附加信息</th>
+                <th></th>
+            </tr>
+            <tr class="form-group form-group-sm">
+                <th class="text-right" >发布时间　</th>
+                <th >
+                    <div class="col-lg-8">
+                        <input name="add_time"  value="<{$content.add_time|date='Y-m-d',###}>" class="Wdate  form-control input-sm length-150" type="text" onclick="WdatePicker()" onFocus="WdatePicker({skin:'whyGreen',isShowClear:false,readOnly:true})" value="<{php}>echo date('Y-m-d H:i:s',time()) <{/php}>">
+                    </div>
+                </th>
+            </tr>
+            <tr class="form-group form-group-sm">
+                <th class="text-right" >来源URL　</th>
+                <th >
+                    <div class="col-lg-10">
+                        <input class="form-control"  value="<{$content.fromurl}>" type="text" name="fromurl" placeholder="请输入来源URL">
+                    </div>
+                </th>
+            </tr>
+            <tr class="form-group form-group-sm">
+                <th class="text-right" >其它相关　</th>
+                <th class="form-inline"> 　
+                    <div class="form-group">
+                        <label >作者</label>
+                        <input type="text" class="form-control" name="author"  value="<{$content.author}>"  placeholder="作者" >
+                    </div>
+                    <div class="form-group">
+                        <label >来源</label>
+                        <input type="text" class="form-control" placeholder="来源"  value="<{$content.copyfrom}>" name="copyfrom">
+                    </div>
+                    <div class="form-group">
+                        <label >点击</label>
+                        <input type="text" class="form-control" name="hits"  value="<{$content.hits}>" placeholder="点击">
+                    </div>
+                </th>
+            </tr>
+            <tr class=" table_title">
+                <th>　文档-模板设置</th>
+                <th></th>
+            </tr>
+            <tr class="form-group form-group-sm">
+                <th class="text-right" style=" width: 120px;">模板选择　</th>
+                <th >
+                    <div class="col-lg-2">
+                        <select name="template" class="form-control">
+                            <option value="">默认</option>
+                        </select>
+                    </div>
+                </th>
+            </tr>
+            </tbody>
+        </table>
+        <legend></legend>
+        <div class="form-group" id="lock">
+            <div class="col-sm-offset-5 col-sm-4">
+                <button type="submit" id="fat-btn" class="btn btn-success no-btn" data-loading-text="提交中" type="button">提 　交</button>
+                <button type="reset" class="btn btn2 no-btn">重 　置</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script>
+    //验证规则
+    $('#manager_add').validate({
+        errorElement:'span',   //错语标签
+        errorClass:'error',    //错误css
+        success:function(span){
+            span.removeClass('error');
+            span.addClass('success');
+        },    //验证成功后移除error,添加success样式
+        submitHandler:function(){
+            $('#fat-btn').button('loading').queue(function() {
+                form.submit();
+            });
+        },
+        rules:{
+            title:{required:true,rangelength:[5,20]},
+            catid:{required:true},
+            content:{required:true,rangelength:[5,20000]},
+            status:{required:true}
+        },
+        messages:{
+            title:{required:'标题不能为空',rangelength:'标题长度5-20位'},
+            catid:{required:'请选择栏目所属'},
+            content:{ required:'密码不能为空', rangelength:'内容长度最短为'},
+            status:{required:'状态必须选择'}
+        }
+    });
+</script>
+
+<!--表单-->
+
+<{/block}>

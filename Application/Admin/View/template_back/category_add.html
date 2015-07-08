@@ -1,0 +1,276 @@
+<{extend name="Base/common" /}>
+<{block name="style"}>
+<!-- 引入编辑器插件-->
+<link rel="stylesheet" type="text/css" href="__DATA__/myeditor/themes/default/default.css"/>
+<script charset="utf-8" src="__DATA__/myeditor/kindeditor.js"></script>
+<script charset="utf-8" src="__DATA__/myeditor/lang/zh_CN.js"></script>
+<link href="__CSS__/form.css" rel="stylesheet" type="text/css" />
+<!-- 引入插件节束-->
+<script>
+    //编辑器引用激活
+    KindEditor.ready(function(K) {
+        //标题图片提交
+        var editor = K.editor({
+            allowFileManager : true
+        });
+        //标题图片提交
+        K('#thumb').click(function() {
+            editor.loadPlugin('image', function() {
+                editor.plugin.imageDialog({
+                    imageUrl : K('#url1').val(),
+                    clickFn : function(url, title, width, height, border, align) {
+                        K('#url1').val(url);
+                        editor.hideDialog();
+                    }
+                });
+            });
+        });
+
+    });
+</script>
+<{/block}>
+<{block name="menu"}><{include file="Public/left-content" /}><{/block}>
+<{block name="main"}>
+<div class="form_title"><i class="icon-cogs"><span class="glyphicon glyphicon-th-list"></span></i>导航</div>
+<div class="form_con">
+    <!--表单-->
+        <div class="class_lmqh">
+            <ul>
+                <li class="gg_a" id="g_bt1" onmousedown="gg(1)"><a href="#">基本参数</a></li>
+                <li class="gg_b" id="g_bt2" onmousedown="gg(2)"><a href="#">SEO设置</a></li>
+                <li class="gg_b" id="g_bt3" onmousedown="gg(3)"><a href="#">生成HTML设置</a></li>
+                <li class="gg_b" id="g_bt4" onmousedown="gg(4)"><a href="#">模板设置</a></li>
+                <li class="gg_b" id="g_bt5" onmousedown="gg(5)"><a href="#">权限设置</a></li>
+            </ul>
+        </div>
+    <form action="<{:U('Category/addHandle')}>" method="post"></form>
+            <div id="g_nr1">
+
+                <table class="table  table-hover table-striped mytable">
+                    <tbody>
+                        <tr class=" table_title">
+                            <th>文档-基本信息</th>
+                            <th></th>
+                        </tr>
+                        <tr class="form-group form-group-sm">
+                            <th class="text-right  col-lg-2">栏目归属　</th>
+                            <th >
+                                <div class="col-lg-4">
+                                    <select name="group" class="form-control">
+                                        <option value="">选择角色分组</option>
+                                        <{volist name="cate" id="vo"}>
+                                        <option  <{if condition="$vo['id']==$cateid"}>selected="selected"<{/if}>  value="<{$vo.id}>"> <{if condition="$vo['pid']==0"}>
+                                            ├【<{$vo.ctitle}>】<{else /}>├<{$vo.html}>【<{$vo.ctitle}>】<{/if}></option><{/volist}>
+                                    </select>
+                                </div>
+                            </th>
+                        </tr>
+                        <tr class="form-group form-group-sm">
+                            <th class="text-right">栏目名称　</th>
+                            <th >
+                                <div class="col-lg-4">
+                                    <input class="form-control " type="text" name="" placeholder="请输入">
+                                </div>
+                            </th>
+                        </tr>
+                        <tr class="form-group form-group-sm">
+                            <th class="text-right">栏目目录　</th>
+                            <th >
+                                <div class="col-lg-2">
+                                    <input class="form-control" type="text" name="" placeholder="请输入">
+                                </div>
+                            </th>
+                        </tr>
+                        <tr class="form-group form-group-sm">
+                            <th class="text-right">栏目图片　</th>
+                            <th class="form-inline"> 　
+                                <input type="text" id="url1" class="form-control length-250"  placeholder="栏目图片" disabled>
+                                <a id="thumb" type="submit" class="btn btn-sm btn-primary no-btn " type="button">选择图片</a>（网络图片 + 本地上传）
+                            </th>
+                        </tr>
+                        <tr class="form-group form-group-sm">
+                            <th class="text-right">描述　</th>
+                            <th >
+                                <div class="col-lg-6">
+                                    <textarea class="form-control" rows="3" name="remark" placeholder="请输入100字内的描述" style="margin: 0px -166.5px 0px 0px; height: 101px; width: 560px;"></textarea>
+                                </div>
+                            </th>
+                        </tr>
+                        <tr class=" table_title">
+                            <th></th>
+                            <th class="text-right">下一步</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="g_nr2" style="display:none;">
+
+                <table class="table   table-hover table-striped mytable">
+                    <tbody>
+                    <tr class=" table_title">
+                        <th>文档-基本信息</th>
+                        <th></th>
+                    </tr>
+                    <tr class="form-group form-group-sm">
+                        <th class="text-right">META Title（栏目标题） <br/>
+                            针对搜索引擎设置的标题　</th>
+                        <th >
+                            <div class="col-lg-8">
+                                <input class="form-control " type="text" name="" placeholder="请输入">
+                            </div>
+                        </th>
+                    </tr>
+                    <tr class="form-group form-group-sm">
+                        <th class="text-right">META Keywords（栏目关键词）
+                            <br/>关键字中间用半角逗号隔开　　</th>
+                        <th >
+                            <div class="col-lg-8">
+                                <input class="form-control" type="text" name="" placeholder="请输入">
+                            </div>
+                        </th>
+                    </tr>
+                    <tr class="form-group form-group-sm">
+                        <th class="text-right">META Description（栏目描述）
+                            <br/> 针对搜索引擎设置的网页描述　　</th>
+                        <th >
+                            <div class="col-lg-6">
+                                <textarea class="form-control" rows="3" name="remark" placeholder="请输入100字内的描述" style="margin: 0px -166.5px 0px 0px; height: 101px; width: 560px;"></textarea>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr class=" table_title">
+                        <th>文档-基本信息</th>
+                        <th></th>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="g_nr3" style="display:none;">
+                <legend></legend>
+                <h4 class="text-center">生成Html设置</h4>
+                <legend></legend>
+            </div>
+            <div id="g_nr4" style="display:none;">
+                <table class="table   table-hover table-striped mytable">
+                    <tbody>
+                    <tr class=" table_title">
+                        <th>文档-基本信息</th>
+                        <th></th>
+                    </tr>
+                    <tr class="form-group form-group-sm">
+                        <th class="text-right col-lg-2">选择风格</th>
+                        <th >
+                            <div class="col-lg-3">
+                                <select name="group" class="form-control">
+                                    <option value="">选择角色分组</option>
+                                    <option value="1" disabled="">网站创始员</option>
+                                    <option value="33">bafdfdf</option>
+                                    <option value="34">超级管理员fd</option>                                                                 </select>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr class="form-group form-group-sm">
+                        <th class="text-right">列表模版</th>
+                        <th >
+                            <div class="col-lg-3">
+                                <select name="group" class="form-control">
+                                    <option value="">选择角色分组</option>
+                                    <option value="1" disabled="">网站创始员</option>
+                                    <option value="33">bafdfdf</option>
+                                    <option value="34">超级管理员fd</option>                                                                 </select>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr class="form-group form-group-sm">
+                        <th class="text-right">内容模板</th>
+                        <th >
+                            <div class="col-lg-3">
+                                <select name="group" class="form-control">
+                                    <option value="">选择角色分组</option>
+                                    <option value="1" disabled="">网站创始员</option>
+                                    <option value="33">bafdfdf</option>
+                                    <option value="34">超级管理员fd</option>                                                                 </select>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr class=" table_title">
+                        <th>文档-基本信息</th>
+                        <th></th>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="g_nr5" style="display:none;">
+                <legend></legend>
+                <h4 class="text-center">权限设置</h4>
+                <legend></legend>
+            </div>
+    <div class="form-group" id="lock">
+        <legend></legend>
+        <div class="col-sm-offset-5 col-sm-4">
+            <button type="submit" id="fat-btn" class="btn btn-success no-btn" data-loading-text="提交中" type="button">提 　交</button>
+            <button type="reset" class="btn btn2 no-btn">重 　置</button>
+        </div>
+    </div>
+    </form>
+</div>
+
+
+    <!--表单-->
+<script>
+    //切换Js
+    function GetObj(objName){
+        if(document.getElementById){
+            return eval('document.getElementById("' + objName + '")');
+        }else if(document.layers){
+            return eval("document.layers['" + objName +"']");
+        }else{
+            return eval('document.all.' + objName);
+        }
+    }
+    function gg(index,flag){
+        var btid="g_bt";
+        var nrid="g_nr";
+        var curter_class="gg_a";
+        var dis_class="gg_b";
+        for(i=0;i<6;i++){
+            if(GetObj(nrid+i)&&GetObj(btid+i)){
+                GetObj(nrid+i).style.display = 'none';
+                GetObj(btid+i).className = dis_class;
+            }
+        }
+        if(GetObj(nrid+index)&&GetObj(btid+index)){
+            GetObj(nrid+index).style.display = 'block';
+            GetObj(btid+index).className = curter_class;}
+    }
+//    //验证规则
+//    $('#node_add').validate({
+//        errorElement:'span',   //错语标签
+//        errorClass:'error',    //错误css
+//        success:function(span){
+//            span.removeClass('error');
+//            span.addClass('success');
+//        },    //验证成功后移除error,添加success样式
+//        submitHandler:function(){
+//            $('#fat-btn').button('loading').queue(function() {
+//                form.submit();
+//            });
+//        },
+//        rules:{
+//            name:{required:true,rangelength:[4,60],stringCheck:true},
+//            title:{required:true,rangelength:[2,20]},
+//            status:{required:true},
+//            pid:{required:true},
+//            level:{required:true}
+//        },
+//        messages:{
+//            name:{required:'名称不能为空',rangelength:'名称长度4-60位'},
+//            title:{required:'显示名不能为空',rangelength:'显示名长度2-20位'},
+//            status:{required:'请选择状态'},
+//            pid:{required:'请选择节点归属'},
+//            level:{required:'请选择节点类型'}
+//        }
+//    });
+
+</script>
+<{/block}>

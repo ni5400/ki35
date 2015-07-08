@@ -17,7 +17,7 @@
         <tr style="background: #efefef;">
             <th>　<input type="checkbox" id="all"></th>
             <th>ID</th>
-            <th>栏目类型</th>
+            <th>栏目名称</th>
             <th>栏目类型</th>
             <th>状态</th>
             <th>管理操作</th>
@@ -28,7 +28,7 @@
         <td>　<input type="checkbox" value="<{$vo.id}>" name="id[]" level="<{$vo.pid}>"></td>
         <td><{$vo.id}></td>
         <td>
-            <{if condition="$vo['pid']==0"}><i class="glyphicon glyphicon-check" style="color: #a80804" data-toggle="tooltip" data-placement="left" title="分组"></i> <{$vo.ctitle}><{else /}> <{if condition="$vo['level']==2"}><{$vo.html}><i class="glyphicon glyphicon-hand-right" style="color: #187baf" data-toggle="tooltip" data-placement="left" title="模块"></i>├【<{$vo.ctitle}>】<{else /}><{$vo.html}>　<i class="glyphicon glyphicon-log-in" style="color: #5d9912" data-toggle="tooltip" data-placement="left" title="方法"></i>├【<{$vo.ctitle}>】<{/if}>
+            <{if condition="$vo['pid']==0"}><i class="glyphicon glyphicon-check" style="color: #a80804" ></i> <{$vo.ctitle}><{else /}> <{if condition="$vo['level']==2"}><{$vo.html}><i class="glyphicon glyphicon-hand-right" style="color: #187baf" ></i>【<{$vo.ctitle}>】<{else /}><{$vo.html}><i class="glyphicon glyphicon-log-in" style="color: #5d9912"></i>【<{$vo.ctitle}>】<{/if}>
             <{/if}>
         </td>
         <td></td>
@@ -40,13 +40,14 @@
             <{/if}>
         </td>
         <td class="btn_edit">
-            <a href="<{:U('Document/Category_edit',array('id'=>$vo['id']))}>" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="left" title="修改" ><i class="glyphicon glyphicon-pencil"></i></a>
+            <a href="<{:U('Category/Category_edit',array('cateid'=>$vo['id']))}>" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="left" title="修改" ><i class="glyphicon glyphicon-pencil"></i></a>
             <button class="btn btn-sm btn-danger btn-remove" data="<{$vo.id}>" data-toggle="tooltip" data-placement="top" title="删除"><i class="glyphicon glyphicon-trash"></i></button>
-            <{if condition="($vo['level'] lt 3)"}>
-            <a href="<{:U('Document/category_add',array('add_id'=>$vo['id']))}>" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="bottom" title="添加子节点" ><i class="glyphicon glyphicon-plus"></i></a>
-            <{/if}>
+            <a href="<{:U('Category/category_add',array('cateid'=>$vo['id']))}>" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="bottom" title="添加子栏目" ><i class="glyphicon glyphicon-plus"></i></a>
+            <a href="<{:U('Article/articleAdd',array('cateid'=>$vo['id']))}>" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="right" title="添加文章" ><i class="glyphicon glyphicon-plus-sign"></i>添加文章</a>
         </td>
-        <td><code><a href="<{:U('Article/index',array('cateid'=>$vo['id']))}>">文章管理</a></code> </td>
+        <td>
+            <code><a href="<{:U('Article/index',array('cateid'=>$vo['id']))}>">文章管理</a></code>
+        </td>
         </tr>
 
         <{/volist}>
@@ -152,16 +153,26 @@
     $('.btn-remove').click(function(){
         var thisClick=$(this).parents('tr');
         var getId=$(this).attr('data');
-        var Url="<{:U('')}>";
-        var reUrl="<{:U('')}>";
+        var Url="<{:U('Category/cateDel')}>";
+        var reUrl="<{:U('Category/catePid')}>";
         //ajax验证是否存在子节点
         $.ajax({
             url : reUrl,
             type : 'POST',
             data : { id:getId },
             success: function(data, response, status){
-                if(data >0){
-                    $('.del-result').html('该节点存在<code>'+data+'</code>节点，请先删除后再进行操作');
+                    //先判断是否存在文章
+                if(data.category >0){
+                    $('.del-result').html('该栏目存下存在<code>'+data.category+'</code>个子栏目，请先删除所有子栏目后再进行操作');
+
+                    $('#error-dialog').modal('show');
+                    setTimeout(function(){
+                        $('.del-result').html('...');
+                        $('#error-dialog').modal('hide');
+                    },3200);
+                    //是否存在子栏目
+                }else if(data.article >0){
+                    $('.del-result').html('该栏目存下存在<code>'+data.article+'</code>篇文章，请先删除所有文章 后再进行操作');
                     $('#error-dialog').modal('show');
                     setTimeout(function(){
                         $('.del-result').html('...');
@@ -200,6 +211,7 @@
                     })
                 }
             }
+
         });
     })
 

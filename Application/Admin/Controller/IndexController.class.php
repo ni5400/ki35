@@ -13,16 +13,19 @@ use MyLibrary\Page;
 class IndexController extends CommonController {
 
     //默认登陆后台后的首页
-    public function index(){
+    public function index()
+    {
 
         $this->display();
     }
     //修改个人密码模板显示
-    public function password(){
+    public function password()
+    {
         $this->display();
     }
     //修改个人密码表单处理
-    public function passwordHandle(){
+    public function passwordHandle()
+    {
         //动态验证
         $rules = array(
             array('password','require','密码必须！'), //默认情况下用正则进行验证
@@ -47,13 +50,15 @@ class IndexController extends CommonController {
         }
     }
     //个人信息首页
-    public function info(){
+    public function info()
+    {
         $map['id']=session('admin_auth')['user_id'];
         $this->user = D("UserView")->where($map)->find();
         $this->display();
     }
     //个人中心登陆日志
-    public function log(){
+    public function log()
+    {
         //获取多查询条件
         $Data=A('Common')->whereCondition();
         //只查询当前用户的登陆信息
@@ -70,7 +75,8 @@ class IndexController extends CommonController {
         $this->display();
     }
     //删除单条登陆日志记录
-    public function delDialog(){
+    public function delDialog()
+    {
         if(!IS_AJAX) $this->error('非法操作');
         $UserId=I('post.id','','intval');
         if($UserId==1) echo "false";
@@ -81,12 +87,14 @@ class IndexController extends CommonController {
         }
     }
     //批量删除登陆日志记录
-    public function delBatchDialog(){
+    public function delBatchDialog()
+    {
         P($_POST);
     }
 
     //文档表表
-    public function document(){
+    public function document()
+    {
         A('Article')->index();
     }
 

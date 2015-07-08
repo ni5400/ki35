@@ -47,3 +47,7 @@ span.error{  color: #a80804; padding-left: 5px; margin-top: 3px;}
 .mytable tr:hover{background: rgba(241, 247, 253, 0.21) !important;}
 .mytable>tbody>tr>td,.mytable>tbody>tr>th,.mytable>tfoot>tr>td,.mytable >tfoot>tr>th,.mytable >thead>tr>td,.mytable >thead>tr>th  {color: #666;vertical-align:middle !important}
 .table_title{background: #F1F7Fd !important; color: #134d9d ;}
+.nature{width: 100%; float: left; display: block}
+.nature .title{width:50px; float: left; line-height: 30px;}
+.nature ul{float: left; width: 90%; display: block;}
+.nature ul li{float: left; border: 1px dotted #CCC; margin: 2px 5px; padding: 0px 10px; background: #f1f1f1}

@@ -15,11 +15,13 @@ use MyLibrary\Page;
 class ArticleController extends CommonController{
 
     //内容模型首页
-   public function content(){
+   public function content()
+   {
        $this->display();
    }
     //公共获取栏目
-    public function getCategory(){
+    public function getCategory()
+    {
         $getNodeList=M('Category')->field('id,pid,ctitle')->select();
         $Category=new Category();
         $CategoryList=$Category->cate_ollist($getNodeList,0,'┈┈┤');
@@ -27,7 +29,8 @@ class ArticleController extends CommonController{
     }
 
     //检索的表单的变量返还给模板
-    public function assignMap($data){
+    public function assignMap($data)
+    {
         $map=array();
         foreach($data['map'] as $key =>$value){
             $map['user_name']=$data['map']['user_name'][1];
@@ -57,7 +60,8 @@ class ArticleController extends CommonController{
     }
 
     //获取文章列表
-    public function getArticle($data){
+    public function getArticle($data)
+    {
         $this->getCategory(); //取得栏目下拉菜单
         if($_GET['cateid']) $data['map']['cateid']=I('cateid','intval');
         if(!$data['order']) $data['order']='id Desc';
@@ -77,7 +81,8 @@ class ArticleController extends CommonController{
     }
 
     //文章列表
-    public function index(){
+    public function index()
+    {
         //获取表单检索的条件
         $data=A('Common')->whereCondition();
         $this->assignMap($data); //注册搜索条件给模板
@@ -85,7 +90,8 @@ class ArticleController extends CommonController{
     }
 
     //待审核的文章列表
-    public function wait(){
+    public function wait()
+    {
         $data=A('Common')->whereCondition();
         $data['map']['status']=array('EQ',2);
         $this->assignMap($data);
@@ -93,7 +99,8 @@ class ArticleController extends CommonController{
 
     }
     //已删除的文档
-    public function remove(){
+    public function remove()
+    {
         $data=A('Common')->whereCondition();
         $data['map']['status']=array('EQ',3);
         $this->assignMap($data);
@@ -101,153 +108,207 @@ class ArticleController extends CommonController{
     }
 
     //我发布的文档即当前登陆人发布的文档
-    public function my(){
+    public function my()
+    {
         $data=A('Common')->whereCondition();
         $data['map']['user_name']=session('admin_auth')['user_name'];
         $this->assignMap($data);
         $this->getArticle($data);
     }
     //审核通过的文档，即正常显示的文档
-    public function normal(){
+    public function normal()
+    {
         $data=A('Common')->whereCondition();
         $data['map']['status']=array('EQ',1);
         $this->assignMap($data);
         $this->getArticle($data);
     }
 
-
-    public function add(){
-        $this->display();
+    //添加文章
+    public function articleAdd()
+    {
+        //查询推荐位
+        $getNodeList=M('ArticleNature')->field('id,pid,title')->select();
+        $Category=new Category();
+        $nature=$Category->cate_ullist($getNodeList);
+        $this->assign('nature',$nature);
+        //查询栏目
+        A('Category')->getCategory($html="┈┈┤");
+        $this->display('add');
     }
 
-    public function addHandle(){
-
+    //文章添加表单处理
+    public function addHandle()
+    {
+        //表单数据
         $data=array(
-            'itemid'=>'',
-            'catid'=>I('catid','','intval'),
-            'title'=>I('title','','trim,htmlspecialchars'),
-            'stitle'=>I('stitle','','trim,htmlspecialchars'),
-            'style'=>I('style','','htmlspecialchars'),
-            'introduce'=>I('introduce','','trim,htmlspecialchars'),
-            'search'=>I('search','','trim,htmlspecialchars'),
-            'keyword'=>I('keyword','','trim,htmlspecialchars'),
-            'author'=>I('author','','trim,htmlspecialchars'),
-            'copyfrom'=>I('copyfrom','','trim,htmlspecialchars'),
-            'fromurl'=>I('fromurl','','trim,htmlspecialchars'),
-            'thumb'=>I('thumb','','htmlspecialchars'),
-            'username'=>session('username'),
-            'edittime'=>I('addtime','','strtotime'),
+            'catid'=>I('post.catid','intval'),
+            'title'=>I('post.title'),
+            'style'=>I('post.style'),
+            'thumb'=>I('post.thumb'),
+            'stitle'=>I('post.stitle'),
+            'keyword'=>I('post.keyword'),
+            'introduce'=>I('post.introduce'),
             'ip'=>get_client_ip(),
-            'template'=>I('template','','htmlspecialchars'),
-            'islink'=>I('islink','','intval'),
-            'linkurl'=>I('linkurl','','htmlspecialchars'),
-            'filepath'=>I('filepath','','htmlspecialchars'),
-            'reason'=>I('reason','','trim,htmlspecialchars'),
-            'addtime'=>I('addtime','','strtotime'),
-            'status'=>I('status','','trim,intval'),
-            'hits'=>I('hits','','trim,intval')
+            'linkurl'=>I('post.linkurl'),
+            'filepath'=>I('post.filepath'),
+            'reason'=>I('post.reason'),
+            'search'=>I('post.search'),
+            'user_name'=>session('admin_auth')['user_name'],
+            'Data'=>array(
+                'content'=>I('post.content'),
+            ),
+            'status'=>I('post.status'),
+            'add_time'=>strtotime(I('post.add_time')),
+            'update_time'=>strtotime(I('post.add_time')),
+            'fromurl'=>I('post.fromurl'),
+            'author'=>I('post.author'),
+            'copyfrom'=>I('post.copyfrom'),
+            'hits'=>I('post.hits','0','intval'),
         );
-        if(!IS_POST) $this->error('非法操作');
-        $itemid=M('article')->data($data)->add();
-           $data2=array(
-               'itemid'=>$itemid,
-               'content'=>I('content','','htmlspecialchars')
-           );
-        $content=M('article_data')->data($data2)->add();
-        if($itemid && $content){
-            $this->success('添加成功');
+        $Article=D('ArticleRelation');
+        if(!$Article->create($data)){
+            $this->error($Article->getError());
         }else{
-            $this->error('新增失败');
-        }
+            if($result=$Article->relation('Data')->add($data)){
+                //处理推荐表处理，多对多
+                $nature=I('post.nature');
+                foreach($nature as $v=>$k){
+                    $nature[$v]=array(
+                        'article_id'=>$result,
+                        'nature_id'=>$k
+                    );
+                }
+                M('ArticleNatureData')->addAll($nature);
+                $this->success('添加成功',U('Article/index'));
 
-
-    }
-
-    public function del(){
-
-      if(IS_POST){
-            $itemid=I('id','','intval');
-            $del=M('Article')->where(array('itemid'=>$itemid))->delete();
-            $del2=M('Article_data')->where(array('itemid'=>$itemid))->delete();
-            if($del&&$del2){
-                echo 1;
             }else{
-                echo 0;
+                $this->error('添加失败，请检查');
             }
+        }
+
+    }
+
+    //文档删除 ajax删除的
+    public function document_del()
+    {
+        if(!IS_AJAX) $this->error('非法操作');
+        $Id=I('post.id','','intval');
+        $map['article_id']=$Id;
+        $delArticle=M('Article')->where('id='.$Id)->delete(); //删除文章主表
+        $delArticleData=M('ArticleData')->where('aid='.$Id)->delete(); //删除文章副表
+        $delArticleNature=M('ArticleNatureData')->where($map)->delete(); //删除推荐副表
+        if($delArticle || $delArticleData || $delArticleNature ){
+                echo "true";
         }else{
-            $this->error('非法操作');
+            echo "false";
         }
-
-
     }
 
-    public function edit(){
-
-        if(isset($_GET['catid'])){
-            $this->catid=$catid=I('catid','','intval') ;
-
+    /**
+     *文章修改，便例推荐位，
+     * 推荐位的处理，比较复杂，多研究下
+     */
+    public function article_edit()
+    {
+        $id=I('get.edit','intval');//获取文章修改的id
+        A('Category')->getCategory($html="┈┈┤");
+        //查询推荐位
+        $getNodeList=M('ArticleNature')->field('id,pid,title')->select();
+        //查询文章的所有信息包推荐位信息
+        $content=D('ArticleRelation')->relation(true)->find($id);
+        /*
+        $natureData=array_column($content['nature'],'nature_id');
+        php 5.5以上的版本可以直接使用此函数$content['nature']将数据里所有的值取出来重组成一个新数组，
+        5.4以下版本只能使用便例的方式 取出文章表里推荐位的id的值
+        */
+        foreach($content['nature'] as $v=>$k){
+            $content['nature'][$v]=$k['nature_id'];
         }
-        //查询无序分类到模板
-        $cate=M('category')->select();
-        $category=new \MyLibrary\Category();
-        $this->cate=$category->cate_ollist($cate,0,'　');
-        $this->catid=I('catid','','intval');
+        //匹配文章表里推荐位的值如果和$getNodeList所有推荐位的id的值相等则让其子数组多一个check元素
+        foreach($getNodeList as $key=>$values){
+            if(in_array($values['id'],$content['nature'])){
+                $getNodeList[$key]['check'] = 1;
+            }
+        }
+        //P($getNodeList);  //重组后的数组测试
+        // 推荐位信息以无限子类方式传到模板里
+        $Category=new Category();
+        $nature=$Category->cate_ullist($getNodeList);
+        $this->assign('nature',$nature);
 
-        $itemid=I('id','','intval');
-        //$this->data=D('ArticleView')->where(array('itemid'=>$itemid))->find();
-       $this->data=$data=D('ArticleDataView')->where(array('itemid'=>$itemid))->find();
-         //$this->data=$data=D('ArticleRelation')->where(array('itemid'=>$itemid))->relation(true)->find();
-       //P($data);
-       $this->display();
+        $this->assign('content',$content);
+        $this->display('edit');
     }
 
-
-    public function editHandle(){
-        if(!IS_POST) $this->error('非法操作');
+    /**
+     *
+     */
+    public function editHandle()
+    {
+        //表单数据
         $data=array(
-            'itemid'=>I('id','','intval'),
-            'catid'=>I('catid','','intval'),
-            'title'=>I('title','','trim,htmlspecialchars'),
-            'stitle'=>I('stitle','','trim,htmlspecialchars'),
-            'style'=>I('style','','htmlspecialchars'),
-            'introduce'=>I('introduce','','trim,htmlspecialchars'),
-            'search'=>I('search','','trim,htmlspecialchars'),
-            'keyword'=>I('keyword','','trim,htmlspecialchars'),
-            'author'=>I('author','','trim,htmlspecialchars'),
-            'copyfrom'=>I('copyfrom','','trim,htmlspecialchars'),
-            'fromurl'=>I('fromurl','','trim,htmlspecialchars'),
-            'thumb'=>I('thumb','','htmlspecialchars'),
-            'username'=>session('username'),
-            'edittime'=>time(),
-            'template'=>I('template','','htmlspecialchars'),
-            'islink'=>I('islink','','intval'),
-            'linkurl'=>I('linkurl','','htmlspecialchars'),
-            'filepath'=>I('filepath','','htmlspecialchars'),
-            'reason'=>I('reason','','trim,htmlspecialchars'),
-            'addtime'=>I('addtime','','strtotime'),
-            'status'=>I('status','','trim,intval'),
-            'hits'=>I('hits','','trim,intval')
+            'id'=>I('post.id','intval'),
+            'catid'=>I('post.catid','intval'),
+            'title'=>I('post.title'),
+            'style'=>I('post.style'),
+            'thumb'=>I('post.thumb'),
+            'stitle'=>I('post.stitle'),
+            'keyword'=>I('post.keyword'),
+            'introduce'=>I('post.introduce'),
+            'ip'=>get_client_ip(),
+            'linkurl'=>I('post.linkurl'),
+            'filepath'=>I('post.filepath'),
+            'reason'=>I('post.reason'),
+            'search'=>I('post.search'),
+            'user_name'=>session('admin_auth')['user_name'],
+            'Data'=>array(
+                'content'=>I('post.content'),
+            ),
+            'nature'=>I('post.nature'),
+            'status'=>I('post.status'),
+            'add_time'=>strtotime(I('post.add_time')),
+            'update_time'=>strtotime(I('post.add_time')),
+            'fromurl'=>I('post.fromurl'),
+            'author'=>I('post.author'),
+            'copyfrom'=>I('post.copyfrom'),
+            'hits'=>I('post.hits','0','intval'),
         );
-        $itemid=$data['itemid'];
-
-        $data2=array(
-            'itemid'=>$itemid,
-            'content'=>I('content','','htmlspecialchars')
-        );
-        $save1=M('article')->save($data);
-        $save2=M('article_data')->save($data2);
-        if( $save1|| $save2){
-            $this->success('修改成功',U('Admin/Article/index',array('catid'=>$data['catid'])));
+        //修改数据前删除推荐位信息后重新插入，不考虑是否修改
+        M('ArticleNatureData')->where('article_id='.$data['id'])->delete();
+        $Article=D('ArticleRelation');
+        if(!$Article->create($data)){
+            $this->error($Article->getError());
         }else{
-            $this->error('数据修改失败');
+
+            $result=$Article->relation('Data')->save($data);
+                //处理推荐表处理，多对多
+                $nature=I('post.nature');
+                foreach($nature as $v=>$k){
+                    $nature[$v]=array(
+                        'article_id'=>$data['id'],
+                        'nature_id'=>$k
+                    );
+                }
+            $ArticleNatureData=M('ArticleNatureData')->addAll($nature);
+            if($result || $ArticleNatureData){
+                $this->success('修改成功',U('Article/index'));
+            }else{
+                $this->error('添加失败，请检查');
+            }
         }
-
-
     }
 
-    public function upload(){
+    public function upload()
+    {
         P($_FILES);
 
+    }
+
+    public function cs(){
+
+        $a=D('ArticleRelation')->relation(true)->find(248);
+        P($a);
     }
 
 
