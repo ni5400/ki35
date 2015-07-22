@@ -1,0 +1,37 @@
+<div class="col-md-12 blog-new-article-box">
+    <div class="row">
+        <div class="col-md-12 clearfix blog-new-article-box-title">
+            <h2>推荐信息</h2>
+        </div>
+        <div class="col-md-12 blog-new-article-box-content">
+            <div class="row">
+                <div class="col-md-6 blog-new-article-box-content-left">
+                    <ul class="blog-new-article-box-ul">
+                        <{ki35:nature order="update_time DESC" nature_id="6" limit="3" status="1"}>
+                        <li class="clearfix">
+                            <div class="blog-new-article-list-img"><a href="<{$url}>"><img src="<{if condition='$thumb'}><{$thumb}><{else /}>/Public/Blog/images/nopic.gif<{/if}>" alt="<{$title}>" width="96" height="54"></a></div>
+                            <div class="blog-new-atticle-list-digest">
+                                <h3><a href="<{$url}>"><{$title}></a></h3>
+                                <p><{$introduce}></p>
+                            </div>
+                        </li>
+                        <{/ki35:nature}>
+                    </ul>
+                </div>
+                <div class="col-md-6 blog-new-article-box-content-right">
+                    <ul class="blog-new-article-box-ul">
+                        <{ki35:nature order="update_time DESC" nature_id="5" limit="3" status="1"}>
+                        <li class="clearfix">
+                            <div class="blog-new-article-list-img"><a href="<{$url}>"><img src="<{if condition='$thumb'}><{$thumb}><{else /}>/Public/Blog/images/nopic.gif<{/if}>" alt="<{$title}>" width="96" height="54"></a></div>
+                            <div class="blog-new-atticle-list-digest">
+                                <h3><a href="<{$url}>"><{$title}></a></h3>
+                                <p><{$introduce}></p>
+                            </div>
+                        </li>
+                        <{/ki35:nature}>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

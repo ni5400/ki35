@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!-- saved from url=(0023)# -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="2isky开发笔记,PHP开发笔记,php开发实战">
+    <meta name="description" content="开发笔记|有情怀的WEB开发笔记">
+    <link rel="stylesheet" type="text/css" media="all" href="__CSS__/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="all" href="__CSS__/blog.css">
+    <script src="__JS__/jquery.min.js" type="text/javascript"></script>
+    <script src="__JS__/bootstrap.min.js" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <title>ki35三五青年</title>
+    <meta name="360-site-verification" content="7df383d6e5a473a20ac6dcc16fffe34a">
+</head>
+<body>
+<nav class="navbar navbar-inverse" role="navigation">
+    <div class="container-fluid">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-toggle-nav-menu">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <img src="__IMG__/blog-logo.jpg" alt="" class="logo-blog"/>
+                <a class="navbar-brand sky-blog-logo" href="#">ki35.com</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-toggle-nav-menu">
+                <ul class="nav navbar-nav">
+                    <li class=""><a href="<{:U('Index/index')}>">首页</a></li>
+                    <{ki35:category order="id" limit="3"}>
+                        <li <{if condition="$child"}>class="dropdown"<{/if}>>
+                            <a href="#" <{if condition="$child"}> class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"<{/if}>><{$ctitle}></a>
+                            <{if condition="$child"}>
+                            <ul class="dropdown-menu" aria-labelledby="drop1">
+                                <{volist name="child" id="vo"}>
+                                    <li><a href="#"><{$vo.ctitle}></a></li>
+                                <{/volist}>
+                            </ul><{/if}>
+                        </li>
+                    <{/ki35:category}>
+                    <li class="dropdown">
+                        <a id="drop1" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+                            Dropdown
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="drop1">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,58 @@
+<{include file="Common/header" /}>
+<!--公部头部-->
+<div class="container" id="main">
+<div class="row">
+<div class="col-md-8 blog-left-content">
+<div class="container-fluid">
+
+<div class="row">
+    <{include file="Common/public" /}>
+</div>
+<!-- new article difest list end-->
+<!-- blog article list start-->
+<div class="row blog-article-list">
+<!--one article start-->
+    <{volist name="list" id="vo"}>
+    <div class="col-md-12 blog-article-digest">
+        <div class="blog-article-digest-top clearfix">
+            <div class="pull-left blog-article-digest-top-img">
+                <a href="<{:U('/'.'Blog/notes/'.$vo['id'])}>">
+                    <{if condition="$vo['thumb']"}>
+                    <img alt="img" src="<{$vo.thumb}>"></a>
+                <{else /}>
+                <img alt="img" src="__IMG__/nopic.gif"></a>
+                <{/if}>
+            </div>
+            <div class="blog-article-digest-text">
+                <h2><a href="<{:U('/'.'Blog/notes/'.$vo['id'])}>"><{$vo.title}></a></h2>
+                <div class="blog-article-digest-text-content"><{$vo.introduce}></div>
+            </div>
+        </div>
+        <div class="blog-article-digest-bottom">
+            <div class="blog-article-tag clearfix">
+                <span class="blog-article-created-at"><{$vo.add_time|date="Y-m-d",###}></span>
+                    <span class="blog-article-info-tag">
+                        <span class="line">/</span>
+                        <span class="glyphicon glyphicon-eye-open icon-glyphicon "></span>
+                        <span class="blog-article-read-tag-num"><{$vo.hits}></span>
+                        <span class="line">/</span>
+                        <span class="blog-article-created-at">
+                        <{volist name="vo.tags" id="tvo"}>
+                          <span></h3><a href="<{:U('/'.'blog/tag_'.$tvo['name'])}>" style="color:<{$tvo.color}>; "><{$tvo.title}></a></span>
+                        <{/volist}>
+                        </span>
+                    </span>
+            </div>
+        </div>
+    </div>
+    <{/volist}>
+<!--one article end-->
+</div>
+<!-- blog article list end-->
+</div>
+</div>
+<{include file="Common/right" /}>
+</div>
+</div>
+<!--页面底部start-->
+<{include file="Common/footer" /}>

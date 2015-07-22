@@ -44,24 +44,12 @@
                 <a href="<{:U('Category/nature')}>"><i class="icon-cogs"><span class="glyphicon glyphicon-menu-hamburger"></span></i>推荐位管理</a></li>
             <li <{if condition="ACTION_NAME =='nature_add'"}> class="active" <{/if}>>
                 <a href="<{:U('Category/nature_add')}>"><i class="icon-cogs"><span class="glyphicon glyphicon-edit"></span></i>添加推荐位</a></li>
-            <li><a href="#"><i class="icon-cogs"><span class="glyphicon glyphicon-equalizer"></span></i>类别管理</a></li>
-            <li><a href="#"><i class="icon-cogs"><span class="glyphicon glyphicon-th-large"></span></i>添加类别</a></li>
-            <li><a href="#"><i class="icon-cogs"><span class="glyphicon glyphicon-cog"></span></i>栏目设置</a></li>
+            <li <{if condition="ACTION_NAME =='getTag'"}> class="active" <{/if}>>
+                <a href="<{:U('Category/getTag')}>"><i class="icon-cogs"><span class="glyphicon glyphicon-equalizer"></span></i>分类管理(tag)</a></li>
+            <li <{if condition="ACTION_NAME =='tagAdd'"}> class="active" <{/if}>>
+                <a href="<{:U('Category/tagAdd')}>"><i class="icon-cogs"><span class="glyphicon glyphicon-th-large"></span></i>添加分类(tag)</a></li>
+            <li>
+                <a href=""><i class="icon-cogs"><span class="glyphicon glyphicon-cog"></span></i>栏目设置</a></li>
         </ul>
     </dd>
-    <dd>
-        <div class="dh-title">
-            <i class="icon-cogs"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></i>
-            发布管理
-        </div>
-        <ul class="menuson">
-            <li><a href="#"><i class="icon-cogs"><span class="glyphicon glyphicon-random"></span></i>更新系统缓存</a></li>
-            <li><a href="#"><i class="icon-cogs"><span class="glyphicon glyphicon-refresh"></span></i>更新首页HTML</a></li>
-            <li><a href="#"><i class="icon-cogs"><span class="glyphicon glyphicon-align-right"></span></i>一键更新全站</a></li>
-            <li><a href="#"><i class="icon-cogs"><span class="glyphicon glyphicon-list"></span></i>更新栏目HTML</a></li>
-            <li><a href="#"><i class="icon-cogs"><span class="glyphicon glyphicon-edit"></span></i>更新文档HTML</a></li>
-            <li><a href="#"><i class="icon-cogs"><span class="glyphicon glyphicon-map-marker"></span></i>更新专题</a></li>
-        </ul>
-    </dd>
-
 </dl>

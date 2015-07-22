@@ -14,6 +14,9 @@ use MyLibrary\Image;
 //登陆页面操作
 class LoginController extends Controller {
 
+    public function _empty(){
+        $this->error('访问的页面不存在');
+    }
     /**
      * 登陆页面显示
      */
@@ -72,7 +75,7 @@ class LoginController extends Controller {
                 'last_login_time'=>time(),
             );
             session('login_error',$error_login);
-            $Error_login->addLogin($username,'密码错误');
+            $Error_login->addLogin($username,'密码错误('.$data['password'].')');
             $this->error('密码错误');
         }else{
             //密码较验后，更新登陆信息如果成功----

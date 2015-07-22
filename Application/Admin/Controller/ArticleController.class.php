@@ -28,7 +28,7 @@ class ArticleController extends CommonController{
         $this->assign('category',$CategoryList);
     }
 
-    //检索的表单的变量返还给模板
+    //检索的表单的变量返还给模板  检索条件，表单搜索的动态值
     public function assignMap($data)
     {
         $map=array();
@@ -71,10 +71,18 @@ class ArticleController extends CommonController{
         $show       = $Page->show();// 分页显示输出
         // 进行分页数据查询 注意limit方法的参数要使用Page类的属性
         $list = $User->where($data['map'])
-             ->field('id,catid,title,add_time,status,hits,update_time,user_name,ctitle,cateid')
+             ->field('id,catid,title,add_time,status,hits,update_time,user_name,ctitle')
              ->order($data['order'])
              ->limit($Page->firstRow.','.$Page->listRows)
              ->select();
+        //查询是否有推荐位存在，如果有nature＝true
+        foreach($list as $value=>$key){
+            $natureMap['article_id']=$list[$value]['id'];
+            if(M('ArticleNatureData')->where($natureMap)->find()){
+                $list[$value]['nature']='true';
+            }
+        }
+//        P($list);
         $this->assign('list',$list);// 赋值数据集
         $this->assign('page',$show);// 赋值分页输出
         $this->display('Article/index');
@@ -132,6 +140,10 @@ class ArticleController extends CommonController{
         $Category=new Category();
         $nature=$Category->cate_ullist($getNodeList);
         $this->assign('nature',$nature);
+        //查询tag分类
+        $getTagList=M('ArticleTag')->field('id,pid,title')->select();
+        $tagList=$Category->cate_ullist($getTagList);
+        $this->assign('tag',$tagList);
         //查询栏目
         A('Category')->getCategory($html="┈┈┤");
         $this->display('add');
@@ -148,11 +160,9 @@ class ArticleController extends CommonController{
             'thumb'=>I('post.thumb'),
             'stitle'=>I('post.stitle'),
             'keyword'=>I('post.keyword'),
-            'introduce'=>I('post.introduce'),
             'ip'=>get_client_ip(),
             'linkurl'=>I('post.linkurl'),
             'filepath'=>I('post.filepath'),
-            'reason'=>I('post.reason'),
             'search'=>I('post.search'),
             'user_name'=>session('admin_auth')['user_name'],
             'Data'=>array(
@@ -160,12 +170,29 @@ class ArticleController extends CommonController{
             ),
             'status'=>I('post.status'),
             'add_time'=>strtotime(I('post.add_time')),
-            'update_time'=>strtotime(I('post.add_time')),
+            'update_time'=>time(),
             'fromurl'=>I('post.fromurl'),
             'author'=>I('post.author'),
             'copyfrom'=>I('post.copyfrom'),
             'hits'=>I('post.hits','0','intval'),
         );
+        $content=$_POST['content'];
+        $content = mb_substr($content, 0, 200, 'utf8');
+        $content = str_replace(' ', '', $content);
+        if($_POST['introduce']){
+            $data['introduce']=I('post.introduce');
+        }else{
+            $data['introduce']=htmlspecialchars($content);
+        }
+        //获取到Tag的值，从tag分类表里查取到所选tag的信息，然后以josn的形式存入到新闻表tags字段里
+        $tag=I('post.tag');
+        $tagstr='';
+        foreach($tag as $v=>$k){
+            $tagstr.=$k.',';
+        }
+        $tagMap['id']=array('in',substr($tagstr,0,-1));
+        $tags=M('ArticleTag')->where($tagMap)->select();
+        $data['tags']=json_encode($tags);  //把tags的信息以字段的形式存入到数据库中
         $Article=D('ArticleRelation');
         if(!$Article->create($data)){
             $this->error($Article->getError());
@@ -179,7 +206,15 @@ class ArticleController extends CommonController{
                         'nature_id'=>$k
                     );
                 }
-                M('ArticleNatureData')->addAll($nature);
+                //tag表处理，多对多
+                foreach($tag as $v=>$k){
+                    $tag[$v]=array(
+                        'article_id'=>$result,
+                        'tag_id'=>$k
+                    );
+                }
+                M('ArticleNatureData')->addAll($nature); //插入推荐表
+                M('ArticleTagData')->addAll($tag);//插入tag表
                 $this->success('添加成功',U('Article/index'));
 
             }else{
@@ -198,7 +233,8 @@ class ArticleController extends CommonController{
         $delArticle=M('Article')->where('id='.$Id)->delete(); //删除文章主表
         $delArticleData=M('ArticleData')->where('aid='.$Id)->delete(); //删除文章副表
         $delArticleNature=M('ArticleNatureData')->where($map)->delete(); //删除推荐副表
-        if($delArticle || $delArticleData || $delArticleNature ){
+        $delArticleTag=M('ArticleTagData')->where($map)->delete(); //删除推荐副表
+        if($delArticle || $delArticleData || $delArticleNature ||$delArticleTag ){
                 echo "true";
         }else{
             echo "false";
@@ -222,27 +258,43 @@ class ArticleController extends CommonController{
         php 5.5以上的版本可以直接使用此函数$content['nature']将数据里所有的值取出来重组成一个新数组，
         5.4以下版本只能使用便例的方式 取出文章表里推荐位的id的值
         */
+        //处理推荐位
         foreach($content['nature'] as $v=>$k){
             $content['nature'][$v]=$k['nature_id'];
         }
+//        P($content);
         //匹配文章表里推荐位的值如果和$getNodeList所有推荐位的id的值相等则让其子数组多一个check元素
         foreach($getNodeList as $key=>$values){
             if(in_array($values['id'],$content['nature'])){
                 $getNodeList[$key]['check'] = 1;
             }
         }
-        //P($getNodeList);  //重组后的数组测试
+        //同理处理tag分类
+        //查询推荐位
+        $getTagList=M('ArticleTag')->field('id,pid,title')->select();
+        foreach($content['tag'] as $v=>$k){
+            $content['tag'][$v]=$k['tag_id'];
+        }
+        foreach($getTagList as $key=>$values){
+            if(in_array($values['id'],$content['tag'])){
+                $getTagList[$key]['check'] = 1;
+            }
+        }
+
+//        P($getTagList);  //重组后的数组测试
         // 推荐位信息以无限子类方式传到模板里
         $Category=new Category();
         $nature=$Category->cate_ullist($getNodeList);
         $this->assign('nature',$nature);
-
+        //tag分类以无限子类的方式传到模板里
+        $tag=$Category->cate_ullist($getTagList);
+        $this->assign('tag',$tag);
         $this->assign('content',$content);
         $this->display('edit');
     }
 
     /**
-     *
+     *修改文章
      */
     public function editHandle()
     {
@@ -259,16 +311,14 @@ class ArticleController extends CommonController{
             'ip'=>get_client_ip(),
             'linkurl'=>I('post.linkurl'),
             'filepath'=>I('post.filepath'),
-            'reason'=>I('post.reason'),
             'search'=>I('post.search'),
             'user_name'=>session('admin_auth')['user_name'],
             'Data'=>array(
                 'content'=>I('post.content'),
             ),
-            'nature'=>I('post.nature'),
             'status'=>I('post.status'),
             'add_time'=>strtotime(I('post.add_time')),
-            'update_time'=>strtotime(I('post.add_time')),
+            'update_time'=>time(),
             'fromurl'=>I('post.fromurl'),
             'author'=>I('post.author'),
             'copyfrom'=>I('post.copyfrom'),
@@ -276,6 +326,18 @@ class ArticleController extends CommonController{
         );
         //修改数据前删除推荐位信息后重新插入，不考虑是否修改
         M('ArticleNatureData')->where('article_id='.$data['id'])->delete();
+        //修改数据前删除tag表信息后重新插入，不考虑是否修改
+        M('ArticleTagData')->where('article_id='.$data['id'])->delete();
+
+        //获取到Tag的值，从tag分类表里查取到所选tag的信息，然后以josn的形式存入到新闻表tags字段里
+        $tag=I('post.tag');
+        $tagstr='';
+        foreach($tag as $v=>$k){
+            $tagstr.=$k.',';
+        }
+        $tagMap['id']=array('in',substr($tagstr,0,-1));
+        $tags=M('ArticleTag')->where($tagMap)->select();
+        $data['tags']=json_encode($tags);  //把tags的信息以字段的形式存入到数据库中
         $Article=D('ArticleRelation');
         if(!$Article->create($data)){
             $this->error($Article->getError());
@@ -283,15 +345,28 @@ class ArticleController extends CommonController{
 
             $result=$Article->relation('Data')->save($data);
                 //处理推荐表处理，多对多
-                $nature=I('post.nature');
-                foreach($nature as $v=>$k){
-                    $nature[$v]=array(
+            $nature=I('post.nature');
+           if($nature){
+               foreach($nature as $v=>$k){
+                   $nature[$v]=array(
+                       'article_id'=>$data['id'],
+                       'nature_id'=>$k
+                   );
+               }
+               $ArticleNatureData=M('ArticleNatureData')->addAll($nature);
+           }
+            //处理推荐表处理，多对多
+            $tag=I('post.tag');
+            if($tag){
+                foreach($tag as $v=>$k){
+                    $tag[$v]=array(
                         'article_id'=>$data['id'],
-                        'nature_id'=>$k
+                        'tag_id'=>$k
                     );
                 }
-            $ArticleNatureData=M('ArticleNatureData')->addAll($nature);
-            if($result || $ArticleNatureData){
+                $ArticleTagData=M('ArticleTagData')->addAll($tag);
+            }
+            if($result || $ArticleNatureData || $ArticleTagData){
                 $this->success('修改成功',U('Article/index'));
             }else{
                 $this->error('添加失败，请检查');

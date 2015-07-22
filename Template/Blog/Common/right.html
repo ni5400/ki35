@@ -1,0 +1,80 @@
+<!-- blog sidebar start -->
+<div class="col-md-4 pull-right" id="blog-sidebar">
+    <div class="row">
+        <!-- blog share start -->
+        <div class="col-md-12 blog-sidebar-one-content">
+            <div class="blog-sidebar-title">
+                <ul>
+                    <li><a class="cur" href="javascript:;">热门标签</a></li>
+                </ul>
+            </div>
+            <div class="blog-tags-list clearfix">
+                <{ki35:tags order="hits DESC" limit="5" pid="5"}>
+                    <a href="<{$url}>" style="color: <{$color}>"><{$title}></a>
+                <{/ki35:tags}>
+            </div>
+        </div>
+        <!-- blog share end -->
+        <!-- blog search start -->
+        <div class="col-md-12 blog-sidebar-one-content">
+            <div class="blog-sidebar-title">
+                <ul>
+                    <li><a class="cur" href="javascript:;">博客搜索</a></li>
+                </ul>
+            </div>
+            <form class="blog-article-search blog-search-form form-inline" action="<{:U('Search/search')}>" method="GET">
+                <input type="text" class=" form-control blog-search-form-input blog-search-input" name="keyword" value="" maxlength="20" placeholder="博客搜索">
+                <span class="glyphicon glyphicon-search blog-article-search-icon "></span>
+                <button type="submit" class="btn btn-default">搜索</button>
+            </form>
+        </div>
+        <!-- blog search end -->
+        <!-- blog sidebar new article start -->
+        <div class="col-md-12 blog-sidebar-one-content">
+            <div class="blog-sidebar-title">
+                <ul>
+                    <li><a class="cur" href="javascript:;">热门博文</a></li>
+                </ul>
+            </div>
+            <div class="blog-notes-new-list">
+                <ul>
+                    <{ki35:list order="hits DESC" limit="5"}>
+                    <li class="clearfix">
+                        <a href="##"><div class="blog-article-created-at-day"><span><{$add_time|date="m-d",###}></span></div></a>
+                        <div class="blog-notes-new-list-title">
+                            <h4>
+                                <a href="<{$url}>"><{$title}></a>
+                            </h4>
+                        </div>
+                    </li>
+                    <{/ki35:list}>
+                </ul>
+            </div>
+        </div>
+        <!-- blog sidebar new article end -->
+        <!-- blog sidebar new article start -->
+        <div class="col-md-12 blog-sidebar-one-content">
+            <div class="blog-sidebar-title">
+                <ul>
+                    <li><a class="cur" href="javascript:;">最新博文</a></li>
+                </ul>
+            </div>
+            <div class="blog-notes-new-list">
+                <ul>
+                <{ki35:list order="update_time DESC" limit="5"}>
+                    <li class="clearfix">
+                        <a href="##"><div class="blog-article-created-at-day"><span><{$add_time|date="m-d",###}></span></div></a>
+                        <div class="blog-notes-new-list-title">
+                            <h4>
+                                <a href="<{$url}>"><{$title}></a>
+                            </h4>
+                        </div>
+                    </li>
+                <{/ki35:list}>
+                </ul>
+            </div>
+        </div>
+        <!-- blog sidebar new article end -->
+    </div>
+</div>
+<!-- blog sidebar end -->

@@ -199,6 +199,78 @@ class CategoryController extends CommonController {
             echo 'true';
         };
     }
+    /**
+     * tag标签，分类添加
+     */
+    public function tagAdd()
+    {
+        $getNodeList=M('ArticleTag')->where('pid=0')->field('id,pid,title')->select();
+        $this->assign('list',$getNodeList);
+        $this->display();
+    }
+
+    /**
+     * [tagHandle description]添加Tag分类表单处理
+     * @return [type] [description]
+     */
+    public function tagHandle()
+    {
+        $data=array(
+            'title'=>I('title'),
+            'name'=>I('name'),
+            'pid'=>I('pid','intval'),
+            'color'=>I('style')
+        );
+        $Tag=M('ArticleTag');
+        if($Tag->add($data)){
+            $this->success('添加成功',U('Category/getTag'));
+        }else{
+            $this->error('添加失败');
+        }
+    }
+    /**
+     * [getTag description] tag分类列表首页
+     * @return [type] [description]
+     */
+    public function getTag()
+    {
+        $getNodeList=M('ArticleTag')->field('id,pid,title')->select();
+        $category=new Category();
+        $cate=$category->cate_ollist($getNodeList,0,'　　');
+        $this->assign('cate',$cate);
+        $this->display('tag');
+    }
+
+    /**
+     * [tagPid description]tag分类检测是否存在子类
+     * @return [type] [description]
+     */
+    public function tagPid()
+    {
+        if(!IS_AJAX) $this->error("非法操作");
+        $data['pid']=I('id','','intval');
+        echo $AuthRule=D('ArticleTag')->where($data)->count();
+    }
+
+    /**
+     * [tagDel description] tag分类ajax删除
+     * @return [type] [description]
+     */
+    public function tagDel()
+    {
+        if(!IS_AJAX) $this->error("非法操作");
+        $data['pid']=I('id','','intval');
+        $map['id']=I('id','','intval');
+        $AuthRule=D('ArticleTag');
+        if($AuthRule->where($data)->count()){
+            exit('存在子结点，请先删除子节点后再进行操作');
+        }
+        if($AuthRule->where($map)->delete()){
+            echo "true";
+        }else{
+            echo "false";
+        }
+    }
 
 
 

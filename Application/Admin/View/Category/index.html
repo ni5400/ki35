@@ -40,7 +40,8 @@
             <{/if}>
         </td>
         <td class="btn_edit">
-            <a href="<{:U('Category/Category_edit',array('cateid'=>$vo['id']))}>" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="left" title="修改" ><i class="glyphicon glyphicon-pencil"></i></a>
+            <a href="<{:U('/'.'Blog/category_'.$vo['id'])}>" target="_blank" class="btn btn-sm btn-info" data-toggle="tooltip" data-placement="left" title="预览" ><i class="glyphicon glyphicon-zoom-in"></i></a>
+            <a href="<{:U('Category/Category_edit',array('cateid'=>$vo['id']))}>" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="修改" ><i class="glyphicon glyphicon-pencil"></i></a>
             <button class="btn btn-sm btn-danger btn-remove" data="<{$vo.id}>" data-toggle="tooltip" data-placement="top" title="删除"><i class="glyphicon glyphicon-trash"></i></button>
             <a href="<{:U('Category/category_add',array('cateid'=>$vo['id']))}>" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="bottom" title="添加子栏目" ><i class="glyphicon glyphicon-plus"></i></a>
             <a href="<{:U('Article/articleAdd',array('cateid'=>$vo['id']))}>" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="right" title="添加文章" ><i class="glyphicon glyphicon-plus-sign"></i>添加文章</a>

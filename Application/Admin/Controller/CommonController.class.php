@@ -13,6 +13,10 @@ use Think\Controller;
 //基类
 class CommonController extends Controller {
 
+    public function _empty(){
+        $this->error('访问的页面不存在');
+    }
+
     protected   function _initialize()
     {
 

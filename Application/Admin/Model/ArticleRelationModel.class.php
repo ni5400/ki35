@@ -29,11 +29,20 @@ class ArticleRelationModel extends RelationModel{
             'as_fields'=>'content' //默认查询副表返回的结果是多维数组，若此询副表的一个字段，用此表，可取消多维数组，直接以只元素返回
             //[name]=>结果  若更改键名name  'as_fields'=>'name：cate'
         ),
+        //推荐位表
         'nature'=>array(
             'mapping_type'=>self::HAS_MANY,
             'class_name'=>'ArticleNatureData',
             'foreign_key'=>'article_id',
             'mapping_fields'=>'nature_id',
         ),
+        //tag表
+        'tag'=>array(
+            'mapping_type'=>self::HAS_MANY,
+            'class_name'=>'ArticleTagData',
+            'foreign_key'=>'article_id',
+            'mapping_fields'=>'tag_id',
+        ),
+
     );
 }

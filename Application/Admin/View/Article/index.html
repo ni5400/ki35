@@ -87,7 +87,7 @@
         <tr>
             <td><input type="checkbox"  value="option1"></td>
             <td> <{$vo.id}></td>
-            <td><a href="#"><{$vo.title}></a></td>
+            <td><a href="<{:U('/'.'Blog/notes/'.$vo['id'])}>" target="_blank"><{$vo.title}></a><{if condition="$vo['nature']"}><strong style="color: red"> [推荐] </strong><{/if}></td>
             <td><code><a href="<{:U('Article/index',array('cateid'=>$vo['cateid']))}>"><{$vo.ctitle}></a></code></td>
             <td><{$vo.user_name}></td>
             <td><{$vo.update_time|date="Y-m-d",###}></td>

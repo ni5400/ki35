@@ -32,14 +32,14 @@
                 <label>ID&nbsp;</label>
                 <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-zoom-in" ></i></span>
-                    <input type="text" class="form-control input-sm length-80 " name="id">
+                    <input type="text" class="form-control input-sm length-80 " value="<{$map.id}>" name="id">
                 </div>
             </div>
             <div class="form-group form_layout">
                 <label >用户名&nbsp;</label>
                 <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user" ></i></span>
-                    <input type="text" class="form-control input-sm "  placeholder="用户名" name="username">
+                    <input type="text"  value="<{$map.user_name}>" class="form-control input-sm "  placeholder="用户名" name="username">
                 </div>
             </div>
             <div class="form-group  form_layout">
@@ -57,8 +57,8 @@
                 <label >状态&nbsp;</label>
                 <select class="form-control input-sm" name="status">
                     <option value="">选择</option>
-                    <option value="normal">正常</option>
-                    <option value="refuse">停用</option>
+                    <option value="normal"  <{if condition="$map['status']==1"}>selected="selected" <{/if}>>正常</option>
+                    <option value="refuse" <{if condition="$map['status']==false"}>selected="selected" <{/if}>>停用</option>
                 </select>
             </div>
             <div class="form-group  form_layout">

@@ -1,0 +1,65 @@
+<{include file="Common/header" /}>
+<!--公部头部-->
+<div class="container" id="main">
+    <div class="container text-center content-error">404:您所需要的页面不存在,看看以下有没有您感兴趣的内容</div>
+    <div class="row">
+        <div class="col-md-8 blog-left-content">
+            <div class="container-fluid">
+                <div class="row">
+                    <{include file="Common/public" /}>
+                </div>
+                <!-- new article difest list end-->
+                <!-- blog article list start-->
+                <div class="row blog-article-list">
+                    <!--列表开始-->
+                    <{volist name="list" id="vo"}>
+                    <div class="col-md-12 blog-article-digest">
+                        <div class="blog-article-digest-top clearfix">
+                            <div class="pull-left blog-article-digest-top-img">
+                                <a href="<{:U('/'.'Blog/notes/'.$vo['id'])}>">
+                                    <{if condition="$vo['thumb']"}>
+                                    <img alt="img" src="<{$vo.thumb}>"></a>
+                                <{else /}>
+                                <img alt="img" src="__IMG__/550d30755870c.png"></a>
+                                <{/if}>
+                            </div>
+                            <div class="blog-article-digest-text">
+                                <h2><a href="<{:U('/'.'Blog/notes/'.$vo['id'])}>"><{$vo.title}></a></h2>
+                                <div class="blog-article-digest-text-content"><{$vo.introduce}></div>
+                            </div>
+                        </div>
+                        <div class="blog-article-digest-bottom">
+                            <div class="blog-article-tag clearfix">
+                                <span class="blog-article-created-at"><{$vo.add_time|date="Y-m-d",###}></span>
+                    <span class="blog-article-info-tag">
+                        <span class="line">/</span>
+                        <span class="glyphicon glyphicon-eye-open icon-glyphicon "></span>
+                        <span class="blog-article-read-tag-num"><{$vo.hits}></span>
+                        <span class="line">/</span>
+                        <span class="blog-article-created-at">
+                        <{volist name="vo.tags" id="tvo"}>
+                          <span></h3><a href="<{:U('/'.'blog/tag_'.$tvo['name'])}>" style="color:<{$tvo.color}>; "><{$tvo.title}></a></span>
+                        <{/volist}>
+                        </span>
+                    </span>
+                            </div>
+                        </div>
+                    </div>
+                    <{/volist}>
+                    <!--<!--列表开始end-->
+                </div>
+                <!-- blog article list end-->
+            </div>
+            <!-- 分页开始-->
+            <nav class="blog-page">
+                <ul class="pagination">
+                    <{$page}>
+                </ul>
+            </nav>
+            <!-- 分页开始 end -->
+        </div>
+        <{include file="Common/right" /}>
+    </div>
+</div>
+<!--页面底部start-->
+<{include file="Common/footer" /}>

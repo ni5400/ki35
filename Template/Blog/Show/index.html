@@ -1,0 +1,75 @@
+<{include file="Common/header" /}>
+<!--公部头部-->
+<div class="container" id="main">
+<div class="row">
+<!--内容正文start-->
+    <div class="col-md-8 blog-left-content blog-left-content2">
+        <div class="container-fluid" id="blog-article-content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="blog-article-content-title">
+                        <blockquote><h2><{$oneList.title}></h2></blockquote>
+                    </div>
+                    <div class="blog-other-info clearfix">
+                        <div class="blog-created-info">
+                            <span><{$oneList.add_time|date="Y-m-d H:i",###}></span>
+                            <span class="blog-article-source">作者：<{$oneList.author}></span>
+                            <span class="blog-article-author">来源：<{$conList.copyfrom}></span>
+                        </div>
+                        <div class="blog-customer-behavior-info">
+                            <span>浏览量：</span>
+                            <span class="hits"></span>
+                        </div>
+                    </div>
+                    <div class="blog-article-content-text">
+                        <{$oneList.content}>
+                    </div>
+                    <div class="blog-state clearfix">
+                        <i>“</i>
+                        <{volist name="oneList.tag" id="vo"}>
+                          <span></h3><a href="<{:U('/'.'blog/tag_'.$vo['name'])}>" style="color:<{$vo.color}>; "><{$vo.title}></a></span>
+                        <{/volist}>
+                        <i>”</i>
+                    </div>
+                    <div class="blog-prev-next">
+                        <ul class="clearfix">
+                            <li class="prev-left">上一篇:
+                                <{ki35:prev limit="1"}>
+                                        <a href="<{$url}>"><{$title}></a>
+                                <{/ki35:prev}>
+                            </li>
+                            <li class="next-right">下一篇:
+                                <{ki35:next limit="1"}>
+                                <a href="<{$url}>"><{$title}></a>
+                                <{/ki35:next}>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="blog-article-comments">
+                        <!--新浪-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+       $(function(){
+           var getId='<{$oneList["id"]}>';
+           var Url='<{:U("Show/getHits")}>';
+           $.ajax({
+               url : Url,
+               type : 'POST',
+               data : { id:getId },
+               success: function(data, response, status){
+                   $('.hits').html(data);
+               }
+           });
+       })
+    </script>
+<!--内容正文end-->
+<{include file="Common/right" /}>
+</div>
+
+</div>
+<!--页面底部start-->
+<{include file="Common/footer" /}>

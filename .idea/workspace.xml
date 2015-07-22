@@ -2,32 +2,42 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9932d2da-2057-47e5-a631-e631814a551a" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Application/Admin/View/Setting/template_manager.html" afterPath="$PROJECT_DIR$/Application/Admin/View/template_back/template_manager.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Application/Admin/View/Setting/template_manager_add.html" afterPath="$PROJECT_DIR$/Application/Admin/View/template_back/template_manager_add.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Application/Admin/View/Setting/template_node.html" afterPath="$PROJECT_DIR$/Application/Admin/View/template_back/template_node.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Application/Admin/View/Setting/template_node2.html" afterPath="$PROJECT_DIR$/Application/Admin/View/template_back/template_node2.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Application/Admin/View/Setting/template_role.html" afterPath="$PROJECT_DIR$/Application/Admin/View/template_back/template_role.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Runtime/Logs/Home/15_06_29.log" afterPath="$PROJECT_DIR$/Application/Runtime/Logs/Home/15_06_29.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Runtime/Cache/Admin/1a18260c07ef90bb9407794fd549a896.php" afterPath="$PROJECT_DIR$/Application/Runtime/Cache/Admin/1a18260c07ef90bb9407794fd549a896.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Runtime/Cache/Admin/2773f6bf5f0d48bffdcdbbbe16924722.php" afterPath="$PROJECT_DIR$/Application/Runtime/Cache/Admin/2773f6bf5f0d48bffdcdbbbe16924722.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Runtime/Cache/Admin/3ab560e922cca71a0167b3b41c263156.php" afterPath="$PROJECT_DIR$/Application/Runtime/Cache/Admin/3ab560e922cca71a0167b3b41c263156.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Runtime/Cache/Admin/3c67f0e06b1d5f15d4ada5dd1ebc0878.php" afterPath="$PROJECT_DIR$/Application/Runtime/Cache/Admin/3c67f0e06b1d5f15d4ada5dd1ebc0878.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Runtime/Cache/Admin/4cfa6a7559d75d6cff2cb4c5680544c9.php" afterPath="$PROJECT_DIR$/Application/Runtime/Cache/Admin/4cfa6a7559d75d6cff2cb4c5680544c9.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Runtime/Cache/Admin/94874399856847a0aef2309f9a226cc8.php" afterPath="$PROJECT_DIR$/Application/Runtime/Cache/Admin/94874399856847a0aef2309f9a226cc8.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/Controller/AuthGroupController.class.php" afterPath="$PROJECT_DIR$/Application/Admin/Controller/AuthGroupController.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/Controller/AuthRuleController.class.php" afterPath="$PROJECT_DIR$/Application/Admin/Controller/AuthRuleController.class.php" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cms.sql" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Upload/image/20150707/20150707053723_21379.jpg" afterPath="$PROJECT_DIR$/Upload/image/20150707/20150707053723_21379.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Upload/image/20150707/20150707053723_32786.jpg" afterPath="$PROJECT_DIR$/Upload/image/20150707/20150707053723_32786.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Upload/image/20150707/20150707053723_45417.jpg" afterPath="$PROJECT_DIR$/Upload/image/20150707/20150707053723_45417.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Upload/image/20150707/20150707053723_67565.jpg" afterPath="$PROJECT_DIR$/Upload/image/20150707/20150707053723_67565.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Upload/image/20150707/20150707053723_68012.jpg" afterPath="$PROJECT_DIR$/Upload/image/20150707/20150707053723_68012.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Upload/image/20150707/20150707053723_95280.jpg" afterPath="$PROJECT_DIR$/Upload/image/20150707/20150707053723_95280.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Upload/image/20150707/20150707053735_25190.jpg" afterPath="$PROJECT_DIR$/Upload/image/20150707/20150707053735_25190.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Upload/image/20150707/20150707053735_50885.jpg" afterPath="$PROJECT_DIR$/Upload/image/20150707/20150707053735_50885.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Upload/image/20150707/20150707053735_54374.jpg" afterPath="$PROJECT_DIR$/Upload/image/20150707/20150707053735_54374.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Upload/image/20150707/20150707053735_56672.jpg" afterPath="$PROJECT_DIR$/Upload/image/20150707/20150707053735_56672.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Upload/image/20150707/20150707053735_66546.jpg" afterPath="$PROJECT_DIR$/Upload/image/20150707/20150707053735_66546.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Upload/image/20150707/20150707053735_76996.jpg" afterPath="$PROJECT_DIR$/Upload/image/20150707/20150707053735_76996.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Upload/image/20150707/20150707053735_89884.jpg" afterPath="$PROJECT_DIR$/Upload/image/20150707/20150707053735_89884.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Upload/image/20150707/20150707053735_91656.jpg" afterPath="$PROJECT_DIR$/Upload/image/20150707/20150707053735_91656.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Upload/image/20150707/20150707053736_51729.jpg" afterPath="$PROJECT_DIR$/Upload/image/20150707/20150707053736_51729.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/Controller/ArticleController.class.php" afterPath="$PROJECT_DIR$/Application/Admin/Controller/ArticleController.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/Model/ArticleRelationModel.class.php" afterPath="$PROJECT_DIR$/Application/Admin/Model/ArticleRelationModel.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/Model/ArticleViewModel.class.php" afterPath="$PROJECT_DIR$/Application/Admin/Model/ArticleViewModel.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/Controller/CategoryController.class.php" afterPath="$PROJECT_DIR$/Application/Admin/Controller/CategoryController.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/Controller/CommonController.class.php" afterPath="$PROJECT_DIR$/Application/Admin/Controller/CommonController.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Home/Controller/IndexController.class.php" afterPath="$PROJECT_DIR$/Application/Home/Controller/IndexController.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/Controller/LoginController.class.php" afterPath="$PROJECT_DIR$/Application/Admin/Controller/LoginController.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/Controller/SettingController.class.php" afterPath="$PROJECT_DIR$/Application/Admin/Controller/SettingController.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/Controller/UserController.class.php" afterPath="$PROJECT_DIR$/Application/Admin/Controller/UserController.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/Model/UserModel.class.php" afterPath="$PROJECT_DIR$/Application/Admin/Model/UserModel.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Runtime/Cache/Admin/bc2048b4daf510bca97c7326b7c7741d.php" afterPath="$PROJECT_DIR$/Application/Runtime/Cache/Admin/bc2048b4daf510bca97c7326b7c7741d.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Runtime/Cache/Admin/c3f05272c9093854df5b35bc79892d33.php" afterPath="$PROJECT_DIR$/Application/Runtime/Cache/Admin/c3f05272c9093854df5b35bc79892d33.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/View/static/css/form.css" afterPath="$PROJECT_DIR$/Application/Admin/View/static/css/form.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/View/Public/left-setting.html" afterPath="$PROJECT_DIR$/Application/Admin/View/Public/left-setting.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/View/Article/add.html" afterPath="$PROJECT_DIR$/Application/Admin/View/Article/add.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Data/myeditor/plugins/code/code.js" afterPath="$PROJECT_DIR$/Data/myeditor/plugins/code/code.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/Conf/config.php" afterPath="$PROJECT_DIR$/Application/Admin/Conf/config.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Common/Conf/config.php" afterPath="$PROJECT_DIR$/Application/Common/Conf/config.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Home/Conf/config.php" afterPath="$PROJECT_DIR$/Application/Home/Conf/config.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/View/Article/edit.html" afterPath="$PROJECT_DIR$/Application/Admin/View/Article/edit.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/View/Article/index.html" afterPath="$PROJECT_DIR$/Application/Admin/View/Article/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/View/Category/index.html" afterPath="$PROJECT_DIR$/Application/Admin/View/Category/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/View/Public/left-content.html" afterPath="$PROJECT_DIR$/Application/Admin/View/Public/left-content.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/View/Public/left-index.html" afterPath="$PROJECT_DIR$/Application/Admin/View/Public/left-index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/View/Setting/manager.html" afterPath="$PROJECT_DIR$/Application/Admin/View/Setting/manager.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/View/Setting/manager_add.html" afterPath="$PROJECT_DIR$/Application/Admin/View/Setting/manager_add.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/View/Setting/node.html" afterPath="$PROJECT_DIR$/Application/Admin/View/Setting/node.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/View/Setting/node_add.html" afterPath="$PROJECT_DIR$/Application/Admin/View/Setting/node_add.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/View/Setting/role.html" afterPath="$PROJECT_DIR$/Application/Admin/View/Setting/role.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ki35.iws" />
@@ -51,48 +61,39 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="SettingController.class.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/SettingController.class.php">
+      <file leaf-file-name="IndexController.class.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/Blog/Controller/IndexController.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="208" column="21" selection-start="7373" selection-end="7373" vertical-scroll-proportion="3.3192568" vertical-offset="1833" max-vertical-offset="4518">
-              <folding>
-                <element signature="e#6#120#0" expanded="true" />
-                <element signature="e#150#173#0" expanded="true" />
-                <marker date="1435682235000" expanded="true" signature="7382:7586" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Category.class.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ThinkPHP/Library/MyLibrary/Category.class.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="47" column="67" selection-start="1164" selection-end="1164" vertical-scroll-proportion="-11.384615" vertical-offset="442" max-vertical-offset="1890">
+            <state line="24" column="23" selection-start="792" selection-end="792" vertical-scroll-proportion="-15.269231" vertical-offset="17" max-vertical-offset="684">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="manager.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Application/Admin/View/Setting/manager.html">
+      <file leaf-file-name="ArticleViewModel.class.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/Blog/Model/ArticleViewModel.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="281" column="7" selection-start="11945" selection-end="12144" vertical-scroll-proportion="-12.384615" vertical-offset="4736" max-vertical-offset="5508">
-              <folding>
-                <element signature="n#style#0;n#legend#0;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#table#0;n#div#1;n#!!top" expanded="true" />
-              </folding>
+            <state line="14" column="74" selection-start="308" selection-end="317" vertical-scroll-proportion="-5.5384617" vertical-offset="0" max-vertical-offset="360">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="role_node.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Application/Admin/View/Setting/role_node.html">
+      <file leaf-file-name="UserController.class.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/UserController.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="73" selection-start="1792" selection-end="1792" vertical-scroll-proportion="-13.846154" vertical-offset="144" max-vertical-offset="1458">
+            <state line="22" column="10" selection-start="452" selection-end="452" vertical-scroll-proportion="-11.076923" vertical-offset="0" max-vertical-offset="2394">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SettingController.class.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/SettingController.class.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="61" column="0" selection-start="1698" selection-end="1705" vertical-scroll-proportion="0.5777027" vertical-offset="720" max-vertical-offset="3438">
               <folding>
-                <element signature="n#style#0;n#div#1;n#div#0;n#form#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#i#0;n#li#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#!!top" expanded="true" />
+                <element signature="e#6#120#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -111,57 +112,57 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/Application/Admin/Controller/IndexController.class.php" />
-        <option value="$PROJECT_DIR$/Application/Admin/View/static/js/login.js" />
-        <option value="$PROJECT_DIR$/Application/Admin/View/static/css/index.css" />
-        <option value="$PROJECT_DIR$/Application/Admin/View/Index/index.html" />
-        <option value="$PROJECT_DIR$/Application/Admin/View/Public/left.html" />
-        <option value="$PROJECT_DIR$/Application/Admin/View/Login/index.html" />
-        <option value="$PROJECT_DIR$/Application/Admin/View/Setting/user.html" />
-        <option value="$PROJECT_DIR$/Application/Admin/Controller/PublicController.class.php" />
-        <option value="$PROJECT_DIR$/Application/Admin/View/Setting/index.html" />
-        <option value="$PROJECT_DIR$/Application/Admin/View/Public/top.html" />
-        <option value="$PROJECT_DIR$/Application/Admin/Controller/RbacController.class.php" />
-        <option value="$PROJECT_DIR$/Application/Admin/Controller/AuthController.class.php" />
-        <option value="$PROJECT_DIR$/Application/Admin/View/Public/content.html" />
-        <option value="$PROJECT_DIR$/Application/Admin/View/Setting/template_role.html" />
-        <option value="$PROJECT_DIR$/ThinkPHP/Library/Think/Page.class.php" />
-        <option value="$PROJECT_DIR$/Application/Admin/View/Setting/template_manager_add.html" />
-        <option value="$PROJECT_DIR$/Application/Admin/View/Setting/role_edit.html" />
-        <option value="$PROJECT_DIR$/admin.php" />
-        <option value="$PROJECT_DIR$/Application/Admin/Model/UserLoginModel.class.php" />
-        <option value="$PROJECT_DIR$/Application/Admin/Conf/config.php" />
-        <option value="$PROJECT_DIR$/Application/Admin/View/layout.html" />
-        <option value="$PROJECT_DIR$/Application/Admin/View/Setting/template_manager.html" />
-        <option value="$PROJECT_DIR$/Application/Admin/View/static/css/base.css" />
-        <option value="$PROJECT_DIR$/Application/Admin/Controller/CommonController.class.php" />
+        <option value="$PROJECT_DIR$/ThinkPHP/Library/Org/Util/CategoryTwo.class.php" />
         <option value="$PROJECT_DIR$/Application/Admin/Controller/LoginController.class.php" />
-        <option value="$PROJECT_DIR$/ThinkPHP/Library/MyLibrary/Page.class.php" />
-        <option value="$PROJECT_DIR$/Application/Admin/Model/UserViewModel.class.php" />
         <option value="$PROJECT_DIR$/Application/Common/Conf/config.php" />
-        <option value="$PROJECT_DIR$/Application/Admin/Controller/NavigationController.class.php" />
-        <option value="$PROJECT_DIR$/Application/Admin/Model/AuthGroupModel.class.php" />
-        <option value="$PROJECT_DIR$/Application/Admin/View/Setting/template_node.html" />
-        <option value="$PROJECT_DIR$/Application/Admin/Model/AuthRuleModel.class.php" />
-        <option value="$PROJECT_DIR$/ThinkPHP/Library/MyLibrary/Category.class.php" />
-        <option value="$PROJECT_DIR$/Application/Admin/View/Setting/template_node2.html" />
-        <option value="$PROJECT_DIR$/Application/Admin/View/Base/common.html" />
-        <option value="$PROJECT_DIR$/Application/Admin/View/Public/left-setting.html" />
-        <option value="$PROJECT_DIR$/Application/Admin/View/Setting/role_add.html" />
-        <option value="$PROJECT_DIR$/Application/Admin/View/Setting/manager_add.html" />
-        <option value="$PROJECT_DIR$/Application/Admin/Model/UserModel.class.php" />
-        <option value="$PROJECT_DIR$/Application/Admin/View/Setting/node_add.html" />
-        <option value="$PROJECT_DIR$/Application/Admin/View/Setting/node_edit.html" />
-        <option value="$PROJECT_DIR$/Application/Admin/Controller/AuthRuleController.class.php" />
-        <option value="$PROJECT_DIR$/Application/Admin/Controller/UserController.class.php" />
-        <option value="$PROJECT_DIR$/Application/Admin/View/Setting/node.html" />
-        <option value="$PROJECT_DIR$/Application/Admin/View/Setting/manager.html" />
-        <option value="$PROJECT_DIR$/Application/Admin/View/Setting/manager_edit.html" />
-        <option value="$PROJECT_DIR$/Application/Admin/View/static/css/form.css" />
-        <option value="$PROJECT_DIR$/Application/Admin/View/Setting/role.html" />
-        <option value="$PROJECT_DIR$/Application/Admin/View/Setting/role_node.html" />
-        <option value="$PROJECT_DIR$/Application/Admin/Controller/AuthGroupController.class.php" />
+        <option value="$PROJECT_DIR$/Application/Home/Controller/IndexController.class.php" />
+        <option value="$PROJECT_DIR$/Application/Home/Conf/config.php" />
+        <option value="$PROJECT_DIR$/Template/Home/Index/index.html" />
+        <option value="$PROJECT_DIR$/Application/Admin/View/Category/index.html" />
+        <option value="$PROJECT_DIR$/Application/Blog/Common/function.php" />
+        <option value="$PROJECT_DIR$/Template/Blog/Show/abc.html" />
+        <option value="$PROJECT_DIR$/Application/Runtime/Cache/Blog/156da0ad817960ae46e9e82e5e5982b7.php" />
+        <option value="$PROJECT_DIR$/Application/Home/Controller/EmptyController.class.php" />
+        <option value="$PROJECT_DIR$/Application/Blog/Controller/EmptyController.class.php" />
+        <option value="$PROJECT_DIR$/Application/Home/Controller/CommonController.class.php" />
+        <option value="$PROJECT_DIR$/Application/Blog/Controller/CommonController.class.php" />
+        <option value="$PROJECT_DIR$/Application/Runtime/Cache/Blog/ec0094d563e9d2f07fab70b2e885ac45.php" />
+        <option value="$PROJECT_DIR$/Application/Blog/Model/NatureViewModel.class.php" />
+        <option value="$PROJECT_DIR$/Application/Admin/Model/ArticleViewModel.class.php" />
+        <option value="$PROJECT_DIR$/Application/Admin/View/Article/index.html" />
+        <option value="$PROJECT_DIR$/Application/Admin/View/Category/tagAdd.html" />
+        <option value="$PROJECT_DIR$/Application/Admin/View/Public/left-content.html" />
+        <option value="$PROJECT_DIR$/Application/Admin/View/Category/tag.html" />
+        <option value="$PROJECT_DIR$/Application/Admin/Controller/CategoryController.class.php" />
+        <option value="$PROJECT_DIR$/Application/Admin/View/Article/add.html" />
+        <option value="$PROJECT_DIR$/Application/Admin/Model/ArticleRelationModel.class.php" />
+        <option value="$PROJECT_DIR$/Application/Admin/View/Article/edit.html" />
+        <option value="$PROJECT_DIR$/Application/Blog/Model/ArticleRelationModel.class.php" />
+        <option value="$PROJECT_DIR$/Application/Admin/Controller/ArticleController.class-back.php" />
+        <option value="$PROJECT_DIR$/Template/Blog/Category/index.html" />
+        <option value="$PROJECT_DIR$/Template/Blog/Index/index.html" />
+        <option value="$PROJECT_DIR$/Template/Blog/Common/public.html" />
+        <option value="$PROJECT_DIR$/Template/Blog/Show/error.html" />
+        <option value="$PROJECT_DIR$/Application/Blog/Controller/ShowController.class.php" />
+        <option value="$PROJECT_DIR$/Template/Blog/Tag/index.html" />
+        <option value="$PROJECT_DIR$/Application/Blog/Model/TagViewModel.class.php" />
+        <option value="$PROJECT_DIR$/Application/Blog/Controller/TagController.class.php" />
+        <option value="$PROJECT_DIR$/Template/Blog/Common/right.html" />
+        <option value="$PROJECT_DIR$/Application/Blog/Controller/SearchController.class.php" />
+        <option value="$PROJECT_DIR$/Template/Blog/Search/search.html" />
+        <option value="$PROJECT_DIR$/Application/Blog/Conf/config.php" />
+        <option value="$PROJECT_DIR$/Public/Blog/css/shCoreDefault.css" />
+        <option value="$PROJECT_DIR$/Template/Blog/Show/index.html" />
+        <option value="$PROJECT_DIR$/Data/myeditor/plugins/code/code.js" />
+        <option value="$PROJECT_DIR$/Application/Blog/Controller/CategoryController.class.php" />
+        <option value="$PROJECT_DIR$/Application/Admin/Controller/ArticleController.class.php" />
+        <option value="$PROJECT_DIR$/ThinkPHP/Library/Think/Template/TagLib/Ki35.class.php" />
+        <option value="$PROJECT_DIR$/Template/Blog/Common/header.html" />
+        <option value="$PROJECT_DIR$/Public/Blog/css/blog.css" />
+        <option value="$PROJECT_DIR$/Application/Blog/Model/ArticleViewModel.class.php" />
+        <option value="$PROJECT_DIR$/Application/Blog/Controller/IndexController.class.php" />
         <option value="$PROJECT_DIR$/Application/Admin/Controller/SettingController.class.php" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -197,6 +198,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -225,7 +227,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ThinkPHP" />
+              <option name="myItemId" value="Template" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -239,11 +241,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ThinkPHP" />
+              <option name="myItemId" value="Template" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Library" />
+              <option name="myItemId" value="Blog_back" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -257,15 +259,55 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ThinkPHP" />
+              <option name="myItemId" value="Template" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Library" />
+              <option name="myItemId" value="Blog_back" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="MyLibrary" />
+              <option name="myItemId" value="Common" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ki35" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ki35" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Template" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Blog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ki35" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ki35" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Template" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Blog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Common" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -280,50 +322,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ki35" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ki35" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Runtime" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ki35" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ki35" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Runtime" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Cache" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Admin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -341,7 +339,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Admin" />
+              <option name="myItemId" value="Html" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -359,11 +357,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="View" />
+              <option name="myItemId" value="Common" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -381,15 +375,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="View" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="template_back" />
+              <option name="myItemId" value="Blog" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -407,15 +393,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Admin" />
+              <option name="myItemId" value="Blog" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="View" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
+              <option name="myItemId" value="Model" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -433,19 +415,33 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Admin" />
+              <option name="myItemId" value="Blog" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="View" />
+              <option name="myItemId" value="Controller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ki35" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ki35" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
+              <option name="myItemId" value="Application" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
+              <option name="myItemId" value="Blog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Common" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -464,66 +460,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="View" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Setting" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ki35" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ki35" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="View" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ki35" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ki35" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="View" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Base" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -573,7 +509,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -583,7 +518,7 @@
     <property name="options.searchVisible" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
-    <property name="SearchEverywhereHistory" value="&#10;{" />
+    <property name="SearchEverywhereHistory" value="blog&#10;ki35&#10;ki&#10;blog.&#10;ge&#10;r&#10;file_manager_json&#10;{" />
     <property name="FullScreen" value="false" />
     <property name="LayoutCode.rearrangeEntriesPHP" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
@@ -595,16 +530,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Application/Admin/View/Setting" />
-      <recent name="$PROJECT_DIR$/Application/Admin/View/static/js" />
-      <recent name="$PROJECT_DIR$/Application/Admin/Model" />
+      <recent name="$PROJECT_DIR$/Public/Blog/css" />
+      <recent name="$PROJECT_DIR$/Public/Blog/js" />
+      <recent name="$PROJECT_DIR$/Template/Blog/Search" />
+      <recent name="$PROJECT_DIR$/Application/Blog/Controller" />
       <recent name="$PROJECT_DIR$/Application/Admin/Controller" />
-      <recent name="$PROJECT_DIR$/Application/Admin/View/static/css" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Application/Admin/View/template_back" />
-      <recent name="$PROJECT_DIR$/Data/font" />
-      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/Application/" />
+      <recent name="$PROJECT_DIR$/Template/Blog/" />
+      <recent name="$PROJECT_DIR$/Application/Admin/View/static/images" />
+      <recent name="$PROJECT_DIR$/Application/Admin/View/static" />
     </key>
   </component>
   <component name="RunManager">
@@ -633,7 +570,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1280" height="715" extended-state="0" />
+    <frame x="0" y="22" width="1280" height="715" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -655,7 +592,30 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972136" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286385" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296875" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972136" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -671,394 +631,301 @@
     </option>
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="2" />
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/admin.php">
+    <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/CategoryController.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="23" selection-start="145" selection-end="145" vertical-scroll-proportion="0.09608541" vertical-offset="0" max-vertical-offset="562" />
+        <state line="51" column="10" selection-start="1269" selection-end="1269" vertical-scroll-proportion="0.4527027" vertical-offset="506" max-vertical-offset="4968" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Public/content.html">
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Category/tag.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="89" selection-start="75" selection-end="137" vertical-scroll-proportion="0.092307694" vertical-offset="0" max-vertical-offset="585" />
+        <state line="154" column="46" selection-start="5799" selection-end="5799" vertical-scroll-proportion="1.5777028" vertical-offset="2000" max-vertical-offset="3816" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ThinkPHP/Library/Think/Auth.class.php">
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Public/left-content.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="60" selection-start="2864" selection-end="3253" vertical-scroll-proportion="0.3202847" vertical-offset="1134" max-vertical-offset="4212">
-          <folding />
-        </state>
+        <state line="46" column="53" selection-start="3385" selection-end="3385" vertical-scroll-proportion="0.6081081" vertical-offset="756" max-vertical-offset="1422" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/View/static/js/login.js">
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Category/nature.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="16" selection-start="1011" selection-end="1426" vertical-scroll-proportion="0.48979592" vertical-offset="252" max-vertical-offset="1008" />
+        <state line="0" column="0" selection-start="0" selection-end="7721" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="3780" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Common/Conf/code.php">
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Category/tagAdd.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="588" />
+        <state line="56" column="12" selection-start="2075" selection-end="2075" vertical-scroll-proportion="0.36486486" vertical-offset="828" max-vertical-offset="3078" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/Conf/config.php">
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Article/add.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="32" selection-start="426" selection-end="426" vertical-scroll-proportion="-5.5384617" vertical-offset="0" max-vertical-offset="630" />
+        <state line="139" column="105" selection-start="5974" selection-end="5974" vertical-scroll-proportion="-9.615385" vertical-offset="2252" max-vertical-offset="5580" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/View/layout.html">
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Article/edit.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="7" selection-start="0" selection-end="124" vertical-scroll-proportion="0.2769231" vertical-offset="0" max-vertical-offset="585" />
+        <state line="140" column="105" selection-start="6169" selection-end="6169" vertical-scroll-proportion="-7.5384617" vertical-offset="2324" max-vertical-offset="5868" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/View/template_back/template_manager.html">
+    <entry file="file://$PROJECT_DIR$/Application/Admin/Common/function.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="229" column="10" selection-start="8199" selection-end="8199" vertical-scroll-proportion="0.8153846" vertical-offset="3825" max-vertical-offset="4410">
-          <folding>
-            <element signature="n#style#0;n#legend#0;n#div#1;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#tr#0;n#table#0;n#div#1;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#nav#0;n#div#1;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#ul#0;n#nav#0;n#div#1;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#2;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#3;n#!!top" expanded="false" />
-          </folding>
-        </state>
+        <state line="11" column="9" selection-start="163" selection-end="163" vertical-scroll-proportion="-3.4615386" vertical-offset="0" max-vertical-offset="414" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/View/static/css/index.css">
+    <entry file="file://$PROJECT_DIR$/Application/Runtime/Temp/dcf69a184ca1312f1e52a231c1a0598a.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="9" selection-start="159" selection-end="159" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1116">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="618" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ThinkPHP/Library/MyLibrary/Page.class.php">
+    <entry file="file://$PROJECT_DIR$/Application/Runtime/Cache/Blog/0d03e90cd5ffb00575375eea1786b10b.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="16" selection-start="438" selection-end="442" vertical-scroll-proportion="20.01923" vertical-offset="1311" max-vertical-offset="2718">
-          <folding />
-        </state>
+        <state line="140" column="136" selection-start="9001" selection-end="9004" vertical-scroll-proportion="0.33333334" vertical-offset="2771" max-vertical-offset="5004" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Common/Conf/config.php">
+    <entry file="file://$PROJECT_DIR$/Application/Runtime/Cache/Blog/3bbfa53b044a6d690437913bbe78e7c9.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="18" selection-start="585" selection-end="585" vertical-scroll-proportion="0.4864865" vertical-offset="90" max-vertical-offset="846">
-          <folding />
-        </state>
+        <state line="132" column="32" selection-start="8029" selection-end="8032" vertical-scroll-proportion="0.33333334" vertical-offset="2537" max-vertical-offset="4806" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/LoginController.class.php">
+    <entry file="file://$PROJECT_DIR$/Application/Runtime/Cache/Blog/156da0ad817960ae46e9e82e5e5982b7.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="0" selection-start="150" selection-end="150" vertical-scroll-proportion="0.12080537" vertical-offset="0" max-vertical-offset="1890">
-          <folding>
-            <element signature="e#150#171#0" expanded="false" />
-          </folding>
-        </state>
+        <state line="131" column="18" selection-start="7999" selection-end="7999" vertical-scroll-proportion="-3.2692308" vertical-offset="2188" max-vertical-offset="4734" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/Model/ArticleRelationModel.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="37" selection-start="1453" selection-end="1459" vertical-scroll-proportion="0.8006757" vertical-offset="210" max-vertical-offset="864" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/template_back/ArticleController.class-back.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="203" column="61" selection-start="6527" selection-end="6573" vertical-scroll-proportion="0.6081081" vertical-offset="3150" max-vertical-offset="6894" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Setting/role_node.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="58" selection-start="1083" selection-end="1121" vertical-scroll-proportion="0.6081081" vertical-offset="72" max-vertical-offset="1458" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Blog/Model/ArticleRelationModel.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="3" selection-start="505" selection-end="505" vertical-scroll-proportion="0.4256757" vertical-offset="0" max-vertical-offset="592" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Template/Blog/Category/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="41" column="35" selection-start="1754" selection-end="1965" vertical-scroll-proportion="-15.461538" vertical-offset="336" max-vertical-offset="1152" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Blog/Controller/ShowController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="67" column="9" selection-start="1858" selection-end="2004" vertical-scroll-proportion="-15.230769" vertical-offset="810" max-vertical-offset="1656" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Template/Blog/Show/error.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="41" column="35" selection-start="2277" selection-end="2488" vertical-scroll-proportion="-14.961538" vertical-offset="349" max-vertical-offset="1278" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Template/Blog/Index/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="82" column="35" selection-start="3492" selection-end="3703" vertical-scroll-proportion="-14.461538" vertical-offset="1100" max-vertical-offset="2016" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Template/Blog/Tag/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="46" selection-start="1772" selection-end="1772" vertical-scroll-proportion="-8.038462" vertical-offset="493" max-vertical-offset="1152" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Blog/Model/TagViewModel.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="60" selection-start="711" selection-end="711" vertical-scroll-proportion="-4.4125" vertical-offset="25" max-vertical-offset="594" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Blog/Controller/TagController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="0" selection-start="1242" selection-end="1242" vertical-scroll-proportion="-14.961538" vertical-offset="277" max-vertical-offset="954" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Template/Blog/Common/public.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="20" selection-start="155" selection-end="155" vertical-scroll-proportion="0.091216214" vertical-offset="0" max-vertical-offset="828" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/CommonController.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="0" selection-start="667" selection-end="667" vertical-scroll-proportion="0.65968585" vertical-offset="0" max-vertical-offset="792">
+        <state line="72" column="89" selection-start="2058" selection-end="2096" vertical-scroll-proportion="0.3040422" vertical-offset="1015" max-vertical-offset="2646" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Template/Blog/Search/search.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="9" selection-start="199" selection-end="199" vertical-scroll-proportion="-3.3846154" vertical-offset="2" max-vertical-offset="1206" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="23" selection-start="881" selection-end="881" vertical-scroll-proportion="-11.769231" vertical-offset="0" max-vertical-offset="414" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Template/Blog/Common/right.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="31" selection-start="1829" selection-end="1833" vertical-scroll-proportion="0.61538464" vertical-offset="736" max-vertical-offset="1602" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/AuthGroupController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="5" selection-start="311" selection-end="860" vertical-scroll-proportion="-16.615385" vertical-offset="144" max-vertical-offset="1836" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Public/Blog/js/shCore.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3240" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Blog/Conf/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="24" selection-start="0" selection-end="1194" vertical-scroll-proportion="0.31634447" vertical-offset="0" max-vertical-offset="810" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Public/Blog/js/shBrushPhp.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1926" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Public/Blog/css/shThemeDefault.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2214" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Public/Blog/css/shCoreDefault.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="102" column="33" selection-start="2772" selection-end="2772" vertical-scroll-proportion="0.0" vertical-offset="1469" max-vertical-offset="6048">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/NavigationController.class.php">
+    <entry file="file://$PROJECT_DIR$/Template/Blog/Show/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="51" selection-start="242" selection-end="258" vertical-scroll-proportion="0.18120806" vertical-offset="0" max-vertical-offset="596">
+        <state line="23" column="58" selection-start="1178" selection-end="1178" vertical-scroll-proportion="0.0" vertical-offset="414" max-vertical-offset="1440">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Setting/role_edit.html">
+    <entry file="file://$PROJECT_DIR$/Data/myeditor/plugins/code/prettify.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="78" selection-start="1235" selection-end="1235" vertical-scroll-proportion="0.6979866" vertical-offset="124" max-vertical-offset="1170">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2772" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/Model/UserLoginModel.class.php">
+    <entry file="file://$PROJECT_DIR$/Data/myeditor/plugins/code/code.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="30" selection-start="693" selection-end="693" vertical-scroll-proportion="0.66442955" vertical-offset="0" max-vertical-offset="596">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/Model/UserLogModel.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="618">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/Model/AuthGroupModel.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="10" selection-start="1061" selection-end="1061" vertical-scroll-proportion="1.0268457" vertical-offset="0" max-vertical-offset="864">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/View/template_back/template_node.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="236" column="10" selection-start="12578" selection-end="12578" vertical-scroll-proportion="0.8181818" vertical-offset="5094" max-vertical-offset="5688">
+        <state line="48" column="80" selection-start="1834" selection-end="1866" vertical-scroll-proportion="0.0" vertical-offset="606" max-vertical-offset="1242">
           <folding>
-            <element signature="n#style#0;n#div#2;n#div#1;n#!!top" expanded="false" />
+            <marker date="1437555401000" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1437555401000" expanded="false" signature="-1:-1" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/Model/AuthRuleModel.class.php">
+    <entry file="file://$PROJECT_DIR$/Application/Admin/Model/ArticleViewModel.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="29" selection-start="1426" selection-end="1426" vertical-scroll-proportion="-13.653846" vertical-offset="185" max-vertical-offset="756">
+        <state line="16" column="76" selection-start="252" selection-end="524" vertical-scroll-proportion="-6.923077" vertical-offset="0" max-vertical-offset="396">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Runtime/Cache/Admin/1a18260c07ef90bb9407794fd549a896.php">
+    <entry file="file://$PROJECT_DIR$/Application/Blog/Controller/CategoryController.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="212" column="34" selection-start="10992" selection-end="10997" vertical-scroll-proportion="-7.6153846" vertical-offset="3618" max-vertical-offset="6174">
-          <folding>
-            <marker date="1435678269000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1435678269000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1435678269000" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/IndexController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="1" selection-start="285" selection-end="285" vertical-scroll-proportion="0.33333334" vertical-offset="0" max-vertical-offset="594">
+        <state line="19" column="34" selection-start="474" selection-end="474" vertical-scroll-proportion="0.32600734" vertical-offset="146" max-vertical-offset="1962">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/View/template_back/template_role.html">
+    <entry file="file://$PROJECT_DIR$/Application/Blog/Controller/SearchController.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="90" column="20" selection-start="4126" selection-end="4399" vertical-scroll-proportion="0.6043771" vertical-offset="1477" max-vertical-offset="3600">
+        <state line="34" column="145" selection-start="1285" selection-end="1419" vertical-scroll-proportion="0.5743243" vertical-offset="290" max-vertical-offset="954">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/View/static/css/base.css">
+    <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/ArticleController.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="166" selection-start="2691" selection-end="2691" vertical-scroll-proportion="0.43548387" vertical-offset="738" max-vertical-offset="2394">
-          <folding>
-            <marker date="1435394385000" expanded="true" signature="-1:-1" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/View/static/js/jquery.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="14310">
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/View/static/js/jquery-1.7.2.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="17316">
+        <state line="178" column="1" selection-start="5694" selection-end="5694" vertical-scroll-proportion="0.49324325" vertical-offset="2768" max-vertical-offset="6966">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/View/static/js/jquery-1.8.2.min.js">
+    <entry file="file://$PROJECT_DIR$/Template/Blog_back/Common/header2.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="17082">
+        <state line="37" column="78" selection-start="1861" selection-end="2158" vertical-scroll-proportion="0.7297297" vertical-offset="252" max-vertical-offset="1134">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Base/common.html">
+    <entry file="file://$PROJECT_DIR$/Public/Blog/css/blog.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="62" selection-start="224" selection-end="224" vertical-scroll-proportion="0.18243243" vertical-offset="0" max-vertical-offset="1206">
+        <state line="43" column="28" selection-start="1004" selection-end="1010" vertical-scroll-proportion="0.18074325" vertical-offset="685" max-vertical-offset="12366">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/View/static/js/jquery.min.js">
+    <entry file="file://$PROJECT_DIR$/ThinkPHP/Library/Think/Template/TagLib/Ki35.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="17568">
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/Model/UserViewModel.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="46" selection-start="484" selection-end="493" vertical-scroll-proportion="-6.923077" vertical-offset="0" max-vertical-offset="342">
+        <state line="43" column="31" selection-start="1484" selection-end="1494" vertical-scroll-proportion="0.4222973" vertical-offset="398" max-vertical-offset="3060">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Public/left-setting.html">
+    <entry file="file://$PROJECT_DIR$/Template/Blog/Common/header.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="54" selection-start="1801" selection-end="1801" vertical-scroll-proportion="-0.18243243" vertical-offset="720" max-vertical-offset="2070">
+        <state line="43" column="37" selection-start="2223" selection-end="2223" vertical-scroll-proportion="0.6081081" vertical-offset="432" max-vertical-offset="1062">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/Model/UserModel.class.php">
+    <entry file="file://$PROJECT_DIR$/Application/Blog/Model/ArticleViewModel.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="27" selection-start="698" selection-end="698" vertical-scroll-proportion="0.30405405" vertical-offset="72" max-vertical-offset="1908">
+        <state line="14" column="74" selection-start="308" selection-end="317" vertical-scroll-proportion="-5.5384617" vertical-offset="0" max-vertical-offset="360">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/View/template_back/template_node_add.html">
+    <entry file="file://$PROJECT_DIR$/Application/Blog/Controller/IndexController.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2988">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Setting/manager_add.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="75" column="10" selection-start="3947" selection-end="5890" vertical-scroll-proportion="0.31925675" vertical-offset="1305" max-vertical-offset="2448">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Setting/node_add.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="8" selection-start="1084" selection-end="5683" vertical-scroll-proportion="34.192307" vertical-offset="1285" max-vertical-offset="2988">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Setting/node_edit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="79" selection-start="1738" selection-end="1738" vertical-scroll-proportion="0.5472973" vertical-offset="324" max-vertical-offset="3096">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/AuthRuleController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="49" selection-start="1753" selection-end="1753" vertical-scroll-proportion="-9.692307" vertical-offset="576" max-vertical-offset="1476">
+        <state line="24" column="23" selection-start="792" selection-end="792" vertical-scroll-proportion="-15.269231" vertical-offset="17" max-vertical-offset="684">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/UserController.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="37" selection-start="493" selection-end="510" vertical-scroll-proportion="0.06081081" vertical-offset="306" max-vertical-offset="2394">
+        <state line="22" column="10" selection-start="452" selection-end="452" vertical-scroll-proportion="-11.076923" vertical-offset="0" max-vertical-offset="2394">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/View/template_back/template_node2.html">
+    <entry file="file://$PROJECT_DIR$/Application/Admin/Model/UserViewModel.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="10" selection-start="2872" selection-end="2872" vertical-scroll-proportion="2.108108" vertical-offset="210" max-vertical-offset="1566">
+        <state line="16" column="18" selection-start="465" selection-end="474" vertical-scroll-proportion="-6.923077" vertical-offset="0" max-vertical-offset="342">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/View/template_back/template_node3.html">
+    <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.8817568" vertical-offset="522" max-vertical-offset="4248">
+        <state line="30" column="55" selection-start="1337" selection-end="1337" vertical-scroll-proportion="0.9368421" vertical-offset="78" max-vertical-offset="720">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Setting/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="10" selection-start="263" selection-end="263" vertical-scroll-proportion="0.27364865" vertical-offset="0" max-vertical-offset="592">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Setting/manager_edit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="0" selection-start="3048" selection-end="3048" vertical-scroll-proportion="0.9948186" vertical-offset="558" max-vertical-offset="2196">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/View/static/css/form.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="38" selection-start="1111" selection-end="1111" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="684">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Setting/node.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="156" column="7" selection-start="5852" selection-end="6942" vertical-scroll-proportion="0.6655405" vertical-offset="2738" max-vertical-offset="4302">
-          <folding>
-            <element signature="n#style#0;n#tr#0;n#table#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#0;n#td#2;n#table#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#1;n#td#2;n#table#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#2;n#td#2;n#table#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#0;n#td#4;n#table#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#1;n#td#4;n#table#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#3;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Setting/role.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="74" selection-start="2195" selection-end="2195" vertical-scroll-proportion="1.2263514" vertical-offset="120" max-vertical-offset="3528">
-          <folding>
-            <element signature="n#style#0;n#tr#0;n#table#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#th#0;n#tr#0;n#table#0;n#div#1;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Setting/role_add.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="49" selection-start="871" selection-end="938" vertical-scroll-proportion="0.5777027" vertical-offset="90" max-vertical-offset="2160">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Setting/manager.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="281" column="7" selection-start="11945" selection-end="12144" vertical-scroll-proportion="-12.384615" vertical-offset="4736" max-vertical-offset="5508">
-          <folding>
-            <element signature="n#style#0;n#legend#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#table#0;n#div#1;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ThinkPHP/Library/MyLibrary/Category.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="67" selection-start="1164" selection-end="1164" vertical-scroll-proportion="-11.384615" vertical-offset="442" max-vertical-offset="1890">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/AuthGroupController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="17" selection-start="2099" selection-end="2099" vertical-scroll-proportion="0.8783784" vertical-offset="866" max-vertical-offset="1728">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Setting/role_node.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="73" selection-start="1792" selection-end="1792" vertical-scroll-proportion="-13.846154" vertical-offset="144" max-vertical-offset="1458">
-          <folding>
-            <element signature="n#style#0;n#div#1;n#div#0;n#form#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#0;n#li#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#form#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/Admin/Controller/SettingController.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="208" column="21" selection-start="7373" selection-end="7373" vertical-scroll-proportion="3.3192568" vertical-offset="1833" max-vertical-offset="4518">
+        <state line="61" column="0" selection-start="1698" selection-end="1705" vertical-scroll-proportion="0.5777027" vertical-offset="720" max-vertical-offset="3438">
           <folding>
             <element signature="e#6#120#0" expanded="true" />
-            <element signature="e#150#173#0" expanded="true" />
-            <marker date="1435682235000" expanded="true" signature="7382:7586" placeholder="..." />
           </folding>
         </state>
       </provider>
